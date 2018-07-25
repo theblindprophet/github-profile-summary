@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App-Search-Bar.css';
+import './Home-Search-Bar.css';
 
-class AppSearchBar extends Component {
+class HomeSearchBar extends Component {
   render() {
     return (
       <div className="Search-Bar">
@@ -13,4 +13,4 @@ class AppSearchBar extends Component {
   }
 }
 
-export default AppSearchBar;
+export default HomeSearchBar;

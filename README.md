@@ -1,4 +1,4 @@
-# Github Profile Viewer
+# Github Profile Summary
 
 ## Author
 
