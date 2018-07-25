@@ -1,0 +1,47 @@
+/* VARIABLES */
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem; }
+
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Advent Pro', sans-serif;
+  font-weight: 600; }
+
+.App {
+  text-align: center; }
+  .App-header {
+    background-color: #343642;
+    height: 90px;
+    padding: 20px;
+    color: #fff; }
+    .App-header > div {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .App-header > div > span {
+        margin-right: 1rem; }
+    .App-header-logo {
+      animation: App-logo-spin infinite 20s linear;
+      height: 50px; }
+    .App-header-title {
+      margin-top: 0.5rem;
+      font-size: 1.5em; }
+  .App-container {
+    padding: 2rem; }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+@media screen and (max-width: 480px) {
+  .App-header {
+    display: flex;
+    justify-content: center;
+    height: 52px;
+    margin: 0; }
+    .App-header-logo {
+      margin-right: 1rem; }
+    .App-header-title {
+      margin-top: 0; } }
