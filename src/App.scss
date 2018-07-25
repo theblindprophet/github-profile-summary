@@ -1,9 +1,66 @@
+@import './shared.scss';
+
 * {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
+  transition: 200ms ease-in-out;
+}
+
+html, body {
+  min-width: 320px;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, button {
   font-family: 'Advent Pro', sans-serif;
   font-weight: 600;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+
+  + .row {
+    margin-top: -0.5rem;
+  }
+}
+.col {
+  margin: 0.5rem;
+  background-color: $light-gray;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.App {
+  &-header {
+    background-color: $dark-gray;
+    height: 90px;
+    padding: 20px;
+    color: $white;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+  
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      > span {
+        margin-right: 1rem;
+      }
+    }
+    &-logo {
+      animation: Home-logo-spin infinite 20s linear;
+      height: 50px;
+    }
+    &-title {
+      margin-top: 0.5rem;
+      font-size: 1.5em;
+    }
+  }
+  &-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
 }

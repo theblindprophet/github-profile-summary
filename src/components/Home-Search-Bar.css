@@ -1,8 +1,14 @@
 /* VARIABLES */
-.Search-Bar-form-search {
-  width: 100%;
-  padding: 0.5rem;
-  background-color: #EFEFEF;
-  color: #343642;
-  border: none;
-  outline: none; }
+.Search-Bar {
+  font-family: 'Open Sans', sans-serif; }
+  .Search-Bar-form {
+    flex-grow: 1;
+    padding: 0.25rem; }
+    .Search-Bar-form-search {
+      width: calc(100% - 1rem);
+      padding: 0.5rem;
+      background-color: #EFEFEF;
+      color: #343642;
+      font-size: 1rem;
+      border: none;
+      outline: none; }

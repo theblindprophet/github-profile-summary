@@ -1,0 +1,20 @@
+/* VARIABLES */
+.Stats {
+  width: calc(40% - 3rem);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem; }
+  .Stats > div {
+    display: flex;
+    flex-wrap: wrap; }
+    .Stats > div > span {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #343642;
+      color: #fff;
+      border-radius: 4px; }
+      .Stats > div > span:hover > b {
+        color: #348899; }
+
+@media screen and (max-width: 770px) {
+  .Stats {
+    width: 100%; } }

@@ -1,0 +1,143 @@
+@import '../shared.scss';
+
+.User-Meta {
+  position: relative;
+  display: flex;
+  width: calc(60% - 3rem);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+
+  &-profile {
+    margin-right: 2rem;
+
+    &-picture {
+      height: 160px;
+      width: 160px;
+      border-radius: 80px;
+    }
+    &-name {
+      margin-top: 0.5rem;
+      margin-bottom: -1rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    &-username {
+      text-align: center;
+  
+      > a {
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 1rem;
+  
+        &:link, &:visited, &:hover, &:active {
+          color: $dark-gray;
+          text-decoration: none;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  &-info {
+    overflow: auto;
+    
+    > p {
+      max-width: 240px;
+      text-align: left;
+    }
+    &-email {
+      margin-bottom: 0;
+
+      > span {
+        font-weight: 600;
+      }
+    }
+    &-company {
+      margin-top: 0.25rem;
+
+      > span {
+        font-weight: 600;
+      }
+    }
+    &-bio {
+      margin-bottom: 0;
+    }
+    &-location {
+      cursor: pointer;
+
+      > i {
+        margin-right: 0.5rem;
+        color: $dark-gray;
+      }
+      > a {
+        &:link, &:visited, &:hover, &:active {
+          color: $black;
+          text-decoration: none;
+        }
+      }
+      &:hover {
+        text-decoration: underline;
+
+        > i {
+          color: $primary;
+        }
+      }
+    }
+    &-website {
+      color: $accent;
+      white-space: nowrap; 
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      > a {
+        &:link, &:visited, &:hover, &:active {
+          color: $accent;
+          text-decoration: none;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  &-available {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-weight: 600;
+    font-family: 'Advent Pro', sans-serif;
+
+    > i {
+      margin-right: 0.5rem;
+      color: $accent;
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .User-Meta {
+    width: calc(100% - 3rem);
+
+    &-info {
+      > p {
+        max-width: none;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .User-Meta {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    &-profile-picture {
+      margin-right: 0;
+    }
+    &-info {
+      margin-top: 1rem;
+    }
+  }
+}
