@@ -31,14 +31,15 @@
   .User-Meta-info {
     overflow: auto; }
     .User-Meta-info > p {
-      max-width: 240px;
       text-align: left; }
     .User-Meta-info-email {
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      word-break: break-word; }
       .User-Meta-info-email > span {
         font-weight: 600; }
     .User-Meta-info-company {
-      margin-top: 0.25rem; }
+      margin-top: 0.25rem;
+      word-break: break-word; }
       .User-Meta-info-company > span {
         font-weight: 600; }
     .User-Meta-info-bio {

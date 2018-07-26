@@ -44,11 +44,11 @@
     overflow: auto;
     
     > p {
-      max-width: 240px;
       text-align: left;
     }
     &-email {
       margin-bottom: 0;
+      word-break: break-word;
 
       > span {
         font-weight: 600;
@@ -56,6 +56,7 @@
     }
     &-company {
       margin-top: 0.25rem;
+      word-break: break-word;
 
       > span {
         font-weight: 600;

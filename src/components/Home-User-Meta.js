@@ -25,7 +25,7 @@ class HomeUserMeta extends Component {
           </p>
         </div>
         <div className="User-Meta-available">
-          <i class="fas fa-user-tie"></i>
+          <i className="fas fa-user-tie"></i>
           <span>Available</span>
         </div>
       </div>
