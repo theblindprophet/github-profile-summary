@@ -15,17 +15,6 @@ const postUser = async (req: Request, res: Response) => {
   }
 };
 
-const putUser = async (req: Request, res: Response) => {
-  const _id = req.params.id;
-  try {
-    await User.update({ _id }, req.body, { upsert: true });
-    res.status(200).json({});
-  } catch (e) {
-    logger.error(`Failed to update user with id ${_id}`, e);
-    res.status(422).send({});
-  }
-};
-
 const getUser = async (req: Request, res: Response) => {
   const _id = req.params.id;
   try {
@@ -47,21 +36,8 @@ const getUsers = async (req: Request, res: Response) => {
   }
 };
 
-const deleteUser = async (req: Request, res: Response) => {
-  const _id = req.params.id;
-  try {
-    const user = await User.remove({ _id }).exec();
-    res.status(200).send({});
-  } catch (e) {
-    logger.error(`Failed to delete user with id ${_id}`, e);
-    res.status(404).send({});
-  }
-};
-
 export default {
   postUser,
-  putUser,
   getUser,
-  getUsers,
-  deleteUser
+  getUsers
 };
