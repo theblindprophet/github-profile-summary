@@ -1,4 +1,11 @@
 /* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
 .User-Meta {
   position: relative;
   display: flex;
@@ -10,7 +17,7 @@
     .User-Meta-profile-picture {
       height: 160px;
       width: 160px;
-      border-radius: 80px; }
+      border-radius: 4px; }
     .User-Meta-profile-name {
       margin-top: 0.5rem;
       margin-bottom: -1rem;
@@ -45,10 +52,11 @@
     .User-Meta-info-bio {
       margin-bottom: 0; }
     .User-Meta-info-location {
+      display: flex;
+      margin-top: 1rem;
       cursor: pointer; }
-      .User-Meta-info-location > i {
-        margin-right: 0.5rem;
-        color: #343642; }
+      .User-Meta-info-location > div {
+        margin-right: 0.5rem; }
       .User-Meta-info-location > a:link, .User-Meta-info-location > a:visited, .User-Meta-info-location > a:hover, .User-Meta-info-location > a:active {
         color: #000;
         text-decoration: none; }
@@ -70,11 +78,11 @@
     position: absolute;
     top: 8px;
     right: 8px;
+    display: flex;
     font-weight: 600;
     font-family: 'Advent Pro', sans-serif; }
-    .User-Meta-available > i {
-      margin-right: 0.5rem;
-      color: #962D3E; }
+    .User-Meta-available > div {
+      margin-right: 0.5rem; }
 
 @media screen and (max-width: 770px) {
   .User-Meta {

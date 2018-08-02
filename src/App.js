@@ -4,10 +4,6 @@ import './App.css';
 import Home from './Home.js';
 import logo from './assets/github-logo.png';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faStroopwafel, faCode } from '@fortawesome/free-solid-svg-icons';
-library.add(faStroopwafel, faCode);
-
 class App extends Component {
   render() {
     return (

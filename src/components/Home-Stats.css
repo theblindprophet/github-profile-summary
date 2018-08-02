@@ -1,4 +1,11 @@
 /* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
 .Stats {
   width: calc(40% - 3rem);
   font-family: 'Open Sans', sans-serif;

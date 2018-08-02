@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Home-Contributions.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconContext } from "react-icons";
+import { GoGitCommit, GoGitPullRequest, GoGitMerge, GoRepo, GoIssueOpened, GoIssueClosed } from 'react-icons/go';
 
 class HomeContributions extends Component {
   render() {
@@ -8,11 +9,16 @@ class HomeContributions extends Component {
       <div className="Contributions col">
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <FontAwesomeIcon icon="code" />
+            <IconContext.Provider value={{ color: "#000" }}>
+              <div>
+                <GoGitCommit />
+              </div>
+            </IconContext.Provider>
           </div>
           <div className="Contributions-contr-summary">
-            Create commit in repo, <b>Apples</b>
+            Created commit in repo, <b>Apples</b>
           </div>
+          <span className="Contributions-contr-line"></span>
           <div className="Contributions-contr-date">
             July 30, 2018
           </div>
@@ -20,44 +26,96 @@ class HomeContributions extends Component {
 
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <FontAwesomeIcon icon="code" />
+            <IconContext.Provider value={{ color: "#000" }}>
+              <div>
+                <GoGitPullRequest />
+              </div>
+            </IconContext.Provider>
           </div>
           <div className="Contributions-contr-summary">
-            Create commit in repo, <b>Apples</b>
+            Created a pull request in repo, <b>Apples</b>
           </div>
+          <span className="Contributions-contr-line"></span>
           <div className="Contributions-contr-date">
             July 30, 2018
           </div>
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <FontAwesomeIcon icon="code" />
+            <IconContext.Provider value={{ color: "#000" }}>
+              <div>
+                <GoGitMerge />
+              </div>
+            </IconContext.Provider>
           </div>
           <div className="Contributions-contr-summary">
-            Create commit in repo, <b>Apples</b>
+            Merged a pull request in repo, <b>Apples</b>
           </div>
+          <span className="Contributions-contr-line"></span>
           <div className="Contributions-contr-date">
             July 30, 2018
           </div>
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <FontAwesomeIcon icon="code" />
+            <IconContext.Provider value={{ color: "#000" }}>
+              <div>
+                <GoIssueOpened />
+              </div>
+            </IconContext.Provider>
           </div>
           <div className="Contributions-contr-summary">
-            Create commit in repo, <b>Apples</b>
+            Created an issue in repo, <b>Apples</b>
           </div>
+          <span className="Contributions-contr-line"></span>
           <div className="Contributions-contr-date">
             July 30, 2018
           </div>
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <FontAwesomeIcon icon="code" />
+            <IconContext.Provider value={{ color: "#000" }}>
+              <div>
+                <GoIssueClosed />
+              </div>
+            </IconContext.Provider>
           </div>
           <div className="Contributions-contr-summary">
-            Create commit in repo, <b>Apples</b>
+            Closed an issue in repo, <b>Apples</b>
           </div>
+          <span className="Contributions-contr-line"></span>
+          <div className="Contributions-contr-date">
+            July 30, 2018
+          </div>
+        </div>
+        <div className="Contributions-contr">
+          <div className="Contributions-contr-icon">
+            <IconContext.Provider value={{ color: "#000" }}>
+              <div>
+                <GoGitPullRequest />
+              </div>
+            </IconContext.Provider>
+          </div>
+          <div className="Contributions-contr-summary">
+            Reviewed an issue in repo, <b>Apples</b>
+          </div>
+          <span className="Contributions-contr-line"></span>
+          <div className="Contributions-contr-date">
+            July 30, 2018
+          </div>
+        </div>
+        <div className="Contributions-contr">
+          <div className="Contributions-contr-icon">
+            <IconContext.Provider value={{ color: "#000" }}>
+              <div>
+                <GoRepo />
+              </div>
+            </IconContext.Provider>
+          </div>
+          <div className="Contributions-contr-summary">
+            Created a repo, <b>Apples</b>
+          </div>
+          <span className="Contributions-contr-line"></span>
           <div className="Contributions-contr-date">
             July 30, 2018
           </div>
