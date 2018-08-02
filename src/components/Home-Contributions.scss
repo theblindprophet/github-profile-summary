@@ -2,4 +2,22 @@
 
 .Contributions {
   width: 100%;
+
+  &-contr {
+    display: flex;
+    margin: 1rem 0;
+
+    &:first-child {
+      margin-top: 0.5rem
+    }
+    &:last-child {
+      margin-bottom: 0.5rem;
+    }
+    &-icon {
+      margin-right: 1rem;
+    }
+    &-date {
+      margin-left: auto;
+    }
+  }
 }

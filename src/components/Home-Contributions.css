@@ -1,3 +1,14 @@
 /* VARIABLES */
 .Contributions {
   width: 100%; }
+  .Contributions-contr {
+    display: flex;
+    margin: 1rem 0; }
+    .Contributions-contr:first-child {
+      margin-top: 0.5rem; }
+    .Contributions-contr:last-child {
+      margin-bottom: 0.5rem; }
+    .Contributions-contr-icon {
+      margin-right: 1rem; }
+    .Contributions-contr-date {
+      margin-left: auto; }
