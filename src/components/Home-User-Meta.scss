@@ -16,6 +16,8 @@
     font-family: 'Advent Pro', sans-serif;
 
     > div {
+      position: relative;
+      top: 2px;
       margin-right: 0.5rem;
     }
   }
@@ -100,18 +102,16 @@
       }
     }
     &-website {
-      color: $accent;
+      color: lighten($primary, 30);
       white-space: nowrap; 
       overflow: hidden;
       text-overflow: ellipsis;
 
       > a {
+        font-weight: 600;
+        
         &:link, &:visited, &:hover, &:active {
-          color: $accent;
-          text-decoration: none;
-        }
-        &:hover {
-          text-decoration: underline;
+          color: lighten($primary, 30);
         }
       }
     }

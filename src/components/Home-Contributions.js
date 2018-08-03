@@ -9,7 +9,7 @@ class HomeContributions extends Component {
       <div className="Contributions col">
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <IconContext.Provider value={{ color: "#000" }}>
+            <IconContext.Provider value={{}}>
               <div>
                 <GoGitCommit />
               </div>
@@ -25,7 +25,7 @@ class HomeContributions extends Component {
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <IconContext.Provider value={{ color: "#000" }}>
+            <IconContext.Provider value={{}}>
               <div>
                 <GoRepo />
               </div>
@@ -41,7 +41,7 @@ class HomeContributions extends Component {
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <IconContext.Provider value={{ color: "#000" }}>
+            <IconContext.Provider value={{}}>
               <div>
                 <GoGitPullRequest />
               </div>
@@ -57,7 +57,7 @@ class HomeContributions extends Component {
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <IconContext.Provider value={{ color: "#000" }}>
+            <IconContext.Provider value={{}}>
               <div>
                 <GoGitMerge />
               </div>
@@ -73,7 +73,7 @@ class HomeContributions extends Component {
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <IconContext.Provider value={{ color: "#000" }}>
+            <IconContext.Provider value={{}}>
               <div>
                 <GoIssueOpened />
               </div>
@@ -89,7 +89,7 @@ class HomeContributions extends Component {
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <IconContext.Provider value={{ color: "#000" }}>
+            <IconContext.Provider value={{}}>
               <div>
                 <GoIssueClosed />
               </div>
@@ -105,7 +105,7 @@ class HomeContributions extends Component {
         </div>
         <div className="Contributions-contr">
           <div className="Contributions-contr-icon">
-            <IconContext.Provider value={{ color: "#000" }}>
+            <IconContext.Provider value={{}}>
               <div>
                 <GoGitPullRequest />
               </div>

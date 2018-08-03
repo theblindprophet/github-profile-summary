@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Home-Stats.css';
 import { IconContext } from "react-icons";
 import { GoGitCommit, GoGist, GoRepo, GoIssueOpened } from 'react-icons/go';
-import { FaHourglassStart, FaArrowAltCircleRight, FaArrowAltCircleLeft, FaArrowAl } from 'react-icons/fa';
+import { FaHourglassStart, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 class HomeStats extends Component {
   render() {
