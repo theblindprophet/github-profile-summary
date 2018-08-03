@@ -1,0 +1,59 @@
+@import '../shared.scss';
+
+.Repos {
+  width: 100%;
+
+  &-repo {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 4px;
+
+    &-icon {
+      position: relative;
+      top: 2px;
+      margin-left: 0.5rem;
+      margin-right: 1rem;
+    }
+    &-name {
+      margin: 0.25rem 0;
+      line-height: 1.5rem;
+
+      &:link, &:visited, &:hover, &:active {
+        color: lighten($primary, 30);
+      }
+    }
+    &-updated {
+      margin-left: auto;
+      margin-right: 0.5rem;
+      text-align: right;
+    }
+    &:nth-child(even) {
+      border: 2px solid $dark-gray;
+    }
+    &:nth-child(odd) {
+      background-color: $dark-gray;
+
+      .Repos-repo-icon {
+        svg {
+          fill: $white;
+        } 
+      }
+      .Repos-repo-updated {
+        color: $white;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Repos {
+    &-repo {
+      &-updated {
+        max-width: 120px;
+        font-size: 14px;
+      }
+    }
+  }
+}

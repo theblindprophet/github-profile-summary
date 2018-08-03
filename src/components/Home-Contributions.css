@@ -19,9 +19,10 @@
     .Contributions-contr-icon {
       margin-right: 1rem; }
     .Contributions-contr-summary {
-      display: inline-grid;
       max-width: 65%;
-      line-height: 20px; }
+      line-height: 1.5rem; }
+      .Contributions-contr-summary a:link, .Contributions-contr-summary a:visited, .Contributions-contr-summary a:hover, .Contributions-contr-summary a:active {
+        color: #8eccd8; }
     .Contributions-contr-line {
       flex-grow: 1;
       position: relative;
@@ -63,8 +64,21 @@
 
 @media screen and (max-width: 480px) {
   .Contributions-contr {
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 4px; }
+    .Contributions-contr-line {
+      display: none; }
     .Contributions-contr-date {
       width: 100%;
       margin: 0.5rem 0 1rem 2rem;
-      font-size: 14px; } }
+      font-size: 14px; }
+    .Contributions-contr:nth-child(even) {
+      border: 2px solid #343642; }
+    .Contributions-contr:nth-child(odd) {
+      background-color: #343642; }
+      .Contributions-contr:nth-child(odd) .Contributions-contr-icon svg {
+        color: #fff; }
+      .Contributions-contr:nth-child(odd) .Contributions-contr-summary, .Contributions-contr:nth-child(odd) .Contributions-contr-date {
+        color: #fff; } }

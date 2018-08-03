@@ -10,7 +10,7 @@ class HomeUserMeta extends Component {
     return (
       <div className="User-Meta col">
         <div className="User-Meta-available">
-          <IconContext.Provider value={{ color: "#962D3E" }}>
+          <IconContext.Provider value={{ color: "#8ECCD8" }}>
             <div>
               <FaUserTie />
             </div>

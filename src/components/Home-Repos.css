@@ -1,0 +1,43 @@
+/* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
+.Repos {
+  width: 100%; }
+  .Repos-repo {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 4px; }
+    .Repos-repo-icon {
+      position: relative;
+      top: 2px;
+      margin-left: 0.5rem;
+      margin-right: 1rem; }
+    .Repos-repo-name {
+      margin: 0.25rem 0;
+      line-height: 1.5rem; }
+      .Repos-repo-name:link, .Repos-repo-name:visited, .Repos-repo-name:hover, .Repos-repo-name:active {
+        color: #8eccd8; }
+    .Repos-repo-updated {
+      margin-left: auto;
+      margin-right: 0.5rem;
+      text-align: right; }
+    .Repos-repo:nth-child(even) {
+      border: 2px solid #343642; }
+    .Repos-repo:nth-child(odd) {
+      background-color: #343642; }
+      .Repos-repo:nth-child(odd) .Repos-repo-icon svg {
+        fill: #fff; }
+      .Repos-repo:nth-child(odd) .Repos-repo-updated {
+        color: #fff; }
+
+@media screen and (max-width: 480px) {
+  .Repos-repo-updated {
+    max-width: 120px;
+    font-size: 14px; } }
