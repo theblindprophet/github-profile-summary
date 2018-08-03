@@ -12,6 +12,15 @@
   width: calc(60% - 3rem);
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem; }
+  .User-Meta-available {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    font-weight: 600;
+    font-family: 'Advent Pro', sans-serif; }
+    .User-Meta-available > div {
+      margin-right: 0.5rem; }
   .User-Meta-profile {
     margin-right: 2rem; }
     .User-Meta-profile-picture {
@@ -74,15 +83,6 @@
         text-decoration: none; }
       .User-Meta-info-website > a:hover {
         text-decoration: underline; }
-  .User-Meta-available {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    display: flex;
-    font-weight: 600;
-    font-family: 'Advent Pro', sans-serif; }
-    .User-Meta-available > div {
-      margin-right: 0.5rem; }
 
 @media screen and (max-width: 770px) {
   .User-Meta {
@@ -95,7 +95,12 @@
     flex-direction: column;
     align-items: center;
     width: 100%; }
-    .User-Meta-profile-picture {
+    .User-Meta-available {
+      position: relative;
+      top: 0;
+      right: 0;
+      margin-bottom: 1rem; }
+    .User-Meta-profile {
       margin-right: 0; }
     .User-Meta-info {
       margin-top: 1rem; } }

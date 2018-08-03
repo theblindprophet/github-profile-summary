@@ -9,6 +9,14 @@ class HomeUserMeta extends Component {
     // TODO: Hide items if not set
     return (
       <div className="User-Meta col">
+        <div className="User-Meta-available">
+          <IconContext.Provider value={{ color: "#962D3E" }}>
+            <div>
+              <FaUserTie />
+            </div>
+          </IconContext.Provider>
+          <span>Available for hire</span>
+        </div>
         <div className="User-Meta-profile">
           <img className="User-Meta-profile-picture" src="https://avatars2.githubusercontent.com/u/7903413?s=460&v=4" alt="user" />
           <p className="User-Meta-profile-name">Jamie Gross</p>
@@ -29,14 +37,6 @@ class HomeUserMeta extends Component {
           <p className="User-Meta-info-website">
             <a href="https://graspmobiledevelop.com/" target="_blank" rel="noopener noreferrer">https://graspmobiledevelop.com/</a>
           </p>
-        </div>
-        <div className="User-Meta-available">
-          <IconContext.Provider value={{ color: "#962D3E" }}>
-            <div>
-              <FaUserTie />
-            </div>
-          </IconContext.Provider>
-          <span>Available for hire</span>
         </div>
       </div>
     );

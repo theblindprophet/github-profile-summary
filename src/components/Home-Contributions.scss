@@ -17,6 +17,11 @@
     &-icon {
       margin-right: 1rem;
     }
+    &-summary {
+      display: inline-grid;
+      max-width: 65%;
+      line-height: 20px;
+    }
     &-line {
       flex-grow: 1;
       position: relative;
@@ -56,6 +61,20 @@
     }
     &-date {
       margin-left: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Contributions {
+    &-contr {
+      flex-wrap: wrap;
+
+      &-date {
+        width: 100%;
+        margin: 0.5rem 0 1rem 2rem;
+        font-size: 14px;
+      }
     }
   }
 }

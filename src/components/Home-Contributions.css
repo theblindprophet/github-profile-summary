@@ -18,6 +18,10 @@
       margin-bottom: 0.5rem; }
     .Contributions-contr-icon {
       margin-right: 1rem; }
+    .Contributions-contr-summary {
+      display: inline-grid;
+      max-width: 65%;
+      line-height: 20px; }
     .Contributions-contr-line {
       flex-grow: 1;
       position: relative;
@@ -56,3 +60,11 @@
       animation-duration: 3.5s; }
     .Contributions-contr-date {
       margin-left: auto; }
+
+@media screen and (max-width: 480px) {
+  .Contributions-contr {
+    flex-wrap: wrap; }
+    .Contributions-contr-date {
+      width: 100%;
+      margin: 0.5rem 0 1rem 2rem;
+      font-size: 14px; } }

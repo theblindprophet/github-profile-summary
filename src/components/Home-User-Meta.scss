@@ -7,6 +7,18 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
 
+  &-available {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    font-weight: 600;
+    font-family: 'Advent Pro', sans-serif;
+
+    > div {
+      margin-right: 0.5rem;
+    }
+  }
   &-profile {
     margin-right: 2rem;
 
@@ -104,18 +116,6 @@
       }
     }
   }
-  &-available {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    display: flex;
-    font-weight: 600;
-    font-family: 'Advent Pro', sans-serif;
-
-    > div {
-      margin-right: 0.5rem;
-    }
-  }
 }
 
 @media screen and (max-width: 770px) {
@@ -135,7 +135,13 @@
     align-items: center;
     width: 100%;
 
-    &-profile-picture {
+    &-available {
+      position: relative;
+      top: 0;
+      right: 0;
+      margin-bottom: 1rem;
+    }
+    &-profile {
       margin-right: 0;
     }
     &-info {
