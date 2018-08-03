@@ -1,4 +1,11 @@
 /* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
 .Stats {
   width: calc(40% - 3rem);
   font-family: 'Open Sans', sans-serif;
@@ -7,13 +14,21 @@
     display: flex;
     flex-wrap: wrap; }
     .Stats > div > span {
+      display: flex;
+      align-items: center;
       margin: 0.5rem;
       padding: 0.5rem 1rem;
       background-color: #343642;
       color: #fff;
       border-radius: 4px; }
+      .Stats > div > span > b {
+        margin-left: 0.5rem; }
       .Stats > div > span:hover > b {
         color: #348899; }
+  .Stats-icon {
+    position: relative;
+    top: 2px;
+    margin-right: 1rem; }
 
 @media screen and (max-width: 770px) {
   .Stats {

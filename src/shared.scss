@@ -5,3 +5,9 @@ $light-gray: #EFEFEF;
 $dark-gray: #343642;
 $white: #fff;
 $black: #000;
+
+/* ANIMATONS */
+@keyframes line-move {
+  0% { left: -25%; }
+  100% { left: 100% }
+}

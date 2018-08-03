@@ -10,18 +10,28 @@
     flex-wrap: wrap;
 
     > span {
+      display: flex;
+      align-items: center;
       margin: 0.5rem;
       padding: 0.5rem 1rem;
       background-color: $dark-gray;
       color: $white;
       border-radius: 4px;
   
+      > b {
+        margin-left: 0.5rem;
+      }
       &:hover {
         > b {
           color: $primary;
         }
       }
     }
+  }
+  &-icon {
+    position: relative;
+    top: 2px;
+    margin-right: 1rem;
   }
 }
 

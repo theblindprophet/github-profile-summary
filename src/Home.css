@@ -1,4 +1,11 @@
 /* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
 @keyframes Home-logo-spin {
   from {
     transform: rotate(0deg); }

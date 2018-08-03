@@ -1,3 +1,70 @@
 /* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
 .Contributions {
   width: 100%; }
+  .Contributions-contr {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0; }
+    .Contributions-contr:first-child {
+      margin-top: 0.5rem; }
+    .Contributions-contr:last-child {
+      margin-bottom: 0.5rem; }
+    .Contributions-contr-icon {
+      margin-right: 1rem; }
+    .Contributions-contr-summary {
+      display: inline-grid;
+      max-width: 65%;
+      line-height: 20px; }
+    .Contributions-contr-line {
+      flex-grow: 1;
+      position: relative;
+      height: 2px;
+      margin: 0 1rem;
+      background-color: #348899;
+      overflow: hidden; }
+      .Contributions-contr-line::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -25%;
+        width: 25%;
+        background-color: #8eccd8;
+        animation: line-move;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite; }
+    .Contributions-contr:nth-child(2n+1) > .Contributions-contr-line::after {
+      animation-direction: reverse; }
+    .Contributions-contr:nth-child(2n+1) > .Contributions-contr-line::after {
+      animation-duration: 1.75s; }
+    .Contributions-contr:nth-child(2n+2) > .Contributions-contr-line::after {
+      animation-duration: 2s; }
+    .Contributions-contr:nth-child(2n+3) > .Contributions-contr-line::after {
+      animation-duration: 2.25s; }
+    .Contributions-contr:nth-child(2n+4) > .Contributions-contr-line::after {
+      animation-duration: 2.5s; }
+    .Contributions-contr:nth-child(2n+5) > .Contributions-contr-line::after {
+      animation-duration: 2.75s; }
+    .Contributions-contr:nth-child(2n+6) > .Contributions-contr-line::after {
+      animation-duration: 3s; }
+    .Contributions-contr:nth-child(2n+7) > .Contributions-contr-line::after {
+      animation-duration: 3.25s; }
+    .Contributions-contr:nth-child(2n+8) > .Contributions-contr-line::after {
+      animation-duration: 3.5s; }
+    .Contributions-contr-date {
+      margin-left: auto; }
+
+@media screen and (max-width: 480px) {
+  .Contributions-contr {
+    flex-wrap: wrap; }
+    .Contributions-contr-date {
+      width: 100%;
+      margin: 0.5rem 0 1rem 2rem;
+      font-size: 14px; } }
