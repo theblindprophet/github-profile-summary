@@ -32,6 +32,12 @@ export const getUserData = async (userName: string): Promise<any> => {
                 avatarUrl
                 isBountyHunter
                 isHireable
+                pullRequests() {
+                    totalCount
+                }
+                issues() {
+                    totalCount
+                }
             }
         }`
   });
