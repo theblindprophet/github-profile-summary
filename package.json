@@ -15,7 +15,7 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "node_modules/.bin/concurrently -n \"server,client\" -c \"yellow,cyan\" \"npm run server-start\" \"npm run client-start\"",
+    "start": "npm run build && npm run server-start",
     "client-start": "react-scripts start",
     "server-start": "npm run start --prefix server",
     "server-build": "npm run build --prefix server",

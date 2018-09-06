@@ -1,6 +1,5 @@
 import app from "./src/app";
-import mongoose from "mongoose";
-import { logger, port, mongoUrl } from "./lib/config";
+import { logger, port } from "./lib/config";
 
 // mongoose.connect(mongoUrl);
 
