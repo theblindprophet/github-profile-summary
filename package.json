@@ -15,12 +15,7 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "node_modules/.bin/concurrently -n \"server,client\" -c \"yellow,cyan\" \"npm run server-start\" \"npm run client-start\"",
-    "client-start": "react-scripts start",
-    "server-start": "npm run start --prefix server",
-    "server-build": "npm run build --prefix server",
-    "server-dev": "npm run dev --prefix server",
-    "server-test": "npm run test --prefix server",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
