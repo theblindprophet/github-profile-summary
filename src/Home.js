@@ -9,22 +9,60 @@ import { getUserData } from './services/api';
 
 class AppHome extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userData: null,
+      loadingUser: false
+    };
+
+    this.getUserData = this.getUserData.bind(this);
+    this.getUserError = this.getUserError.bind(this);
+  }
+
   getUserData = (username) => {
+    this.setState({
+      loadingUser: true,
+      userError: false
+    });
     getUserData(username)
+      .then(res => res.json())
       .then(userData => {
-        console.log('userData', userData);
+        this.setState({
+          userData,
+          loadingUser: false
+        });
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.setState({
+          loadingUser: false,
+          userError: true
+        });
+        console.error(err);
+      });
+  }
+
+  getUserError = () => {
+    if (this.state.userError) {
+      return (
+        <div className="Home-error">
+          Error loading user, please try again.
+        </div>
+      );
+    }
+    return '';
   }
 
   render() {
     return (
       <div className="Home">
         <div className="Home-container">
-          <HomeSearchBar onSubmit={this.getUserData}></HomeSearchBar>
+          {this.getUserError()}
+          <HomeSearchBar onSubmit={this.getUserData} loadingUser={this.state.loadingUser}></HomeSearchBar>
           <div className="Home-Row-1 row">
-            <HomeUserMeta></HomeUserMeta>
-            <HomeStats></HomeStats>
+            <HomeUserMeta userData={this.state.userData}></HomeUserMeta>
+            <HomeStats userData={this.state.userData}></HomeStats>
             <HomeContributions></HomeContributions>
             <HomeRepos></HomeRepos>
           </div>

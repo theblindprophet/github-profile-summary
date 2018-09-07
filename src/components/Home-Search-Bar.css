@@ -22,6 +22,9 @@
       border: none;
       outline: none; }
     .Search-Bar-form-submit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 44px;
       width: 120px;
       border-radius: 4px;
@@ -29,4 +32,15 @@
       outline: none;
       color: #fff;
       background-color: #348899;
-      font-size: 1rem; }
+      font-size: 1rem;
+      cursor: pointer; }
+      .Search-Bar-form-submit > div {
+        margin-left: 0.5rem; }
+        .Search-Bar-form-submit > div > svg {
+          animation: Loading-spin infinite 2s linear; }
+
+@keyframes Loading-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
