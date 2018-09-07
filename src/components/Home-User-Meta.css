@@ -1,0 +1,107 @@
+/* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
+.User-Meta {
+  position: relative;
+  display: flex;
+  width: calc(60% - 3rem);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem; }
+  .User-Meta-available {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    font-weight: 600;
+    font-family: 'Advent Pro', sans-serif; }
+    .User-Meta-available > div {
+      position: relative;
+      top: 2px;
+      margin-right: 0.5rem; }
+  .User-Meta-profile {
+    margin-right: 2rem; }
+    .User-Meta-profile-picture {
+      height: 160px;
+      width: 160px;
+      border-radius: 4px; }
+    .User-Meta-profile-name {
+      margin-top: 0.5rem;
+      margin-bottom: -1rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-align: center; }
+    .User-Meta-profile-username {
+      text-align: center; }
+      .User-Meta-profile-username > a {
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 1rem; }
+        .User-Meta-profile-username > a:link, .User-Meta-profile-username > a:visited, .User-Meta-profile-username > a:hover, .User-Meta-profile-username > a:active {
+          color: #343642;
+          text-decoration: none; }
+        .User-Meta-profile-username > a:hover {
+          text-decoration: underline; }
+  .User-Meta-info {
+    overflow: auto; }
+    .User-Meta-info > p {
+      text-align: left; }
+    .User-Meta-info-email {
+      margin-bottom: 0;
+      word-break: break-word; }
+      .User-Meta-info-email > span {
+        font-weight: 600; }
+    .User-Meta-info-company {
+      margin-top: 0.25rem;
+      word-break: break-word; }
+      .User-Meta-info-company > span {
+        font-weight: 600; }
+    .User-Meta-info-bio {
+      margin-bottom: 0; }
+    .User-Meta-info-location {
+      display: flex;
+      margin-top: 1rem;
+      cursor: pointer; }
+      .User-Meta-info-location > div {
+        margin-right: 0.5rem; }
+      .User-Meta-info-location > a:link, .User-Meta-info-location > a:visited, .User-Meta-info-location > a:hover, .User-Meta-info-location > a:active {
+        color: #000;
+        text-decoration: none; }
+      .User-Meta-info-location:hover {
+        text-decoration: underline; }
+        .User-Meta-info-location:hover > i {
+          color: #348899; }
+    .User-Meta-info-website {
+      color: #8eccd8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      .User-Meta-info-website > a {
+        font-weight: 600; }
+        .User-Meta-info-website > a:link, .User-Meta-info-website > a:visited, .User-Meta-info-website > a:hover, .User-Meta-info-website > a:active {
+          color: #8eccd8; }
+
+@media screen and (max-width: 770px) {
+  .User-Meta {
+    width: calc(100% - 3rem); }
+    .User-Meta-info > p {
+      max-width: none; } }
+
+@media screen and (max-width: 480px) {
+  .User-Meta {
+    flex-direction: column;
+    align-items: center;
+    width: 100%; }
+    .User-Meta-available {
+      position: relative;
+      top: 0;
+      right: 0;
+      margin-bottom: 1rem; }
+    .User-Meta-profile {
+      margin-right: 0; }
+    .User-Meta-info {
+      margin-top: 1rem; } }

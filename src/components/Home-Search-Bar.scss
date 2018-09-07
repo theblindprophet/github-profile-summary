@@ -1,0 +1,32 @@
+@import '../shared.scss';
+
+.Search-Bar {
+  font-family: 'Open Sans', sans-serif;
+  
+  &-form {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0.25rem;
+
+    &-search {
+      flex-grow: 1;
+      padding: 0.5rem;
+      background-color: $light-gray;
+      color: $dark-gray;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+    }
+    &-submit {
+      height: 44px;
+      width: 120px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      color: $white;
+      background-color: $primary;
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,47 +1,57 @@
 /* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
 * {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem; }
+  transition: 200ms ease-in-out; }
+
+html, body {
+  min-width: 320px;
+  overflow-x: hidden; }
 
 h1, h2, h3, h4, h5, h6, button {
   font-family: 'Advent Pro', sans-serif;
   font-weight: 600; }
 
-.App {
-  text-align: center; }
-  .App-header {
-    background-color: #343642;
-    height: 90px;
-    padding: 20px;
-    color: #fff; }
-    .App-header > div {
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-      .App-header > div > span {
-        margin-right: 1rem; }
-    .App-header-logo {
-      animation: App-logo-spin infinite 20s linear;
-      height: 50px; }
-    .App-header-title {
-      margin-top: 0.5rem;
-      font-size: 1.5em; }
-  .App-container {
-    padding: 2rem; }
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem; }
+  .row + .row {
+    margin-top: -0.5rem; }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+.col {
+  margin: 0.5rem;
+  background-color: #EFEFEF;
+  padding: 1rem;
+  border-radius: 4px; }
 
-@media screen and (max-width: 480px) {
-  .App-header {
+.App-header {
+  background-color: #343642;
+  height: 90px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem; }
+  .App-header > div {
     display: flex;
     justify-content: center;
-    height: 52px;
-    margin: 0; }
-    .App-header-logo {
+    align-items: center; }
+    .App-header > div > span {
       margin-right: 1rem; }
-    .App-header-title {
-      margin-top: 0; } }
+  .App-header-logo {
+    animation: Home-logo-spin infinite 20s linear;
+    height: 50px; }
+  .App-header-title {
+    margin-top: 0.5rem;
+    font-size: 1.5em; }
+
+.App-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1rem; }

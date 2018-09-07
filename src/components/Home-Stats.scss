@@ -1,0 +1,42 @@
+@import '../shared.scss';
+
+.Stats {
+  width: calc(40% - 3rem);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+
+    > span {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: $dark-gray;
+      color: $white;
+      border-radius: 4px;
+  
+      > b {
+        margin-left: 0.5rem;
+      }
+      &:hover {
+        > b {
+          color: $primary;
+        }
+      }
+    }
+  }
+  &-icon {
+    position: relative;
+    top: 2px;
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .Stats {
+    width: 100%;
+  }
+}

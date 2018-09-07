@@ -1,0 +1,32 @@
+/* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
+.Search-Bar {
+  font-family: 'Open Sans', sans-serif; }
+  .Search-Bar-form {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0.25rem; }
+    .Search-Bar-form-search {
+      flex-grow: 1;
+      padding: 0.5rem;
+      background-color: #EFEFEF;
+      color: #343642;
+      font-size: 1rem;
+      border: none;
+      outline: none; }
+    .Search-Bar-form-submit {
+      height: 44px;
+      width: 120px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      color: #fff;
+      background-color: #348899;
+      font-size: 1rem; }

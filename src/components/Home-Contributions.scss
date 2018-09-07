@@ -1,0 +1,106 @@
+@import '../shared.scss';
+
+.Contributions {
+  width: 100%;
+
+  &-contr {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+
+    &:first-child {
+      margin-top: 0.5rem
+    }
+    &:last-child {
+      margin-bottom: 0.5rem;
+    }
+    &-icon {
+      margin-right: 1rem;
+    }
+    &-summary {
+      max-width: 65%;
+      line-height: 1.5rem;
+
+      a {
+        &:link, &:visited, &:hover, &:active {
+          color: lighten($primary, 30);
+        }
+      }
+    }
+    &-line {
+      flex-grow: 1;
+      position: relative;
+      height: 2px;
+      margin: 0 1rem;
+      background-color: $primary;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -25%;
+        width: 25%;
+        background-color: lighten($primary, 30);
+        animation: line-move;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+      }
+    }
+    &:nth-child(2n+1) {
+      > .Contributions-contr-line {
+        &::after {
+          animation-direction: reverse
+        }
+      }
+    }
+    @for $i from 1 through 8 {
+      &:nth-child(2n+#{$i}) {
+        > .Contributions-contr-line {
+          &::after {
+            animation-duration: 1.5s + ($i * 0.25s);
+          }
+        }
+      }
+    }
+    &-date {
+      margin-left: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Contributions {
+    &-contr {
+      flex-wrap: wrap;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+
+      &-line {
+        display: none;
+      }
+      &-date {
+        width: 100%;
+        margin: 0.5rem 0 1rem 2rem;
+        font-size: 14px;
+      }
+      &:nth-child(even) {
+        border: 2px solid $dark-gray;
+      }
+      &:nth-child(odd) {
+        background-color: $dark-gray;
+
+        .Contributions-contr-icon {
+          svg {
+            color: $white;
+          }
+        }
+        .Contributions-contr-summary, .Contributions-contr-date {
+          color: $white;
+        }
+      }
+    }
+  }
+}
