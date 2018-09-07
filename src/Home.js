@@ -5,14 +5,23 @@ import HomeUserMeta from './components/Home-User-Meta.js';
 import HomeStats from './components/Home-Stats.js';
 import HomeContributions from './components/Home-Contributions.js';
 import HomeRepos from './components/Home-Repos.js';
-import ApiService from './services/api';
+import { getUserData } from './services/api';
 
 class AppHome extends Component {
+
+  getUserData = (username) => {
+    getUserData(username)
+      .then(userData => {
+        console.log('userData', userData);
+      })
+      .catch(err => console.error(err));
+  }
+
   render() {
     return (
       <div className="Home">
         <div className="Home-container">
-          <HomeSearchBar></HomeSearchBar>
+          <HomeSearchBar onSubmit={this.getUserData}></HomeSearchBar>
           <div className="Home-Row-1 row">
             <HomeUserMeta></HomeUserMeta>
             <HomeStats></HomeStats>
