@@ -19,10 +19,12 @@
     display: flex;
     font-weight: 600;
     font-family: 'Advent Pro', sans-serif; }
-    .User-Meta-available > div {
-      position: relative;
-      top: 2px;
-      margin-right: 0.5rem; }
+    .User-Meta-available-container {
+      display: flex; }
+      .User-Meta-available-container > div {
+        position: relative;
+        top: 2px;
+        margin-right: 0.5rem; }
   .User-Meta-profile {
     margin-right: 2rem; }
     .User-Meta-profile-picture {
@@ -33,7 +35,7 @@
       margin-top: 0.5rem;
       margin-bottom: -1rem;
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       text-align: center; }
     .User-Meta-profile-username {
       text-align: center; }
@@ -64,17 +66,17 @@
       margin-bottom: 0; }
     .User-Meta-info-location {
       display: flex;
-      margin-top: 1rem;
-      cursor: pointer; }
+      margin-top: 1rem; }
       .User-Meta-info-location > div {
         margin-right: 0.5rem; }
-      .User-Meta-info-location > a:link, .User-Meta-info-location > a:visited, .User-Meta-info-location > a:hover, .User-Meta-info-location > a:active {
+      .User-Meta-info-location > a:link, .User-Meta-info-location > a:visited, .User-Meta-info-location > a:active {
         color: #000;
         text-decoration: none; }
-      .User-Meta-info-location:hover {
+      .User-Meta-info-location > a:hover {
+        color: #000;
         text-decoration: underline; }
-        .User-Meta-info-location:hover > i {
-          color: #348899; }
+      .User-Meta-info-location:hover > div > svg {
+        fill: #348899; }
     .User-Meta-info-website {
       color: #8eccd8;
       white-space: nowrap;
