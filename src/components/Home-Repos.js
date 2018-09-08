@@ -13,7 +13,7 @@ class HomeRepos extends Component {
               <GoRepo />
             </div>
           </IconContext.Provider>
-          <a className="Repos-repo-name" href="https://www.github.com" target="_blank">Repo name</a>
+          <a className="Repos-repo-name" href="https://www.github.com" target="_blank" rel="noopener noreferrer">Repo name</a>
           <div className="Repos-repo-updated">Last Updated: <b>July 31, 2018</b></div>
         </div>
         <div className="Repos-repo">
@@ -22,7 +22,7 @@ class HomeRepos extends Component {
               <GoRepo />
             </div>
           </IconContext.Provider>
-          <a className="Repos-repo-name" href="https://www.github.com" target="_blank">Repo name</a>
+          <a className="Repos-repo-name" href="https://www.github.com" target="_blank" rel="noopener noreferrer">Repo name</a>
           <div className="Repos-repo-updated">Last Updated: <b>July 31, 2018</b></div>
         </div>
         <div className="Repos-repo">
@@ -31,7 +31,7 @@ class HomeRepos extends Component {
               <GoRepo />
             </div>
           </IconContext.Provider>
-          <a className="Repos-repo-name" href="https://www.github.com" target="_blank">Repo name</a>
+          <a className="Repos-repo-name" href="https://www.github.com" target="_blank" rel="noopener noreferrer">Repo name</a>
           <div className="Repos-repo-updated">Last Updated: <b>July 31, 2018</b></div>
         </div>
         <div className="Repos-repo">
@@ -40,7 +40,7 @@ class HomeRepos extends Component {
               <GoRepo />
             </div>
           </IconContext.Provider>
-          <a className="Repos-repo-name" href="https://www.github.com" target="_blank">Repo name</a>
+          <a className="Repos-repo-name" href="https://www.github.com" target="_blank" rel="noopener noreferrer">Repo name</a>
           <div className="Repos-repo-updated">Last Updated: <b>July 31, 2018</b></div>
         </div>
       </div>

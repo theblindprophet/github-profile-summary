@@ -14,40 +14,46 @@ class AppHome extends Component {
 
     this.state = {
       userData: null,
-      loadingUser: false
+      loadingUser: false,
+      userError: null
     };
 
     this.getUserData = this.getUserData.bind(this);
     this.getUserError = this.getUserError.bind(this);
   }
 
-  getUserData = (username) => {
+  getUserData = async (username) => {
     this.setState({
       loadingUser: true,
-      userError: false
+      userError: null
     });
-    getUserData(username)
-      .then(res => res.json())
-      .then(userData => {
-        this.setState({
-          userData,
-          loadingUser: false
-        });
-      })
-      .catch(err => {
-        this.setState({
-          loadingUser: false,
-          userError: true
-        });
-        console.error(err);
+    try {
+      const result = await getUserData(username);
+      if (!result.ok) {
+        const error = await result.json();
+        if (error.message && error.message.includes('with the login')) {
+          throw new Error(`User '${username}' not found. Please check the username and try again.`);
+        }
+        throw new Error('Error loading user, please try again.');
+      }
+      const userData = await result.json();
+      this.setState({
+        userData,
+        loadingUser: false
       });
+    } catch (e) {
+      this.setState({
+        loadingUser: false,
+        userError: e.message
+      });
+    }
   }
 
   getUserError = () => {
     if (this.state.userError) {
       return (
         <div className="Home-error">
-          Error loading user, please try again.
+          { this.state.userError }
         </div>
       );
     }
