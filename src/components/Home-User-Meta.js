@@ -15,6 +15,7 @@ class HomeUserMeta extends Component {
     this.userUsername = this.userUsername.bind(this);
     this.userUrl = this.userUrl.bind(this);
     this.userEmail = this.userEmail.bind(this);
+    this.userCompany = this.userCompany.bind(this);
     this.userBio = this.userBio.bind(this);
     this.userLocation = this.userLocation.bind(this);
     this.userWebsite = this.userWebsite.bind(this);
@@ -66,9 +67,18 @@ class HomeUserMeta extends Component {
 
   userEmail = () => {
     if (this.props.userData) {
-      return this.props.userData.email || 'Not provided';
+      return this.props.userData.email || (<i>Hidden</i>);
     }
     return 'Email...';
+  }
+
+  userCompany = () => {
+    if (this.props.userData && this.props.userData.company) {
+      return (
+        <p className="User-Meta-info-company"><span>Company:</span> {this.props.userData.company}</p>
+      );
+    }
+    return '';
   }
 
   userBio = () => {
@@ -117,7 +127,7 @@ class HomeUserMeta extends Component {
         </div>
         <div className="User-Meta-info">
           <p className="User-Meta-info-email"><span>Email:</span> { this.userEmail() }</p>
-          <p className="User-Meta-info-company"><span>Company:</span> Orangebees</p>
+          { this.userCompany() }
           <p className="User-Meta-info-bio">{ this.userBio() }</p>
           <div className="User-Meta-info-location">
             <IconContext.Provider value={{ color: "#000" }}>
