@@ -6,19 +6,6 @@
   100% {
     left: 100%; } }
 
-@keyframes Home-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
-
-@media screen and (max-width: 480px) {
-  .Home-header {
-    display: flex;
-    justify-content: center;
-    height: 52px;
-    margin: 0; }
-    .Home-header-logo {
-      margin-right: 1rem; }
-    .Home-header-title {
-      margin-top: 0; } }
+.Home-error {
+  text-align: center;
+  color: #962D3E; }
