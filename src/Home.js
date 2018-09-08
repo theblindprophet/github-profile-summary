@@ -9,22 +9,66 @@ import { getUserData } from './services/api';
 
 class AppHome extends Component {
 
-  getUserData = (username) => {
-    getUserData(username)
-      .then(userData => {
-        console.log('userData', userData);
-      })
-      .catch(err => console.error(err));
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userData: null,
+      loadingUser: false,
+      userError: null
+    };
+
+    this.getUserData = this.getUserData.bind(this);
+    this.getUserError = this.getUserError.bind(this);
+  }
+
+  getUserData = async (username) => {
+    this.setState({
+      loadingUser: true,
+      userError: null
+    });
+    try {
+      const result = await getUserData(username);
+      if (!result.ok) {
+        const error = await result.json();
+        if (error.message && error.message.includes('with the login')) {
+          throw new Error(`User '${username}' not found. Please check the username and try again.`);
+        }
+        throw new Error('Error loading user, please try again.');
+      }
+      const userData = await result.json();
+      this.setState({
+        userData,
+        loadingUser: false
+      });
+    } catch (e) {
+      this.setState({
+        loadingUser: false,
+        userError: e.message
+      });
+    }
+  }
+
+  getUserError = () => {
+    if (this.state.userError) {
+      return (
+        <div className="Home-error">
+          { this.state.userError }
+        </div>
+      );
+    }
+    return '';
   }
 
   render() {
     return (
       <div className="Home">
         <div className="Home-container">
-          <HomeSearchBar onSubmit={this.getUserData}></HomeSearchBar>
+          {this.getUserError()}
+          <HomeSearchBar onSubmit={this.getUserData} loadingUser={this.state.loadingUser}></HomeSearchBar>
           <div className="Home-Row-1 row">
-            <HomeUserMeta></HomeUserMeta>
-            <HomeStats></HomeStats>
+            <HomeUserMeta userData={this.state.userData}></HomeUserMeta>
+            <HomeStats userData={this.state.userData}></HomeStats>
             <HomeContributions></HomeContributions>
             <HomeRepos></HomeRepos>
           </div>

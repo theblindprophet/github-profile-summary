@@ -2,14 +2,29 @@ import React, { Component } from 'react';
 import './Home-User-Meta.css';
 import { IconContext } from "react-icons";
 import { FaMapMarkerAlt, FaUserTie } from 'react-icons/fa';
+import userPlaceholderImg from '../assets/user-placeholder.png';
 
 class HomeUserMeta extends Component {
-  render() {
-    // TODO: `.User-Meta-info-location a, the link is formed by https://www.google.com/maps/place/ + location replace commas with spaces`
-    // TODO: Hide items if not set
-    return (
-      <div className="User-Meta col">
-        <div className="User-Meta-available">
+
+  constructor(props) {
+    super(props);
+
+    this.userIsHirable = this.userIsHirable.bind(this);
+    this.userImg = this.userImg.bind(this);
+    this.userName = this.userName.bind(this);
+    this.userUsername = this.userUsername.bind(this);
+    this.userUrl = this.userUrl.bind(this);
+    this.userEmail = this.userEmail.bind(this);
+    this.userCompany = this.userCompany.bind(this);
+    this.userBio = this.userBio.bind(this);
+    this.userLocation = this.userLocation.bind(this);
+    this.userWebsite = this.userWebsite.bind(this);
+  }
+
+  userIsHirable = () => {
+    if (this.props.userData && this.props.userData.isHirable) {
+      return (
+        <div className="User-Meta-available-container">
           <IconContext.Provider value={{ color: "#8ECCD8" }}>
             <div>
               <FaUserTie />
@@ -17,25 +32,113 @@ class HomeUserMeta extends Component {
           </IconContext.Provider>
           <span>Available for hire</span>
         </div>
+      );
+    }
+    return '';
+  }
+
+  userImg = () => {
+    if (this.props.userData && this.props.userData.avatarUrl) {
+      return this.props.userData.avatarUrl;
+    }
+    return userPlaceholderImg;
+  }
+
+  userName = () => {
+    if (this.props.userData && this.props.userData.name) {
+      return this.props.userData.name;
+    }
+    return 'Github User...';
+  }
+
+  userUsername = () => {
+    if (this.props.userData && this.props.userData.login) {
+      return this.props.userData.login;
+    }
+    return 'Username...';
+  }
+
+  userUrl = () => {
+    if (this.props.userData && this.props.userData.url) {
+      return this.props.userData.url;
+    }
+    return 'https://github.com';
+  }
+
+  userEmail = () => {
+    if (this.props.userData) {
+      return this.props.userData.email || (<i>Hidden</i>);
+    }
+    return 'Email...';
+  }
+
+  userCompany = () => {
+    if (this.props.userData && this.props.userData.company) {
+      return (
+        <p className="User-Meta-info-company"><span>Company:</span> {this.props.userData.company}</p>
+      );
+    }
+    return '';
+  }
+
+  userBio = () => {
+    if (this.props.userData) {
+      return this.props.userData.bio || 'Not provided';
+    }
+    return 'A bio will be located right here, this exact spot.';
+  }
+
+  userLocation = () => {
+    if (this.props.userData) {
+      if (this.props.userData.location) {
+        const locationParam = this.props.userData.location.replace(',', '').replace(/ /g, '+');
+        const mapUrl = `https://www.google.com/maps/place/${locationParam}`;
+        return (
+          <a href={ mapUrl } target="_blank" rel="noopener noreferrer">{ this.props.userData.location }</a>
+        );
+      }
+      return 'Not provided';
+    }
+    return 'Location...';
+  }
+
+  userWebsite = () => {
+    if (this.props.userData) {
+      if (this.props.userData.websiteUrl) {
+        return (
+          <a href={ this.props.userData.websiteUrl } target="_blank" rel="noopener noreferrer">{ this.props.userData.websiteUrl }</a>
+        );
+      }
+      return 'Not provided';
+    }
+    return 'Website...';
+  }
+
+  render() {
+    return (
+      <div className="User-Meta col">
+        <div className="User-Meta-available">
+          { this.userIsHirable() }
+        </div>
         <div className="User-Meta-profile">
-          <img className="User-Meta-profile-picture" src="https://avatars2.githubusercontent.com/u/7903413?s=460&v=4" alt="user" />
-          <p className="User-Meta-profile-name">Jamie Gross</p>
-          <p className="User-Meta-profile-username"><a href="https://github.com/theblindprophet" target="_blank" rel="noopener noreferrer">theblindpropet</a></p>
+          <img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />
+          <p className="User-Meta-profile-name">{ this.userName() }</p>
+          <p className="User-Meta-profile-username"><a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a></p>
         </div>
         <div className="User-Meta-info">
-          <p className="User-Meta-info-email"><span>Email:</span> theblndprophet@gmail.com</p>
-          <p className="User-Meta-info-company"><span>Company:</span> Orangebees</p>
-          <p className="User-Meta-info-bio">I love to develop web and mobile applications that allow people to have quicker and more efficient access to the information they need.</p>
+          <p className="User-Meta-info-email"><span>Email:</span> { this.userEmail() }</p>
+          { this.userCompany() }
+          <p className="User-Meta-info-bio">{ this.userBio() }</p>
           <div className="User-Meta-info-location">
             <IconContext.Provider value={{ color: "#000" }}>
               <div>
                 <FaMapMarkerAlt />
               </div>
             </IconContext.Provider>
-            <a href="https://www.google.com/maps/place/South+Carolina+USA/" target="_blank" rel="noopener noreferrer">South Carolina, USA</a>
+            { this.userLocation() }
           </div>
           <p className="User-Meta-info-website">
-            <a href="https://graspmobiledevelop.com/" target="_blank" rel="noopener noreferrer">https://graspmobiledevelop.com/</a>
+            { this.userWebsite() }
           </p>
         </div>
       </div>

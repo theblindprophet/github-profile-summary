@@ -4,7 +4,24 @@ import { IconContext } from "react-icons";
 import { GoGitCommit, GoGist, GoRepo, GoIssueOpened } from 'react-icons/go';
 import { FaHourglassStart, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 class HomeStats extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.userCreated = this.userCreated.bind(this);
+  }
+
+  userCreated = () => {
+    if (this.props.userData && this.props.userData.createdAt) {
+      const date = new Date(this.props.userData.createdAt);
+      return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    }
+    return 'When...';
+  }
+
   render() {
     return (
       <div className="Stats col">
@@ -17,7 +34,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            User since: <b>June 16, 2014</b>
+            User since: <b>{ this.userCreated() }</b>
           </span>
           <span className="Stats-repos">
             <div className="Stats-icon">
