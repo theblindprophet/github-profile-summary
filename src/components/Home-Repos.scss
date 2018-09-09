@@ -5,6 +5,7 @@
 
   &-repo {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin: 0.5rem 0;
     padding: 0.5rem;
@@ -19,6 +20,7 @@
     &-name {
       margin: 0.25rem 0;
       line-height: 1.5rem;
+      color: lighten($primary, 30);
 
       &:link, &:visited, &:hover, &:active {
         color: lighten($primary, 30);
@@ -29,8 +31,32 @@
       margin-right: 0.5rem;
       text-align: right;
     }
+    &-languages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      width: 100%;
+
+      &-lang {
+        margin-top: 0.5rem;
+        margin-left: 0.5rem;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        color: $white;
+        font-size: 11px;
+        text-transform: lowercase;
+        padding: 0.3rem 0.5rem;
+      }
+    }
     &:nth-child(even) {
       border: 2px solid $dark-gray;
+
+      .Repos-repo-languages {
+        &-lang {
+          background-color: $dark-gray;
+        }
+      }
     }
     &:nth-child(odd) {
       background-color: $dark-gray;
@@ -52,7 +78,13 @@
     &-repo {
       &-updated {
         max-width: 120px;
+        margin-left: 0.5rem;
+        text-align: left;
         font-size: 14px;
+      }
+      &-languages {
+        justify-content: flex-start;
+        margin-top: 0.5rem;
       }
     }
   }

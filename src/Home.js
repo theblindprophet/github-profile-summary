@@ -6,6 +6,7 @@ import HomeStats from './components/Home-Stats.js';
 import HomeContributions from './components/Home-Contributions.js';
 import HomeRepos from './components/Home-Repos.js';
 import { getUserData } from './services/api';
+import ReactGA from 'react-ga';
 
 class AppHome extends Component {
 
@@ -23,6 +24,10 @@ class AppHome extends Component {
   }
 
   getUserData = async (username) => {
+    ReactGA.event({
+      category: 'Search',
+      action: 'Searched user'
+    });
     this.setState({
       loadingUser: true,
       userError: null
@@ -70,7 +75,7 @@ class AppHome extends Component {
             <HomeUserMeta userData={this.state.userData}></HomeUserMeta>
             <HomeStats userData={this.state.userData}></HomeStats>
             <HomeContributions></HomeContributions>
-            <HomeRepos></HomeRepos>
+            <HomeRepos userData={this.state.userData}></HomeRepos>
           </div>
         </div>
       </div>

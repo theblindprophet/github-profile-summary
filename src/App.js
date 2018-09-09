@@ -3,8 +3,15 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Home from './Home.js';
 import logo from './assets/github-logo.png';
+import ReactGA from 'react-ga';
 
 class App extends Component {
+
+  componentDidMount() {
+    ReactGA.initialize('UA-125433432-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
+
   render() {
     return (
       <div className="App-wrapper">

@@ -10,6 +10,7 @@
   width: 100%; }
   .Repos-repo {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin: 0.5rem 0;
     padding: 0.5rem;
@@ -21,15 +22,33 @@
       margin-right: 1rem; }
     .Repos-repo-name {
       margin: 0.25rem 0;
-      line-height: 1.5rem; }
+      line-height: 1.5rem;
+      color: #8eccd8; }
       .Repos-repo-name:link, .Repos-repo-name:visited, .Repos-repo-name:hover, .Repos-repo-name:active {
         color: #8eccd8; }
     .Repos-repo-updated {
       margin-left: auto;
       margin-right: 0.5rem;
       text-align: right; }
+    .Repos-repo-languages {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      width: 100%; }
+      .Repos-repo-languages-lang {
+        margin-top: 0.5rem;
+        margin-left: 0.5rem;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 11px;
+        text-transform: lowercase;
+        padding: 0.3rem 0.5rem; }
     .Repos-repo:nth-child(even) {
       border: 2px solid #343642; }
+      .Repos-repo:nth-child(even) .Repos-repo-languages-lang {
+        background-color: #343642; }
     .Repos-repo:nth-child(odd) {
       background-color: #343642; }
       .Repos-repo:nth-child(odd) .Repos-repo-icon svg {
@@ -40,4 +59,9 @@
 @media screen and (max-width: 480px) {
   .Repos-repo-updated {
     max-width: 120px;
-    font-size: 14px; } }
+    margin-left: 0.5rem;
+    text-align: left;
+    font-size: 14px; }
+  .Repos-repo-languages {
+    justify-content: flex-start;
+    margin-top: 0.5rem; } }
