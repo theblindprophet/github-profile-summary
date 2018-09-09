@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home-Stats.css';
 import { IconContext } from "react-icons";
-import { GoGitCommit, GoGist, GoRepo, GoIssueOpened } from 'react-icons/go';
+import { GoGist, GoRepo, GoIssueOpened, GoGitPullRequest } from 'react-icons/go';
 import { FaHourglassStart, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -12,6 +12,12 @@ class HomeStats extends Component {
     super(props);
 
     this.userCreated = this.userCreated.bind(this);
+    this.publicReposCount = this.publicReposCount.bind(this);
+    this.publicGistsCount = this.publicGistsCount.bind(this);
+    this.followersCount = this.followersCount.bind(this);
+    this.followingCount = this.followingCount.bind(this);
+    this.prCount = this.prCount.bind(this);
+    this.issuesCount = this.issuesCount.bind(this);
   }
 
   userCreated = () => {
@@ -20,6 +26,54 @@ class HomeStats extends Component {
       return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
     }
     return 'When...';
+  }
+
+  publicReposCount = () => {
+    if (this.props.userData && this.props.userData.repositories) {
+      const totalCount =  this.props.userData.repositories.totalCount;
+      return totalCount ? totalCount : '?';
+    }
+    return '?';
+  }
+
+  publicGistsCount = () => {
+    if (this.props.userData && this.props.userData.gists) {
+      const totalCount =  this.props.userData.gists.totalCount;
+      return totalCount ? totalCount : '?';
+    }
+    return '?';
+  }
+
+  followersCount = () => {
+    if (this.props.userData && this.props.userData.followers) {
+      const totalCount =  this.props.userData.followers.totalCount;
+      return totalCount ? totalCount : '?';
+    }
+    return '?';
+  }
+
+  followingCount = () => {
+    if (this.props.userData && this.props.userData.following) {
+      const totalCount =  this.props.userData.following.totalCount;
+      return totalCount ? totalCount : '?';
+    }
+    return '?';
+  }
+
+  prCount = () => {
+    if (this.props.userData && this.props.userData.pullRequests) {
+      const totalCount =  this.props.userData.pullRequests.totalCount;
+      return totalCount ? totalCount : '?';
+    }
+    return '?';
+  }
+
+  issuesCount = () => {
+    if (this.props.userData && this.props.userData.issues) {
+      const totalCount =  this.props.userData.issues.totalCount;
+      return totalCount ? totalCount : '?';
+    }
+    return '?';
   }
 
   render() {
@@ -44,7 +98,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Public Repos: <b>4</b>
+            Public Repos: <b>{this.publicReposCount()}</b>
           </span>
           <span className="Stats-gists">
             <div className="Stats-icon">
@@ -54,7 +108,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Public Gists: <b>2</b>
+            Public Gists: <b>{this.publicGistsCount()}</b>
           </span>
           <span className="Stats-followers">
             <div className="Stats-icon">
@@ -64,7 +118,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Followers: <b>2</b>
+            Followers: <b>{this.followersCount()}</b>
           </span>
           <span className="Stats-following">
             <div className="Stats-icon">
@@ -74,17 +128,17 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Following: <b>1</b>
+            Following: <b>{this.followingCount()}</b>
           </span>
-          <span className="Stats-commits">
+          <span className="Stats-prs">
             <div className="Stats-icon">
               <IconContext.Provider value={{ color: "#fff" }}>
                 <div>
-                  <GoGitCommit />
+                  <GoGitPullRequest />
                 </div>
               </IconContext.Provider>
             </div>
-            Public Commits: <b>1</b>
+            Public Pull Requests: <b>{this.prCount()}</b>
           </span>
           <span className="Stats-issues">
             <div className="Stats-icon">
@@ -94,7 +148,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Public Issues: <b>1</b>
+            Public Issues: <b>{this.issuesCount()}</b>
           </span>
         </div>
       </div>

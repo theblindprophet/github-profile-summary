@@ -70,7 +70,7 @@ class AppHome extends Component {
             <HomeUserMeta userData={this.state.userData}></HomeUserMeta>
             <HomeStats userData={this.state.userData}></HomeStats>
             <HomeContributions></HomeContributions>
-            <HomeRepos></HomeRepos>
+            <HomeRepos userData={this.state.userData}></HomeRepos>
           </div>
         </div>
       </div>
