@@ -17,7 +17,7 @@ class HomeRepos extends Component {
   }
 
   createRepos = () => {
-    if (!this.props.userData || !this.props.userData.repositories) {
+    if (!this.props.userData || !this.props.userData.repositories || this.props.userData.repositories.edges.length === 0) {
       return (
         <div className="Repos col">
           <div className="Repos-repo">
@@ -26,7 +26,7 @@ class HomeRepos extends Component {
                 <GoRepo />
               </div>
             </IconContext.Provider>
-            <p className="Repos-repo-name">A list of repositories...</p>
+            <p className="Repos-repo-name">{(!this.props.userData || !this.props.userData.repositories) ? 'A list of repositories...': 'No repositories found...'}</p>
           </div>
         </div>
       );

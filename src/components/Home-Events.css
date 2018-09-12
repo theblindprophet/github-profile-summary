@@ -1,0 +1,90 @@
+/* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
+.Events {
+  width: 100%; }
+  .Events-contr {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    word-break: break-word; }
+    .Events-contr:first-child {
+      margin-top: 0.5rem; }
+    .Events-contr:last-child {
+      margin-bottom: 0.5rem; }
+    .Events-contr-icon {
+      margin-right: 1rem; }
+    .Events-contr-summary {
+      max-width: 65%;
+      line-height: 1.5rem; }
+      .Events-contr-summary a {
+        color: #8eccd8;
+        text-decoration: underline;
+        cursor: pointer; }
+        .Events-contr-summary a:link, .Events-contr-summary a:visited, .Events-contr-summary a:hover, .Events-contr-summary a:active {
+          color: #8eccd8;
+          text-decoration: underline; }
+    .Events-contr-line {
+      flex-grow: 1;
+      position: relative;
+      height: 2px;
+      margin: 0 1rem;
+      background-color: #348899;
+      overflow: hidden; }
+      .Events-contr-line::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -25%;
+        width: 25%;
+        background-color: #8eccd8;
+        animation: line-move;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite; }
+    .Events-contr:nth-child(2n+1) > .Events-contr-line::after {
+      animation-direction: reverse; }
+    .Events-contr:nth-child(2n+1) > .Events-contr-line::after {
+      animation-duration: 1.75s; }
+    .Events-contr:nth-child(2n+2) > .Events-contr-line::after {
+      animation-duration: 2s; }
+    .Events-contr:nth-child(2n+3) > .Events-contr-line::after {
+      animation-duration: 2.25s; }
+    .Events-contr:nth-child(2n+4) > .Events-contr-line::after {
+      animation-duration: 2.5s; }
+    .Events-contr:nth-child(2n+5) > .Events-contr-line::after {
+      animation-duration: 2.75s; }
+    .Events-contr:nth-child(2n+6) > .Events-contr-line::after {
+      animation-duration: 3s; }
+    .Events-contr:nth-child(2n+7) > .Events-contr-line::after {
+      animation-duration: 3.25s; }
+    .Events-contr:nth-child(2n+8) > .Events-contr-line::after {
+      animation-duration: 3.5s; }
+    .Events-contr-date {
+      margin-left: auto; }
+
+@media screen and (max-width: 480px) {
+  .Events-contr {
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 4px; }
+    .Events-contr-line {
+      display: none; }
+    .Events-contr-date {
+      width: 100%;
+      margin: 0.5rem 0 1rem 2rem;
+      font-size: 14px; }
+    .Events-contr:nth-child(even) {
+      border: 2px solid #343642; }
+    .Events-contr:nth-child(odd) {
+      background-color: #343642; }
+      .Events-contr:nth-child(odd) .Events-contr-icon svg {
+        color: #fff; }
+      .Events-contr:nth-child(odd) .Events-contr-summary, .Events-contr:nth-child(odd) .Events-contr-date {
+        color: #fff; } }
