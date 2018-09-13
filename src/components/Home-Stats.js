@@ -31,7 +31,7 @@ class HomeStats extends Component {
   publicReposCount = () => {
     if (this.props.userData && this.props.userData.repositories) {
       const totalCount =  this.props.userData.repositories.totalCount;
-      return totalCount ? totalCount : '?';
+      return totalCount !== null ? totalCount : '?';
     }
     return '?';
   }
@@ -39,7 +39,7 @@ class HomeStats extends Component {
   publicGistsCount = () => {
     if (this.props.userData && this.props.userData.gists) {
       const totalCount =  this.props.userData.gists.totalCount;
-      return totalCount ? totalCount : '?';
+      return totalCount !== null ? totalCount : '?';
     }
     return '?';
   }
@@ -47,7 +47,7 @@ class HomeStats extends Component {
   followersCount = () => {
     if (this.props.userData && this.props.userData.followers) {
       const totalCount =  this.props.userData.followers.totalCount;
-      return totalCount ? totalCount : '?';
+      return totalCount !== null ? totalCount : '?';
     }
     return '?';
   }
@@ -55,7 +55,7 @@ class HomeStats extends Component {
   followingCount = () => {
     if (this.props.userData && this.props.userData.following) {
       const totalCount =  this.props.userData.following.totalCount;
-      return totalCount ? totalCount : '?';
+      return totalCount !== null ? totalCount : '?';
     }
     return '?';
   }
@@ -63,7 +63,7 @@ class HomeStats extends Component {
   prCount = () => {
     if (this.props.userData && this.props.userData.pullRequests) {
       const totalCount =  this.props.userData.pullRequests.totalCount;
-      return totalCount ? totalCount : '?';
+      return totalCount !== null ? totalCount : '?';
     }
     return '?';
   }
@@ -71,7 +71,7 @@ class HomeStats extends Component {
   issuesCount = () => {
     if (this.props.userData && this.props.userData.issues) {
       const totalCount =  this.props.userData.issues.totalCount;
-      return totalCount ? totalCount : '?';
+      return totalCount !== null ? totalCount : '?';
     }
     return '?';
   }
