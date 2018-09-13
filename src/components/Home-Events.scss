@@ -1,12 +1,13 @@
 @import '../shared.scss';
 
-.Contributions {
+.Events {
   width: 100%;
 
   &-contr {
     display: flex;
     align-items: center;
     margin: 1rem 0;
+    word-break: break-word;
 
     &:first-child {
       margin-top: 0.5rem
@@ -22,8 +23,13 @@
       line-height: 1.5rem;
 
       a {
+        color: lighten($primary, 30);
+        text-decoration: underline;
+        cursor: pointer;
+
         &:link, &:visited, &:hover, &:active {
           color: lighten($primary, 30);
+          text-decoration: underline;
         }
       }
     }
@@ -49,7 +55,7 @@
       }
     }
     &:nth-child(2n+1) {
-      > .Contributions-contr-line {
+      > .Events-contr-line {
         &::after {
           animation-direction: reverse
         }
@@ -57,7 +63,7 @@
     }
     @for $i from 1 through 8 {
       &:nth-child(2n+#{$i}) {
-        > .Contributions-contr-line {
+        > .Events-contr-line {
           &::after {
             animation-duration: 1.5s + ($i * 0.25s);
           }
@@ -71,7 +77,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .Contributions {
+  .Events {
     &-contr {
       flex-wrap: wrap;
       padding: 1rem;
@@ -92,12 +98,12 @@
       &:nth-child(odd) {
         background-color: $dark-gray;
 
-        .Contributions-contr-icon {
+        .Events-contr-icon {
           svg {
             color: $white;
           }
         }
-        .Contributions-contr-summary, .Contributions-contr-date {
+        .Events-contr-summary, .Events-contr-date {
           color: $white;
         }
       }

@@ -83,7 +83,7 @@ class HomeUserMeta extends Component {
 
   userBio = () => {
     if (this.props.userData) {
-      return this.props.userData.bio || 'Not provided';
+      return this.props.userData.bio || 'Bio not provided';
     }
     return 'A bio will be located right here, this exact spot.';
   }
@@ -97,7 +97,7 @@ class HomeUserMeta extends Component {
           <a href={ mapUrl } target="_blank" rel="noopener noreferrer">{ this.props.userData.location }</a>
         );
       }
-      return 'Not provided';
+      return 'Location not provided';
     }
     return 'Location...';
   }
@@ -109,7 +109,7 @@ class HomeUserMeta extends Component {
           <a href={ this.props.userData.websiteUrl } target="_blank" rel="noopener noreferrer">{ this.props.userData.websiteUrl }</a>
         );
       }
-      return 'Not provided';
+      return 'Website not provided';
     }
     return 'Website...';
   }

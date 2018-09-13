@@ -3,7 +3,7 @@ import './Home.css';
 import HomeSearchBar from './components/Home-Search-Bar.js';
 import HomeUserMeta from './components/Home-User-Meta.js';
 import HomeStats from './components/Home-Stats.js';
-import HomeContributions from './components/Home-Contributions.js';
+import HomeEvents from './components/Home-Events.js';
 import HomeRepos from './components/Home-Repos.js';
 import { getUserData } from './services/api';
 import ReactGA from 'react-ga';
@@ -74,7 +74,7 @@ class AppHome extends Component {
           <div className="Home-Row-1 row">
             <HomeUserMeta userData={this.state.userData}></HomeUserMeta>
             <HomeStats userData={this.state.userData}></HomeStats>
-            <HomeContributions></HomeContributions>
+            <HomeEvents userData={this.state.userData}></HomeEvents>
             <HomeRepos userData={this.state.userData}></HomeRepos>
           </div>
         </div>
