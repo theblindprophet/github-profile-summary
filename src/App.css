@@ -52,9 +52,28 @@ h1, h2, h3, h4, h5, h6, button {
     font-size: 1.5em; }
 
 .App-container {
+  min-height: calc(100vh - 90px);
   max-width: 1140px;
   margin: 0 auto;
   padding: 1rem; }
+
+.App-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 175px;
+  background-color: #343642;
+  color: #fff; }
+  .App-footer-list {
+    display: flex;
+    list-style: none; }
+    .App-footer-list a {
+      display: inline-block;
+      margin: 0.25rem 0; }
+      .App-footer-list a:first-of-type {
+        margin-top: 0.5rem; }
+      .App-footer-list a:link, .App-footer-list a:visited, .App-footer-list a:hover, .App-footer-list a:active {
+        color: #8eccd8; }
 
 @keyframes Home-logo-spin {
   from {
