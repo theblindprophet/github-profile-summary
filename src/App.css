@@ -44,6 +44,9 @@ h1, h2, h3, h4, h5, h6, button {
     align-items: center; }
     .App-header > div > span {
       margin-right: 1rem; }
+  .App-header a:link, .App-header a:visited, .App-header a:hover, .App-header a:active {
+    color: #fff;
+    text-decoration: none; }
   .App-header-logo {
     animation: Home-logo-spin infinite 20s linear;
     height: 50px; }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Home from './Home.js';
+import TermsAndService from './TermsAndPrivacy.js';
 import logo from './assets/github-logo.png';
 import ReactGA from 'react-ga';
 
@@ -19,11 +20,14 @@ class App extends Component {
           <div>
             <span>Integrated with </span><img src={logo} className="App-header-logo" alt="logo" />
           </div>
-          <h1 className="App-header-title">Github Profile Summary</h1>
+          <a href="/"><h1 className="App-header-title">Github Profile Summary</h1></a>
         </header>
         <div className="App-container">
           <Router>
-            <Route exact path="/" component={Home} />
+            <div>
+              <Route exact path="/" component={Home} />
+              <Route path="/terms-and-privacy" component={TermsAndService} />
+            </div>
           </Router>
         </div>
         <footer className="App-footer">
@@ -41,8 +45,8 @@ class App extends Component {
               <p>
                 &#169; 2018 githubprofilesummary.com
                 <br />
-                <a href="google.com" target="_blank" rel="noopener noreferrer">Privacy Policy</a><br />
-                <a href="google.com" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+                <a href="/terms-and-privacy#terms">Terms of Service</a><br />
+                <a href="/terms-and-privacy#privacy">Privacy Policy</a>
               </p>
             </li>
           </ul>
