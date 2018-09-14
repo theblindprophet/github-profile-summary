@@ -49,6 +49,12 @@ h1, h2, h3, h4, h5, h6, button {
         margin-right: 1rem;
       }
     }
+    a {
+      &:link, &:visited, &:hover, &:active {
+        color: $white;
+        text-decoration: none;
+      }
+    }
     &-logo {
       animation: Home-logo-spin infinite 20s linear;
       height: 50px;
@@ -59,9 +65,35 @@ h1, h2, h3, h4, h5, h6, button {
     }
   }
   &-container {
+    min-height: calc(100vh - 90px);
     max-width: 1140px;
     margin: 0 auto;
     padding: 1rem;
+  }
+  &-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 175px;
+    background-color: $dark-gray;
+    color: $white;
+
+    &-list {
+      display: flex;
+      list-style: none;
+
+      a {
+        display: inline-block;
+        margin: 0.25rem 0;
+
+        &:first-of-type {
+          margin-top: 0.5rem;
+        }
+        &:link, &:visited, &:hover, &:active {
+          color: lighten($primary, 30);
+        }
+      }
+    }
   }
 }
 
