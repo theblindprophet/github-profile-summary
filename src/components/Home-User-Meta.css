@@ -78,14 +78,14 @@
       .User-Meta-info-location:hover > div > svg {
         fill: #348899; }
     .User-Meta-info-website {
-      color: #8eccd8;
+      color: #54b2c5;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
       .User-Meta-info-website > a {
         font-weight: 600; }
         .User-Meta-info-website > a:link, .User-Meta-info-website > a:visited, .User-Meta-info-website > a:hover, .User-Meta-info-website > a:active {
-          color: #8eccd8; }
+          color: #54b2c5; }
 
 @media screen and (max-width: 770px) {
   .User-Meta {

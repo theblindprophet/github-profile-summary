@@ -32,36 +32,50 @@ h1, h2, h3, h4, h5, h6, button {
 
 .App {
   &-header {
-    background-color: $dark-gray;
-    height: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 110px;
     padding: 20px;
+    background-color: rgba($dark-gray, 0.9);
     color: $white;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
   
-    > div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  
-      > span {
-        margin-right: 1rem;
-      }
-    }
     a {
       &:link, &:visited, &:hover, &:active {
         color: $white;
         text-decoration: none;
       }
     }
-    &-logo {
-      animation: Home-logo-spin infinite 20s linear;
-      height: 50px;
-    }
     &-title {
-      margin-top: 0.5rem;
-      font-size: 1.5em;
+      display: inline-block;
+      margin: 0.5rem 0;
+    }
+    > div {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+
+      &:first-child {
+        margin-right: 1.5rem;
+      }
+      > img {
+        height: 75px;
+        width: auto;
+      }
+    }
+    h1, h3 {
+      margin: 0.25rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+    }
+    h3 {
+      font-size: 1.3rem;
     }
   }
   &-container {
@@ -75,7 +89,7 @@ h1, h2, h3, h4, h5, h6, button {
     flex-wrap: wrap;
     align-items: center;
     min-height: 175px;
-    background-color: $dark-gray;
+    background-color: rgba($dark-gray, 0.9);
     color: $white;
 
     &-list {
@@ -90,8 +104,32 @@ h1, h2, h3, h4, h5, h6, button {
           margin-top: 0.5rem;
         }
         &:link, &:visited, &:hover, &:active {
-          color: lighten($primary, 30);
+          color: lighten($primary, 15);
         }
+      }
+    }
+    &-github {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      margin-left: 2.5rem;
+
+      > span {
+        margin-right: 1rem;
+      }
+      > img {
+        animation: Home-logo-spin infinite 20s linear;
+        height: 50px;
+        width: auto;
+      }
+    }
+    &-logo {
+      margin: 0 1.5rem 1rem auto;
+
+      > img {
+        height: 55px;
+        width: auto;
       }
     }
   }
@@ -100,4 +138,26 @@ h1, h2, h3, h4, h5, h6, button {
 @keyframes Home-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 440px) {
+  .App {
+    &-header {
+      height: 175px;
+
+      &-title {
+        width: 100%;
+      }
+      &-logo {
+        position: relative;
+        left: -16px;
+        margin-top: 0.5rem;
+      }
+      > div {
+        &:first-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }

@@ -16,20 +16,25 @@
       top: 2px;
       margin-left: 0.5rem;
       margin-right: 1rem;
+
+      svg {
+        fill: $white;
+      }
     }
     &-name {
       margin: 0.25rem 0;
       line-height: 1.5rem;
-      color: lighten($primary, 30);
+      color: lighten($primary, 15);
 
       &:link, &:visited, &:hover, &:active {
-        color: lighten($primary, 30);
+        color: lighten($primary, 15);
       }
     }
     &-updated {
       margin-left: auto;
       margin-right: 0.5rem;
       text-align: right;
+      color: $white;
     }
     &-languages {
       display: flex;
@@ -50,25 +55,10 @@
       }
     }
     &:nth-child(even) {
-      border: 2px solid $dark-gray;
-
-      .Repos-repo-languages {
-        &-lang {
-          background-color: $dark-gray;
-        }
-      }
+      background-color: rgba($dark-gray, 0.87);
     }
     &:nth-child(odd) {
       background-color: $dark-gray;
-
-      .Repos-repo-icon {
-        svg {
-          fill: $white;
-        } 
-      }
-      .Repos-repo-updated {
-        color: $white;
-      }
     }
   }
 }
