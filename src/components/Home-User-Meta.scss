@@ -107,7 +107,7 @@
       }
     }
     &-website {
-      color: lighten($primary, 30);
+      color: lighten($primary, 15);
       white-space: nowrap; 
       overflow: hidden;
       text-overflow: ellipsis;
@@ -116,7 +116,7 @@
         font-weight: 600;
         
         &:link, &:visited, &:hover, &:active {
-          color: lighten($primary, 30);
+          color: lighten($primary, 15);
         }
       }
     }

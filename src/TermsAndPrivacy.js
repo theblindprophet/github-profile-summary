@@ -8,12 +8,12 @@ class AppTermsAndPrivacy extends Component {
       <div>
         <h1 id="terms">Terms of Service ("Terms")</h1>
         <p>Last updated: September 14, 2018</p>
-        <p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://githubprofilesummary.com website (the "Service") operated by Github Profile Summary ("us", "we", or "our").</p>
+        <p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://githubprofilesummary.com website (the "Service") operated by Dyllo ("us", "we", or "our").</p>
         <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.</p>
         <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
         <h2>Links To Other Web Sites</h2>
-        <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Github Profile Summary.</p>
-        <p>Github Profile Summary has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Github Profile Summary shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+        <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Dyllo.</p>
+        <p>Dyllo has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Dyllo shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
         <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.</p>
         <h2>Termination</h2>
         <p>We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
@@ -29,14 +29,14 @@ class AppTermsAndPrivacy extends Component {
 
         <h1 id="privacy">Privacy Policy</h1>
         <p>Effective date: September 14, 2018</p>
-        <p>Github Profile Summary ("us", "we", or "our") operates the https://githubprofilesummary.com website (hereinafter referred to as the "Service").</p>
+        <p>Dyllo ("us", "we", or "our") operates the https://githubprofilesummary.com website (hereinafter referred to as the "Service").</p>
         <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
         <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://githubprofilesummary.com</p>
         <h2>Definitions</h2>
         <ul>
           <li>
             <p><strong>Service</strong></p>
-            <p>Service is the https://githubprofilesummary.com website operated by Github Profile Summary</p>
+            <p>Service is the https://githubprofilesummary.com website operated by Dyllo</p>
           </li>
           <li>
             <p><strong>Personal Data</strong></p>
@@ -72,7 +72,7 @@ class AppTermsAndPrivacy extends Component {
           <li><strong>Security Cookies.</strong> We use Security Cookies for security purposes.</li>
         </ul>
         <h2>Use of Data</h2>
-        <p>Github Profile Summary uses the collected data for various purposes:</p>    
+        <p>Dyllo uses the collected data for various purposes:</p>    
         <ul>
           <li>To provide and maintain the Service</li>
           <li>To notify you about changes to our Service</li>
@@ -86,13 +86,13 @@ class AppTermsAndPrivacy extends Component {
         <p>Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.</p>
         <p>If you are located outside United States and choose to provide information to us, please note that we transfer the data, including Personal Data, to United States and process it there.</p>
         <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
-        <p>Github Profile Summary will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
+        <p>Dyllo will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
         <h2>Disclosure Of Data</h2>
         <h3>Legal Requirements</h3>
-        <p>Github Profile Summary may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
+        <p>Dyllo may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
         <ul>
           <li>To comply with a legal obligation</li>
-          <li>To protect and defend the rights or property of Github Profile Summary</li>
+          <li>To protect and defend the rights or property of Dyllo</li>
           <li>To prevent or investigate possible wrongdoing in connection with the Service</li>
           <li>To protect the personal safety of users of the Service or the public</li>
           <li>To protect against legal liability</li>

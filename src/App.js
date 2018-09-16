@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Home from './Home.js';
 import TermsAndService from './TermsAndPrivacy.js';
-import logo from './assets/github-logo.png';
+import logo from './assets/logo.png';
+import githubLogo from './assets/github-logo.png';
 import ReactGA from 'react-ga';
 
 class App extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     ReactGA.initialize('UA-125433432-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
   }
@@ -17,10 +18,13 @@ class App extends Component {
     return (
       <div className="App-wrapper">
         <header className="App-header">
-          <div>
-            <span>Integrated with </span><img src={logo} className="App-header-logo" alt="logo" />
+          <div className="App-header-title">
+            <h1>Dyllo</h1>
+            <a href="/"><h3><i>Github Profile Summary</i></h3></a>
           </div>
-          <a href="/"><h1 className="App-header-title">Github Profile Summary</h1></a>
+          <div>
+            <img className="App-header-logo" src={logo} alt="logo"/>
+          </div>
         </header>
         <div className="App-container">
           <Router>
@@ -50,6 +54,12 @@ class App extends Component {
               </p>
             </li>
           </ul>
+          <div className="App-footer-github">
+            <span>Integrated with </span><img src={githubLogo} alt="github" />
+          </div>
+          <div className="App-footer-logo">
+            <img src={logo} alt="logo"/>
+          </div>
         </footer>
       </div>
     );

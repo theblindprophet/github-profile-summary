@@ -7,6 +7,7 @@ import HomeEvents from './components/Home-Events.js';
 import HomeRepos from './components/Home-Repos.js';
 import { getUserData } from './services/api';
 import ReactGA from 'react-ga';
+import QueryString from 'query-string';
 
 class AppHome extends Component {
 
@@ -14,6 +15,7 @@ class AppHome extends Component {
     super(props);
 
     this.state = {
+      userSearchQuery: '',
       userData: null,
       loadingUser: false,
       userError: null
@@ -21,6 +23,16 @@ class AppHome extends Component {
 
     this.getUserData = this.getUserData.bind(this);
     this.getUserError = this.getUserError.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.location && this.props.location.search) {
+      const queuries = QueryString.parse(this.props.location.search);
+      this.setState({
+        userSearchQuery: queuries.search
+      });
+      this.getUserData(queuries.search);
+    }
   }
 
   getUserData = async (username) => {
@@ -70,7 +82,7 @@ class AppHome extends Component {
       <div className="Home">
         <div className="Home-container">
           {this.getUserError()}
-          <HomeSearchBar onSubmit={this.getUserData} loadingUser={this.state.loadingUser}></HomeSearchBar>
+          <HomeSearchBar query={this.state.userSearchQuery} onSubmit={this.getUserData} loadingUser={this.state.loadingUser}></HomeSearchBar>
           <div className="Home-Row-1 row">
             <HomeUserMeta userData={this.state.userData}></HomeUserMeta>
             <HomeStats userData={this.state.userData}></HomeStats>

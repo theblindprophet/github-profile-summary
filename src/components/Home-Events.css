@@ -23,11 +23,11 @@
       max-width: 65%;
       line-height: 1.5rem; }
       .Events-contr-summary a {
-        color: #8eccd8;
+        color: #54b2c5;
         text-decoration: underline;
         cursor: pointer; }
         .Events-contr-summary a:link, .Events-contr-summary a:visited, .Events-contr-summary a:hover, .Events-contr-summary a:active {
-          color: #8eccd8;
+          color: #54b2c5;
           text-decoration: underline; }
     .Events-contr-line {
       flex-grow: 1;
@@ -43,7 +43,7 @@
         bottom: 0;
         left: -25%;
         width: 25%;
-        background-color: #8eccd8;
+        background-color: #54b2c5;
         animation: line-move;
         animation-duration: 2.5s;
         animation-iteration-count: infinite; }

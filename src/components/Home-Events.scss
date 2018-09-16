@@ -23,12 +23,12 @@
       line-height: 1.5rem;
 
       a {
-        color: lighten($primary, 30);
+        color: lighten($primary, 15);
         text-decoration: underline;
         cursor: pointer;
 
         &:link, &:visited, &:hover, &:active {
-          color: lighten($primary, 30);
+          color: lighten($primary, 15);
           text-decoration: underline;
         }
       }
@@ -48,7 +48,7 @@
         bottom: 0;
         left: -25%;
         width: 25%;
-        background-color: lighten($primary, 30);
+        background-color: lighten($primary, 15);
         animation: line-move;
         animation-duration: 2.5s;
         animation-iteration-count: infinite;

@@ -8,12 +8,22 @@ class HomeSearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ''
+      username: '',
+      queuried: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.getUser = this.getUser.bind(this);
     this.getSubmitButton = this.getSubmitButton.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.query && !this.state.queuried) {
+      this.setState({
+        username: nextProps.query,
+        queuried: true
+      });
+    }
   }
 
   handleChange = (event) => {

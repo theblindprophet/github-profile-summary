@@ -31,28 +31,39 @@ h1, h2, h3, h4, h5, h6, button {
   border-radius: 4px; }
 
 .App-header {
-  background-color: #343642;
-  height: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 110px;
   padding: 20px;
+  background-color: rgba(52, 54, 66, 0.9);
   color: #fff;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem; }
-  .App-header > div {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .App-header > div > span {
-      margin-right: 1rem; }
   .App-header a:link, .App-header a:visited, .App-header a:hover, .App-header a:active {
     color: #fff;
     text-decoration: none; }
-  .App-header-logo {
-    animation: Home-logo-spin infinite 20s linear;
-    height: 50px; }
   .App-header-title {
-    margin-top: 0.5rem;
-    font-size: 1.5em; }
+    display: inline-block;
+    margin: 0.5rem 0; }
+  .App-header > div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column; }
+    .App-header > div:first-child {
+      margin-right: 1.5rem; }
+    .App-header > div > img {
+      height: 75px;
+      width: auto; }
+  .App-header h1, .App-header h3 {
+    margin: 0.25rem; }
+  .App-header h1 {
+    font-size: 1.6rem; }
+  .App-header h3 {
+    font-size: 1.3rem; }
 
 .App-container {
   min-height: calc(100vh - 90px);
@@ -65,7 +76,7 @@ h1, h2, h3, h4, h5, h6, button {
   flex-wrap: wrap;
   align-items: center;
   min-height: 175px;
-  background-color: #343642;
+  background-color: rgba(52, 54, 66, 0.9);
   color: #fff; }
   .App-footer-list {
     display: flex;
@@ -76,10 +87,39 @@ h1, h2, h3, h4, h5, h6, button {
       .App-footer-list a:first-of-type {
         margin-top: 0.5rem; }
       .App-footer-list a:link, .App-footer-list a:visited, .App-footer-list a:hover, .App-footer-list a:active {
-        color: #8eccd8; }
+        color: #54b2c5; }
+  .App-footer-github {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-left: 2.5rem; }
+    .App-footer-github > span {
+      margin-right: 1rem; }
+    .App-footer-github > img {
+      animation: Home-logo-spin infinite 20s linear;
+      height: 50px;
+      width: auto; }
+  .App-footer-logo {
+    margin: 0 1.5rem 1rem auto; }
+    .App-footer-logo > img {
+      height: 55px;
+      width: auto; }
 
 @keyframes Home-logo-spin {
   from {
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+
+@media screen and (max-width: 440px) {
+  .App-header {
+    height: 175px; }
+    .App-header-title {
+      width: 100%; }
+    .App-header-logo {
+      position: relative;
+      left: -16px;
+      margin-top: 0.5rem; }
+    .App-header > div:first-child {
+      margin-right: 0; } }
