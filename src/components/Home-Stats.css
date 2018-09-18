@@ -30,6 +30,6 @@
     top: 2px;
     margin-right: 1rem; }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 940px) {
   .Stats {
     width: 100%; } }

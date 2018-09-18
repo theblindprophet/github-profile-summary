@@ -5,4 +5,43 @@
     text-align: center;
     color: $accent;
   }
+  &-repopopup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($dark-gray, 0.7);
+    
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column;
+      height: 480px;
+      width: 480px;
+      max-width: 82%;
+      padding: 1rem;
+      background-color: $white;
+      border-radius: 4px;
+    }
+    canvas {
+      max-width: 360px;
+    }
+    &-name {
+      margin: 0 0 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .Home {
+    &-repopopup {
+      canvas {
+        max-width: 280px;
+      }
+    }
+  }
 }

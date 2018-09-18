@@ -14,7 +14,8 @@
     align-items: center;
     margin: 0.5rem 0;
     padding: 0.5rem;
-    border-radius: 4px; }
+    border-radius: 4px;
+    cursor: pointer; }
     .Repos-repo-icon {
       position: relative;
       top: 2px;
@@ -50,8 +51,12 @@
         padding: 0.3rem 0.5rem; }
     .Repos-repo:nth-child(even) {
       background-color: rgba(52, 54, 66, 0.87); }
+      .Repos-repo:nth-child(even):hover {
+        background-color: rgba(52, 54, 66, 0.57); }
     .Repos-repo:nth-child(odd) {
       background-color: #343642; }
+      .Repos-repo:nth-child(odd):hover {
+        background-color: rgba(52, 54, 66, 0.7); }
 
 @media screen and (max-width: 480px) {
   .Repos-repo-updated {

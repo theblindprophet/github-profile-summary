@@ -10,6 +10,7 @@
     margin: 0.5rem 0;
     padding: 0.5rem;
     border-radius: 4px;
+    cursor: pointer;
 
     &-icon {
       position: relative;
@@ -56,9 +57,17 @@
     }
     &:nth-child(even) {
       background-color: rgba($dark-gray, 0.87);
+
+      &:hover {
+        background-color: rgba($dark-gray, 0.57);
+      }
     }
     &:nth-child(odd) {
       background-color: $dark-gray;
+
+      &:hover {
+        background-color: rgba($dark-gray, 0.7);
+      }
     }
   }
 }
