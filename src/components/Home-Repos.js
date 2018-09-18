@@ -14,6 +14,8 @@ class HomeRepos extends Component {
     this.createRepos = this.createRepos.bind(this);
     this.createRepo = this.createRepo.bind(this);
     this.moreRepos = this.moreRepos.bind(this);
+    this.createLanguages = this.createLanguages.bind(this);
+    this.repoClicked = this.repoClicked.bind(this);
   }
 
   createRepos = () => {
@@ -53,7 +55,7 @@ class HomeRepos extends Component {
       dateFormatted = 'Unknown';
     }
     return (
-      <div className="Repos-repo" key={index}>
+      <div className="Repos-repo" key={index} onClick={() => this.repoClicked(index)}>
         <IconContext.Provider value={{}}>
           <div className="Repos-repo-icon">
             <GoRepo />
@@ -102,6 +104,10 @@ class HomeRepos extends Component {
         }
       </div>
     );
+  }
+
+  repoClicked = (index) => {
+    this.props.onRepoClick(this.props.userData.repositories.edges[index].node);
   }
 
   render() {

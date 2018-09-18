@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5, h6, button {
   }
 }
 .col {
+  min-width: 280px;
   margin: 0.5rem;
   background-color: $light-gray;
   padding: 1rem;
@@ -38,7 +39,7 @@ h1, h2, h3, h4, h5, h6, button {
     align-content: center;
     height: 110px;
     padding: 20px;
-    background-color: rgba($dark-gray, 0.9);
+    background-color: rgba($dark-gray, 0.6);
     color: $white;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
@@ -89,7 +90,7 @@ h1, h2, h3, h4, h5, h6, button {
     flex-wrap: wrap;
     align-items: center;
     min-height: 175px;
-    background-color: rgba($dark-gray, 0.9);
+    background-color: rgba($dark-gray, 0.6);
     color: $white;
 
     &-list {

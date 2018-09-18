@@ -1,0 +1,19 @@
+/* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
+.Languages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem; }
+
+@media screen and (max-width: 575px) {
+  .Languages canvas {
+    max-width: 100% !important; } }

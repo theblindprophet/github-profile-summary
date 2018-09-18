@@ -87,7 +87,7 @@
         .User-Meta-info-website > a:link, .User-Meta-info-website > a:visited, .User-Meta-info-website > a:hover, .User-Meta-info-website > a:active {
           color: #54b2c5; }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 940px) {
   .User-Meta {
     width: calc(100% - 3rem); }
     .User-Meta-info > p {

@@ -9,3 +9,32 @@
 .Home-error {
   text-align: center;
   color: #962D3E; }
+
+.Home-repopopup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(52, 54, 66, 0.7); }
+  .Home-repopopup > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    height: 480px;
+    width: 480px;
+    max-width: 82%;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 4px; }
+  .Home-repopopup canvas {
+    max-width: 360px; }
+  .Home-repopopup-name {
+    margin: 0 0 1rem; }
+
+@media screen and (max-width: 575px) {
+  .Home-repopopup canvas {
+    max-width: 280px; } }
