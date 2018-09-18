@@ -5,6 +5,7 @@ import HomeSearchBar from './components/Home-Search-Bar.js';
 import HomeUserMeta from './components/Home-User-Meta.js';
 import HomeStats from './components/Home-Stats.js';
 import HomeLanguages from './components/Home-Languages.js';
+import HomeCommits from './components/Home-Commits.js';
 import HomeEvents from './components/Home-Events.js';
 import HomeRepos from './components/Home-Repos.js';
 import { getUserData } from './services/api';
@@ -163,6 +164,7 @@ class AppHome extends Component {
             <HomeUserMeta userData={this.state.userData}></HomeUserMeta>
             <HomeStats userData={this.state.userData}></HomeStats>
             <HomeLanguages userData={this.state.userData}></HomeLanguages>
+            <HomeCommits userData={this.state.userData}></HomeCommits>
             <HomeEvents userData={this.state.userData}></HomeEvents>
             <HomeRepos userData={this.state.userData} onRepoClick={this.createRepoPopup}></HomeRepos>
           </div>

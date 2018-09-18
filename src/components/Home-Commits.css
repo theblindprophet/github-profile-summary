@@ -1,0 +1,19 @@
+/* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
+.Commits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+  .Commits canvas {
+    max-width: 660px; }
+
+@media screen and (max-width: 575px) {
+  .Commits canvas {
+    max-width: 280px; } }

@@ -1,0 +1,20 @@
+@import '../shared.scss';
+
+.Commits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  canvas {
+    max-width: 660px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .Commits {
+    canvas {
+      max-width: 280px;
+    }
+  }
+}
