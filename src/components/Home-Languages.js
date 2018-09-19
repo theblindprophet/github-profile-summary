@@ -53,6 +53,7 @@ class HomeLanguages extends Component {
     if (this.props.userData && this.props.userData.userLanguagePercents) {
       return (
         <div className="Languages col">
+          <p className="Languages-title">Language Spread</p>
           <Pie width={285} height={285} data={this.getData()} options={this.getOptions()}></Pie>
         </div>
       );

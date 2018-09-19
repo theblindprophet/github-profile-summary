@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Scatter } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import './Home-Commits.css';
 
 class HomeCommits extends Component {
@@ -12,63 +12,21 @@ class HomeCommits extends Component {
   }
 
   getData = () => {
-    const commits = [
-      {
-        x: '2018-08-15T04:00:00.000Z',
-        y: 2
-      },
-      {
-        x: '2018-08-16T04:00:00.000Z',
-        y: 10
-      },
-      {
-        x: '2018-08-17T04:00:00.000Z',
-        y: 12
-      },
-      {
-        x: '2018-08-18T04:00:00.000Z',
-        y: 4
-      },
-      {
-        x: '2018-08-19T04:00:00.000Z',
-        y: 0
-      },
-      {
-        x: '2018-08-20T04:00:00.000Z',
-        y: 7
-      },
-      {
-        x: '2018-08-21T04:00:00.000Z',
-        y: 2
-      },
-      {
-        x: '2018-08-22T04:00:00.000Z',
-        y: 10
-      },
-      {
-        x: '2018-08-23T04:00:00.000Z',
-        y: 12
-      },
-      {
-        x: '2018-08-24T04:00:00.000Z',
-        y: 4
-      },
-      {
-        x: '2018-08-25T04:00:00.000Z',
-        y: 0
-      },
-      {
-        x: '2018-08-26T04:00:00.000Z',
-        y: 7
-      }
-    ]
-    const data = {
+    if (!this.props.userData.commits) {
+      return {
+        datasets: [{
+          data: []
+        }]
+      };
+    }
+
+    const commits = this.props.userData.commits;
+    return {
       datasets: [{
-        label: 'Scatter Dataset',
+        borderColor: 'rgba(52, 54, 66, 0.6)',
         data: commits
       }]
     };
-    return data;
   }
 
   getOptions = () => {
@@ -101,9 +59,9 @@ class HomeCommits extends Component {
           },
           scaleLabel: {
             display: true,
-            labelString: 'Commits'
-          },
-          drawBorder: true
+            labelString: 'Commits',
+            fontSize: 16
+          }
         }]
       },
       elements: {
@@ -119,8 +77,10 @@ class HomeCommits extends Component {
             const date = new Date(data.datasets[0].data[tooltipItem.index].x);
             const commits = data.datasets[0].data[tooltipItem.index].y;
             const formattedDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+            console.log('label', `${commits} - ${formattedDate}`);
             return `${commits} - ${formattedDate}`;
-          }
+          },
+          title: () => { return '' }
         }
       }
     };
@@ -128,11 +88,16 @@ class HomeCommits extends Component {
   }
 
   render() {
-    return (
-      <div className="Commits col">
-        <Scatter data={this.getData()} options={this.getOptions()} width={280} height={240}></Scatter>
-      </div>
-    );
+    if (this.props.userData && this.props.userData.commits) {
+      return (
+        <div className="Commits col">
+          <p className="Commits-title">Recent Commits</p>
+          <Line data={this.getData()} options={this.getOptions()} width={280} height={240}></Line>
+        </div>
+      );
+    } else {
+      return '';
+    }
   }
 }
 
