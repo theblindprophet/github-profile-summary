@@ -54,6 +54,7 @@ class HomeCommits extends Component {
             zeroLineColor: 'rgba(52, 54, 66, 0.9)'
           },
           ticks: {
+            beginAtZero: true,
             autoSkip: true,
             maxTicksLimit: 6
           },

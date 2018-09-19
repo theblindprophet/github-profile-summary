@@ -76,6 +76,13 @@ class HomeStats extends Component {
     return '?';
   }
 
+  userFollowLink = (follow) => {
+    if (this.props.userData && this.props.userData.url) {
+      return `${this.props.userData.url}?tab=${follow}`;
+    }
+    return 'https://github.com';
+  }
+
   render() {
     return (
       <div className="Stats col">
@@ -118,7 +125,9 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Followers: <b>{this.followersCount()}</b>
+            <a href={this.userFollowLink('followers')} target="_blank" rel="noopener noreferrer">
+              Followers: <b>{this.followersCount()}</b>
+            </a>
           </span>
           <span className="Stats-following">
             <div className="Stats-icon">
@@ -128,7 +137,9 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Following: <b>{this.followingCount()}</b>
+            <a href={this.userFollowLink('following')} target="_blank" rel="noopener noreferrer">
+              Following: <b>{this.followingCount()}</b>
+            </a>
           </span>
           <span className="Stats-prs">
             <div className="Stats-icon">
