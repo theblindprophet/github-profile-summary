@@ -6,15 +6,15 @@
   100% {
     left: 100%; } }
 
-.Languages {
+.Commits {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem; }
+  width: 100%; }
+  .Commits canvas {
+    max-width: 660px; }
 
 @media screen and (max-width: 575px) {
-  .Languages canvas {
-    max-width: 100% !important; } }
+  .Commits canvas {
+    max-width: 280px; } }
