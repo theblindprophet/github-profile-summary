@@ -77,13 +77,20 @@ class HomeStats extends Component {
     return '?';
   }
 
-  userFollowLink = (follow) => {
+  userTabLink = (tab) => {
     if (this.props.userData && this.props.userData.url) {
-      return `${this.props.userData.url}?tab=${follow}`;
+      return `${this.props.userData.url}?tab=${tab}`;
     }
     return 'https://github.com';
   }
 
+  userGistsLink = () => {
+    if (this.props.userData && this.props.userData.login) {
+      return `https://gist.github.com/${this.props.userData.login}`;
+    }
+    return 'https://gist.github.com';
+  }
+  
   starsCount = () => {
     if (this.props.userData && this.props.userData.stars) {
       const totalCount =  this.props.userData.stars;
@@ -114,7 +121,9 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Public Repos: <b>{this.publicReposCount()}</b>
+            <a href={this.userTabLink('repositories')} target="_blank" rel="noopener noreferrer">
+              Public Repos: <b>{this.publicReposCount()}</b>
+            </a>
           </span>
           <span className="Stats-gists">
             <div className="Stats-icon">
@@ -124,7 +133,9 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Public Gists: <b>{this.publicGistsCount()}</b>
+            <a href={this.userGistsLink()} target="_blank" rel="noopener noreferrer">
+              Public Gists: <b>{this.publicGistsCount()}</b>
+            </a>
           </span>
           <span className="Stats-followers">
             <div className="Stats-icon">
@@ -134,7 +145,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            <a href={this.userFollowLink('followers')} target="_blank" rel="noopener noreferrer">
+            <a href={this.userTabLink('followers')} target="_blank" rel="noopener noreferrer">
               Followers: <b>{this.followersCount()}</b>
             </a>
           </span>
@@ -146,7 +157,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            <a href={this.userFollowLink('following')} target="_blank" rel="noopener noreferrer">
+            <a href={this.userTabLink('following')} target="_blank" rel="noopener noreferrer">
               Following: <b>{this.followingCount()}</b>
             </a>
           </span>
