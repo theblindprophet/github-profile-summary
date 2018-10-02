@@ -29,10 +29,10 @@
     position: relative;
     top: 2px;
     margin-right: 1rem; }
-  .Stats-following > a:link, .Stats-following > a:visited, .Stats-following > a:active, .Stats-followers > a:link, .Stats-followers > a:visited, .Stats-followers > a:active {
+  .Stats-repos > a:link, .Stats-repos > a:visited, .Stats-repos > a:active, .Stats-gists > a:link, .Stats-gists > a:visited, .Stats-gists > a:active, .Stats-following > a:link, .Stats-following > a:visited, .Stats-following > a:active, .Stats-followers > a:link, .Stats-followers > a:visited, .Stats-followers > a:active {
     color: #fff;
     text-decoration: none; }
-  .Stats-following > a:hover > b, .Stats-followers > a:hover > b {
+  .Stats-repos > a:hover > b, .Stats-gists > a:hover > b, .Stats-following > a:hover > b, .Stats-followers > a:hover > b {
     color: #348899;
     text-decoration: none; }
 

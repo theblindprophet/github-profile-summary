@@ -83,6 +83,13 @@ class HomeStats extends Component {
     return 'https://github.com';
   }
 
+  userGistsLink = () => {
+    if (this.props.userData && this.props.userData.login) {
+      return `https://gist.github.com/${this.props.userData.login}`;
+    }
+    return 'https://gist.github.com';
+  }
+
   render() {
     return (
       <div className="Stats col">
@@ -105,7 +112,9 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Public Repos: <b>{this.publicReposCount()}</b>
+            <a href={this.userFollowLink('repositories')} target="_blank" rel="noopener noreferrer">
+              Public Repos: <b>{this.publicReposCount()}</b>
+            </a>
           </span>
           <span className="Stats-gists">
             <div className="Stats-icon">
@@ -115,7 +124,9 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            Public Gists: <b>{this.publicGistsCount()}</b>
+            <a href={this.userGistsLink()} target="_blank" rel="noopener noreferrer">
+              Public Gists: <b>{this.publicGistsCount()}</b>
+            </a>
           </span>
           <span className="Stats-followers">
             <div className="Stats-icon">
