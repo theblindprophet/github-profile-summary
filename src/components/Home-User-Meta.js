@@ -8,6 +8,13 @@ class HomeUserMeta extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showEmailPopup: false,
+      from: '',
+      subject: '',
+      message: ''
+    };
+
     this.userIsHirable = this.userIsHirable.bind(this);
     this.userImg = this.userImg.bind(this);
     this.userName = this.userName.bind(this);
@@ -18,6 +25,39 @@ class HomeUserMeta extends Component {
     this.userBio = this.userBio.bind(this);
     this.userLocation = this.userLocation.bind(this);
     this.userWebsite = this.userWebsite.bind(this);
+    this.popupClicked = this.popupClicked.bind(this);
+    this.closeEmailPopup = this.closeEmailPopup.bind(this);
+    this.showEmailPopup = this.showEmailPopup.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const {
+      name,
+      value
+    } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  popupClicked(event) {
+    if(event.target.id === 'User-Meta-email-popup') {
+      this.closeEmailPopup();
+    }
+  }
+
+  closeEmailPopup() {
+    this.setState({
+      showEmailPopup: false
+    });
+  }
+
+  showEmailPopup() {
+    this.setState({
+      showEmailPopup: true
+    });
   }
 
   userIsHirable = () => {
@@ -78,6 +118,17 @@ class HomeUserMeta extends Component {
       return this.props.userData.email || (<i>Hidden</i>);
     }
     return 'Email...';
+  }
+
+  actionEmail = () => {
+    if (this.props.userData && this.props.userData.email) {
+      return (
+        <p className="User-Meta-profile-action-email">
+          <button onClick={this.showEmailPopup}>Email</button>
+        </p>
+      )
+    }
+    return null;
   }
 
   userCompany = () => {
@@ -159,6 +210,30 @@ class HomeUserMeta extends Component {
             { this.userWebsite() }
           </p>
         </div>
+        {this.actionEmail() && (
+          <div id="User-Meta-email-popup" className="User-Meta-email-popup" style={{ display: this.state.showEmailPopup ? 'flex': 'none' }} onClick={this.popupClicked}>
+            <div>
+              <div className="User-Meta-email-popup-header">
+                <h2 className="User-Meta-email-popup-header-title">Send Email</h2>
+              </div>
+              <div className="User-Meta-email-popup-body">
+                <div>
+                  <input type="text" placeholder="From" name="from" value={this.state.from} onChange={this.handleInputChange} />
+                </div>
+                <div>
+                  <input type="text" placeholder="Subject" name="subject" value={this.state.subject} onChange={this.handleInputChange}/>
+                </div>
+                <div>
+                  <textarea type="text" placeholder="Message" name="message" value={this.state.message} onChange={this.handleInputChange} />
+                </div>
+              </div>
+              <div className="User-Meta-email-popup-footer">
+                <button className="User-Meta-email-popup-footer-button-submit">Submit</button>
+                <button className="User-Meta-email-popup-footer-button-cancel" onClick={this.closeEmailPopup}>Cancel</button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
