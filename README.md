@@ -1,51 +1,46 @@
-# Github Profile Summary
+# GitHub Profile Summary Web App
+Powered by ReactJs.
 
-## Authors
+Hosted at [Githubprofilesummary.com](https://www.githubprofilesummary.com/) on [Netlify](https://www.netlify.com/).
 
-[Jamie Gross](https://github.com/theblindprophet) (Grasp Mobile Development, LLC) and [TheWillG](https://www.thewillg.com)
+NodeJs, ExpressJs backend for this project is located here: https://github.com/thewillg/github-profile-summary-api.
 
-### Installation
+## Install
 
-`npm i`
+`git clone https://github.com/theblindprophet/github-profile-summary.git`
 
-### Environment variables
+`npm install`
 
-#### Development
-
-Environment variables are stored inside `.env` and must start with `REACT_APP_` (excluding `NODE_ENV` which is automatically added in run, test, and build)
-
-```
-REACT_APP_API_URL
-REACT_APP_API_USER
-REACT_APP_API_KEY
-```
-
-#### Production
-
-Environment variables are stored on the machine and must start with `REACT_APP_` (excluding `NODE_ENV` which is automatically added in run, test, and build)
-
-To add environment variables open `~/.bash_profile` and add each desired variable.
-
-e.g. `export REACT_APP_API_URL=localhost:3001/api/v1`
-
-```
-REACT_APP_API_URL
-REACT_APP_API_USER
-REACT_APP_API_KEY
-```
-
-### Run
+## Run
 
 `npm run start`
 
-### Watch SASS
+`npm run watch-css` (separate window)
 
-`npm run watch-css` (in a separate window)
+## Styling
 
-### Testing
+Sass is used for styling. All `.scss` files are compliled into `.css` in the same directory.
 
-[Reference](https://github.com/theblindprophet/github-profile-summary/tree/b4a27d5a58fead1e278a1314892c665bdd75e14f#running-tests)
+## Environment
 
----
+| Name | Description | Example |
+|------|-------------|--------|
+| REACT_APP_API_URL | API url | http://localhost:3003/api/v1 |
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+The environment variables are in *.env*.
+
+## CI/CD
+
+We use Netlify for continuous deployment. There are no integration or unit tests for this app.
+
+Netlify is triggered by changes to the `master` branch.
+
+## Contributing
+
+We are always willing to accept contributions to this project.
+
+## Contributors
+
+[Will Garcia](https://github.com/thewillg/) ([LinkedIn](https://www.linkedin.com/in/thewillg/))
+
+[Jamie Gross](https://github.com/theblindprophet/) ([LinkedIn](https://www.linkedin.com/in/james-l-gross/))
