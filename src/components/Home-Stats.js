@@ -77,9 +77,9 @@ class HomeStats extends Component {
     return '?';
   }
 
-  userFollowLink = (follow) => {
+  userTabLink = (tab) => {
     if (this.props.userData && this.props.userData.url) {
-      return `${this.props.userData.url}?tab=${follow}`;
+      return `${this.props.userData.url}?tab=${tab}`;
     }
     return 'https://github.com';
   }
@@ -121,7 +121,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            <a href={this.userFollowLink('repositories')} target="_blank" rel="noopener noreferrer">
+            <a href={this.userTabLink('repositories')} target="_blank" rel="noopener noreferrer">
               Public Repos: <b>{this.publicReposCount()}</b>
             </a>
           </span>
@@ -145,7 +145,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            <a href={this.userFollowLink('followers')} target="_blank" rel="noopener noreferrer">
+            <a href={this.userTabLink('followers')} target="_blank" rel="noopener noreferrer">
               Followers: <b>{this.followersCount()}</b>
             </a>
           </span>
@@ -157,7 +157,7 @@ class HomeStats extends Component {
                 </div>
               </IconContext.Provider>
             </div>
-            <a href={this.userFollowLink('following')} target="_blank" rel="noopener noreferrer">
+            <a href={this.userTabLink('following')} target="_blank" rel="noopener noreferrer">
               Following: <b>{this.followingCount()}</b>
             </a>
           </span>
