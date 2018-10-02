@@ -121,7 +121,7 @@ class HomeUserMeta extends Component {
           { this.userIsHirable() }
         </div>
         <div className="User-Meta-profile">
-          <img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />
+          <a href={ this.userUrl() }><img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" /></a>
           <p className="User-Meta-profile-name">{ this.userName() }</p>
           <p className="User-Meta-profile-username"><a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a></p>
         </div>
