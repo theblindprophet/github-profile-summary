@@ -18,6 +18,7 @@ class HomeStats extends Component {
     this.followingCount = this.followingCount.bind(this);
     this.prCount = this.prCount.bind(this);
     this.issuesCount = this.issuesCount.bind(this);
+    this.starsCount = this.starsCount.bind(this);
   }
 
   userCreated = () => {
