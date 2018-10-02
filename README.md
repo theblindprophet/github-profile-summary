@@ -1,5 +1,5 @@
 # GitHub Profile Summary Web App
-Powered by React.
+Powered by [https://reactjs.org/](React).
 
 Hosted at [https://githubprofilesummary.com](https://www.githubprofilesummary.com/) on [Netlify](https://www.netlify.com/).
 
