@@ -1,13 +1,15 @@
 # GitHub Profile Summary Web App
-Powered by ReactJs.
+Powered by [https://reactjs.org/](React).
 
-Hosted at [Githubprofilesummary.com](https://www.githubprofilesummary.com/) on [Netlify](https://www.netlify.com/).
+Hosted at [https://githubprofilesummary.com](https://www.githubprofilesummary.com/) on [Netlify](https://www.netlify.com/).
 
 NodeJs, ExpressJs backend for this project is located here: https://github.com/thewillg/github-profile-summary-api.
 
 ## Install
 
 `git clone https://github.com/theblindprophet/github-profile-summary.git`
+
+`cd github-profile-summary`
 
 `npm install`
 
