@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home-Stats.css';
 import { IconContext } from "react-icons";
-import { GoGist, GoRepo, GoIssueOpened, GoGitPullRequest } from 'react-icons/go';
+import { GoGist, GoRepo, GoIssueOpened, GoGitPullRequest, GoStar } from 'react-icons/go';
 import { FaHourglassStart, FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -18,6 +18,7 @@ class HomeStats extends Component {
     this.followingCount = this.followingCount.bind(this);
     this.prCount = this.prCount.bind(this);
     this.issuesCount = this.issuesCount.bind(this);
+    this.starsCount = this.starsCount.bind(this);
   }
 
   userCreated = () => {
@@ -81,6 +82,14 @@ class HomeStats extends Component {
       return `${this.props.userData.url}?tab=${follow}`;
     }
     return 'https://github.com';
+  }
+
+  starsCount = () => {
+    if (this.props.userData && this.props.userData.stars) {
+      const totalCount =  this.props.userData.stars;
+      return totalCount !== null ? totalCount : '?';
+    }
+    return '?';
   }
 
   render() {
@@ -160,6 +169,16 @@ class HomeStats extends Component {
               </IconContext.Provider>
             </div>
             Public Issues: <b>{this.issuesCount()}</b>
+          </span>
+          <span className="Stats-stars">
+            <div className="Stats-icon">
+              <IconContext.Provider value={{ color: "#fff" }}>
+                <div>
+                  <GoStar />
+                </div>
+              </IconContext.Provider>
+            </div>
+            Stars: <b>{this.starsCount()}</b>
           </span>
         </div>
       </div>
