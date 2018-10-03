@@ -91,8 +91,8 @@ class HomeStats extends Component {
   }
 
   starsCount = () => {
-    if (this.props.userData && this.props.userData.stars) {
-      const totalCount = this.props.userData.stars;
+    if (this.props.userData && this.props.userData.starredRepositories) {
+      const { totalCount } = this.props.userData.starredRepositories;
       return totalCount !== null ? totalCount : '?';
     }
     return '?';

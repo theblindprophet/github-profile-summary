@@ -89,7 +89,7 @@ class AppHome extends Component {
       this.setState({
         loadingUser: false
       });
-      this.setState({ snackbar: { open: true, message: e.message, isError: true } });
+      this.showSnackbar(true, e.message);
     }
   };
 
@@ -165,6 +165,10 @@ class AppHome extends Component {
     this.setState({ snackbar: { open: false, message: '', isError: false } });
   };
 
+  showSnackbar = (isError, message) => {
+    this.setState({ snackbar: { open: true, message, isError } });
+  };
+
   render() {
     return (
       <div className="Home">
@@ -175,7 +179,7 @@ class AppHome extends Component {
             loadingUser={ this.state.loadingUser }
           />
           <div className="Home-Row-1 row">
-            <HomeUserMeta userData={ this.state.userData } />
+            <HomeUserMeta userData={ this.state.userData } showSnackbar={ this.showSnackbar } />
             <HomeStats userData={ this.state.userData } />
             <HomeLanguages userData={ this.state.userData } />
             <HomeCommits userData={ this.state.userData } />

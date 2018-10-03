@@ -5,7 +5,7 @@ import { FaSpinner} from 'react-icons/fa';
 import { postEmail } from '../services/api';
 
 const initialState = {
-  from: '',
+  senderEmail: '',
   subject: '',
   message: '',
   loading: false
@@ -71,39 +71,46 @@ class HomeEmailPopup extends Component {
     this.props.close();
   }
 
-  emailPopupSubmit() {
-    const { from, subject, message } = this.state;
-    postEmail({
-      from,
-      subject,
-      message
-    })
-    .then(res => {
+  async emailPopupSubmit() {
+    const { senderEmail, message, subject } = this.state;
+    const recipientEmail = this.props.userData.email;
+    try {
+      const res = await postEmail({
+        senderEmail,
+        recipientEmail,
+        message,
+        subject
+      });
+      if (!res.ok) {
+        throw new Error('Error sending email, please try again.');
+      }
+
       this.setState({
         ...this.state, ...initialState
       });
-    })
-    .catch(err => {
-      
-    })
-
-    this.setState({
-      loading: false
-    });
+      this.props.showSnackbar(false, 'Sent email!');
+      this.closeEmailPopup();
+    } catch(e) {
+      this.props.showSnackbar(true, e.message);
+    } finally {
+      this.setState({
+        loading: false
+      });
+    }
   }
 
   isSubmitEnabled() {
     const {
-      from,
+      senderEmail,
       subject,
       message
     } = this.state;
-    return isValidEmail(from) && isValidSubject(subject) && isValidMessage(message);
+    return isValidEmail(senderEmail) && isValidSubject(subject) && isValidMessage(message);
   }
 
   render() {
     return (
-      <div id="User-Email-Popup-email-popup" className="User-Email-Popup-email-popup" style={{ display: this.props.show ? 'flex': 'none' }} onClick={this.popupClicked}>
+      <div id="User-Email-Popup-email-popup" className="User-Email-Popup-email-popup" style={{ display: this.props.show ? 'flex': 'none' }} onClick={ this.popupClicked }>
         <div>
           <div className="User-Email-Popup-email-popup-header">
             <h2 className="User-Email-Popup-email-popup-header-title">Send Email</h2>
@@ -113,17 +120,17 @@ class HomeEmailPopup extends Component {
               <input className="form-field"
                 type="text"
                 placeholder="From*"
-                name="from"
-                value={this.state.from}
-                onChange={this.handleInputChange} />
+                name="senderEmail"
+                value={ this.state.senderEmail }
+                onChange={ this.handleInputChange } />
             </div>
             <div>
               <input className="form-field"
                 type="text"
                 placeholder="Subject*"
                 name="subject"
-                value={this.state.subject}
-                onChange={this.handleInputChange}/>
+                value={ this.state.subject }
+                onChange={ this.handleInputChange }/>
             </div>
             <div>
               <textarea className="form-field"
@@ -131,21 +138,24 @@ class HomeEmailPopup extends Component {
                 rows="5"
                 placeholder="Message*"
                 name="message"
-                value={this.state.message}
-                onChange={this.handleInputChange} />
+                value={ this.state.message }
+                onChange={ this.handleInputChange } />
             </div>
           </div>
           <div className="User-Email-Popup-email-popup-footer">
             <button className="User-Email-Popup-email-popup-footer-button-submit"
-              onClick={this.emailPopupSubmit}
-              disabled={!this.isSubmitEnabled()}>Submit
-              {this.state.loading && <IconContext.Provider value={{ color: "#fff" }}>
-                <div>
-                  <FaSpinner />
-                </div>
-              </IconContext.Provider>}
+              onClick={ this.emailPopupSubmit }
+              disabled={ !this.isSubmitEnabled() }>Submit
+              {
+                this.state.loading &&
+                <IconContext.Provider value={ { color: "#fff" } }>
+                  <div>
+                    <FaSpinner />
+                  </div>
+                </IconContext.Provider>
+              }
             </button>
-            <button className="User-Email-Popup-email-popup-footer-button-cancel" onClick={this.closeEmailPopup}>Cancel</button>
+            <button className="User-Email-Popup-email-popup-footer-button-cancel" onClick={ this.closeEmailPopup }>Cancel</button>
           </div>
         </div>
       </div>

@@ -251,6 +251,7 @@ class HomeUserMeta extends Component {
           userData={ this.props.userData }
           show={ this.state.showEmailPopup }
           close={ this.closeEmailPopup }
+          showSnackbar={ this.props.showSnackbar }
         />
       </div>
     );
