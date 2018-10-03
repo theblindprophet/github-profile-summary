@@ -118,6 +118,16 @@
         margin: 0; }
     .User-Meta-email-popup-body {
       padding: 1rem; }
+      .User-Meta-email-popup-body .form-field {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #EFEFEF;
+        color: #343642;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        margin-top: 1rem; }
     .User-Meta-email-popup-footer {
       padding: 1rem;
       text-align: right;
@@ -131,10 +141,17 @@
         margin-left: 10px; }
       .User-Meta-email-popup-footer-button-submit {
         color: #fff;
-        background-color: #348899; }
+        background-color: #348899;
+        border: 1px solid #348899; }
+        .User-Meta-email-popup-footer-button-submit:disabled {
+          border: 1px solid #999999;
+          background-color: #cccccc;
+          color: #666666;
+          cursor: not-allowed; }
       .User-Meta-email-popup-footer-button-cancel {
         color: #000;
-        background-color: #EFEFEF; }
+        background-color: #EFEFEF;
+        border: 1px solid #EFEFEF; }
 
 @media screen and (max-width: 940px) {
   .User-Meta {

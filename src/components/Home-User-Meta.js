@@ -4,17 +4,36 @@ import HomeEmailPopup from './Home-Email-Popup';
 import { IconContext } from 'react-icons';
 import { FaMapMarkerAlt, FaUserTie } from 'react-icons/fa';
 import userPlaceholderImg from '../assets/user-placeholder.png';
+import { postEmail } from '../services/api';
+
+
+const isValidEmail = value => {
+  const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+  return reg.test(value);
+};
+
+const isValidSubject = value => {
+  const formattedValue = value.replace(/\r?\n|\r|\s/g, '');
+  return formattedValue.length > 0 && formattedValue.length <= 500;
+}
+
+const isValidMessage = value => {
+  const formattedValue = value.replace(/\r?\n|\r|\s/g, '');
+  return formattedValue.length > 0 && formattedValue.length <= 500;
+}
+
+const initialState = {
+  from: '',
+  subject: '',
+  message: '',
+  showEmailPopup: false,
+};
 
 class HomeUserMeta extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showEmailPopup: false,
-      from: '',
-      subject: '',
-      message: ''
-    };
+    this.state = initialState;
 
     this.userIsHirable = this.userIsHirable.bind(this);
     this.userImg = this.userImg.bind(this);
@@ -30,6 +49,35 @@ class HomeUserMeta extends Component {
     this.closeEmailPopup = this.closeEmailPopup.bind(this);
     this.actionEmail = this.actionEmail.bind(this);
   }
+
+  emailPopupSubmit() {
+    const { from, subject, message } = this.state;
+    postEmail({
+      from,
+      subject,
+      message
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+    this.setState({
+      ...this.state, ...initialState
+    });
+  }
+
+  isSubmitEnabled() {
+    const {
+      from,
+      subject,
+      message
+    } = this.state;
+    return isValidEmail(from) && isValidSubject(subject) && isValidMessage(message);
+  }
+
 
   userIsHirable = () => {
     if (this.props.userData && this.props.userData.isHirable) {
