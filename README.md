@@ -51,6 +51,6 @@ We are always willing to accept contributions to this project.
 
 ## Contributors
 
-[Will Garcia](https://github.com/thewillg/) ([LinkedIn](https://www.linkedin.com/in/thewillg/))
-
 [Jamie Gross](https://github.com/theblindprophet/) ([LinkedIn](https://www.linkedin.com/in/james-l-gross/))
+
+[Will Garcia](https://github.com/thewillg/) ([LinkedIn](https://www.linkedin.com/in/thewillg/))
