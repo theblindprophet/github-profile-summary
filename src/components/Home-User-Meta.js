@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home-User-Meta.css';
 import { IconContext } from "react-icons";
-import { FaMapMarkerAlt, FaUserTie } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaUserTie, FaSpinner} from 'react-icons/fa';
 import userPlaceholderImg from '../assets/user-placeholder.png';
 import { postEmail } from '../services/api';
 
@@ -26,6 +26,7 @@ const initialState = {
   subject: '',
   message: '',
   showEmailPopup: false,
+  loading: false
 };
 
 class HomeUserMeta extends Component {
@@ -94,8 +95,14 @@ class HomeUserMeta extends Component {
       });
     })
     .catch(err => {
-      console.log(err);
+      this.setState({
+        loading: false
+      })
     })
+
+    this.setState({
+      loading: true
+    });
   }
 
   isSubmitEnabled() {
@@ -276,7 +283,13 @@ class HomeUserMeta extends Component {
               <div className="User-Meta-email-popup-footer">
                 <button className="User-Meta-email-popup-footer-button-submit"
                   onClick={this.emailPopupSubmit}
-                  disabled={!this.isSubmitEnabled()}>Submit</button>
+                  disabled={!this.isSubmitEnabled()}>Submit
+                  {this.state.loading && <IconContext.Provider value={{ color: "#fff" }}>
+                    <div>
+                      <FaSpinner />
+                    </div>
+                  </IconContext.Provider>}
+                </button>
                 <button className="User-Meta-email-popup-footer-button-cancel" onClick={this.closeEmailPopup}>Cancel</button>
               </div>
             </div>
