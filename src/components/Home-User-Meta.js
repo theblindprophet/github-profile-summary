@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Home-User-Meta.css';
 import HomeEmailPopup from './Home-Email-Popup';
 import { IconContext } from 'react-icons';
-import { FaMapMarkerAlt, FaUserTie } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaUserTie, FaCopy } from 'react-icons/fa';
 import userPlaceholderImg from '../assets/user-placeholder.png';
 import { postEmail } from '../services/api';
 
@@ -49,6 +49,11 @@ class HomeUserMeta extends Component {
     this.showEmailPopup = this.showEmailPopup.bind(this);
     this.closeEmailPopup = this.closeEmailPopup.bind(this);
     this.actionEmail = this.actionEmail.bind(this);
+    this.userProfileUrlTextAreaRef = React.createRef();
+  }
+
+  state = {
+    copiedSuccessMsg: ''
   }
 
   isSubmitEnabled() {
@@ -58,6 +63,21 @@ class HomeUserMeta extends Component {
       message
     } = this.state;
     return isValidEmail(from) && isValidSubject(subject) && isValidMessage(message);
+  }
+
+  handleCopyProfileUrl = () => {
+    this.userProfileUrlTextAreaRef.current.select();
+    document.execCommand('copy');
+
+    this.setState({
+      copiedSuccessMsg: 'Copied!'
+    });
+
+    window.setTimeout(() => {
+      this.setState({
+        copiedSuccessMsg: ''
+      });
+    }, 2000);
   }
 
   userIsHirable = () => {
@@ -111,6 +131,31 @@ class HomeUserMeta extends Component {
       );
     }
     return (<img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />);
+  }
+
+  userProfileUrlCopyBtn = () => {
+    if (this.props.userData && this.props.userData.login) {
+      return (
+        <button
+          className="User-Meta-profile-url-copy-btn"
+          onClick={this.handleCopyProfileUrl}
+          aria-label="Copy Dyllo user profile url"
+        >
+          <FaCopy />
+          {
+            this.state.copiedSuccessMsg
+            && <span className="User-Meta-profile-url-copy-success">{this.state.copiedSuccessMsg}</span>
+          }
+          <textarea
+            ref={this.userProfileUrlTextAreaRef}
+            className="User-Meta-profile-url-textarea"
+          >
+            {`https://githubprofilesummary.com/user/${this.userUsername()}`}
+          </textarea>
+        </button>
+      )
+    }
+    return null;
   }
   
   userEmail = () => {
@@ -197,6 +242,7 @@ class HomeUserMeta extends Component {
         </div>
         <div className="User-Meta-profile">
           { this.userImgUrl() }
+          { this.userProfileUrlCopyBtn() }
           <p className="User-Meta-profile-name">{ this.userName() }</p>
           <p className="User-Meta-profile-username">
             <a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a>
