@@ -13,18 +13,32 @@
         "fetch": false
     },
     "rules": {
+        "camelcase": [0],
+        "comma-dangle": [0],
         "indent": [
             "error",
             2
         ],
+        "jsx-a11y/click-events-have-key-events": false,
+        "jsx-a11y/no-static-element-interactions": false,
         "linebreak-style": [
             "error",
             "unix"
         ],
+        "object-curly-newline": [0],
+        "prefer-default-export": false,
         "quotes": [
             "error",
             "single"
         ],
+        "react/destructuring-assignment": [0],
+        "react/jsx-curly-spacing": [
+            2,
+            { "when": "always" }
+        ],
+        "react/jsx-filename-extension": [0],
+        "react/no-array-index-key": [0],
+        "react/prop-types": [0],
         "semi": [
             "error",
             "always"

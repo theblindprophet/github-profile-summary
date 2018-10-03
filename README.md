@@ -21,6 +21,12 @@ NodeJs, ExpressJs backend for this project is located here: https://github.com/t
 
 Sass is used for styling. All `.scss` files are compliled into `.css` in the same directory.
 
+## Testing
+
+`npm run test`
+
+**Most** linting errors can be fixed with `./node_modules/.bin/eslint src/<file-path>.js --fix`.
+
 ## Environment
 
 | Name | Description | Example |

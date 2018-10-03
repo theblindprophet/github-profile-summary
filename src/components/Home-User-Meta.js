@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './Home-User-Meta.css';
-import { IconContext } from "react-icons";
+import { IconContext } from 'react-icons';
 import { FaMapMarkerAlt, FaUserTie } from 'react-icons/fa';
 import userPlaceholderImg from '../assets/user-placeholder.png';
 
 class HomeUserMeta extends Component {
-
   constructor(props) {
     super(props);
 
@@ -25,7 +24,7 @@ class HomeUserMeta extends Component {
     if (this.props.userData && this.props.userData.isHirable) {
       return (
         <div className="User-Meta-available-container">
-          <IconContext.Provider value={{ color: "#8ECCD8" }}>
+          <IconContext.Provider value={ { color: '#8ECCD8' } }>
             <div>
               <FaUserTie />
             </div>
@@ -75,7 +74,11 @@ class HomeUserMeta extends Component {
   userCompany = () => {
     if (this.props.userData && this.props.userData.company) {
       return (
-        <p className="User-Meta-info-company"><span>Company:</span> {this.props.userData.company}</p>
+        <p className="User-Meta-info-company">
+          <span>Company:</span>
+          {' '}
+          {this.props.userData.company}
+        </p>
       );
     }
     return '';
@@ -123,14 +126,20 @@ class HomeUserMeta extends Component {
         <div className="User-Meta-profile">
           <img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />
           <p className="User-Meta-profile-name">{ this.userName() }</p>
-          <p className="User-Meta-profile-username"><a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a></p>
+          <p className="User-Meta-profile-username">
+            <a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a>
+          </p>
         </div>
         <div className="User-Meta-info">
-          <p className="User-Meta-info-email"><span>Email:</span> { this.userEmail() }</p>
+          <p className="User-Meta-info-email">
+            <span>Email:</span>
+            {' '}
+            { this.userEmail() }
+          </p>
           { this.userCompany() }
           <p className="User-Meta-info-bio">{ this.userBio() }</p>
           <div className="User-Meta-info-location">
-            <IconContext.Provider value={{ color: "#000" }}>
+            <IconContext.Provider value={ { color: '#000' } }>
               <div>
                 <FaMapMarkerAlt />
               </div>

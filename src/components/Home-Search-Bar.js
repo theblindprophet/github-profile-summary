@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { IconContext } from 'react-icons';
-import { FaSpinner  } from 'react-icons/fa';
+import { FaSpinner } from 'react-icons/fa';
 import './Home-Search-Bar.css';
 
 class HomeSearchBar extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +41,7 @@ class HomeSearchBar extends Component {
       return (
         <button className="Search-Bar-form-submit" type="submit">
           Search
-          <IconContext.Provider value={{ color: "#fff" }}>
+          <IconContext.Provider value={ { color: '#fff' } }>
             <div>
               <FaSpinner />
             </div>
@@ -60,8 +59,8 @@ class HomeSearchBar extends Component {
   render() {
     return (
       <div className="Search-Bar row">
-        <form className="Search-Bar-form col" onSubmit={this.getUser}>
-          <input className="Search-Bar-form-search" type="text" aria-label="search user" placeholder="Search user" value={this.state.username} onChange={this.handleChange}/>
+        <form className="Search-Bar-form col" onSubmit={ this.getUser }>
+          <input className="Search-Bar-form-search" type="text" aria-label="search user" placeholder="Search user" value={ this.state.username } onChange={ this.handleChange } />
           {this.getSubmitButton()}
         </form>
       </div>

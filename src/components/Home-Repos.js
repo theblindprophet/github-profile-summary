@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './Home-Repos.css';
-import { IconContext } from "react-icons";
+import { IconContext } from 'react-icons';
 import { GoRepo } from 'react-icons/go';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 
 class HomeRepos extends Component {
-
   constructor(props) {
     super(props);
 
@@ -19,16 +18,17 @@ class HomeRepos extends Component {
   }
 
   createRepos = () => {
-    if (!this.props.userData || !this.props.userData.repositories || this.props.userData.repositories.edges.length === 0) {
+    if (!this.props.userData || !this.props.userData.repositories
+      || this.props.userData.repositories.edges.length === 0) {
       return (
         <div className="Repos col">
           <div className="Repos-repo">
-            <IconContext.Provider value={{}}>
+            <IconContext.Provider value={ {} }>
               <div className="Repos-repo-icon">
                 <GoRepo />
               </div>
             </IconContext.Provider>
-            <p className="Repos-repo-name">{(!this.props.userData || !this.props.userData.repositories) ? 'A list of repositories...': 'No repositories found...'}</p>
+            <p className="Repos-repo-name">{(!this.props.userData || !this.props.userData.repositories) ? 'A list of repositories...' : 'No repositories found...'}</p>
           </div>
         </div>
       );
@@ -37,9 +37,7 @@ class HomeRepos extends Component {
     return (
       <div className="Repos col">
         {
-          repos.map(({ node }, index) => {
-            return this.createRepo(node, index);
-          })
+          repos.map(({ node }, index) => this.createRepo(node, index))
         }
         {this.moreRepos()}
       </div>
@@ -55,14 +53,17 @@ class HomeRepos extends Component {
       dateFormatted = 'Unknown';
     }
     return (
-      <div className="Repos-repo" key={index} onClick={() => this.repoClicked(index)}>
-        <IconContext.Provider value={{}}>
+      <div className="Repos-repo" key={ index } onClick={ () => this.repoClicked(index) }>
+        <IconContext.Provider value={ {} }>
           <div className="Repos-repo-icon">
             <GoRepo />
           </div>
         </IconContext.Provider>
-        <a className="Repos-repo-name" href={node.url} target="_blank" rel="noopener noreferrer">{node.name}</a>
-        <div className="Repos-repo-updated">Last Updated: <b>{dateFormatted}</b></div>
+        <a className="Repos-repo-name" href={ node.url } target="_blank" rel="noopener noreferrer">{node.name}</a>
+        <div className="Repos-repo-updated">
+Last Updated:
+          <b>{dateFormatted}</b>
+        </div>
         {this.createLanguages(node.languages.edges)}
       </div>
     );
@@ -71,18 +72,18 @@ class HomeRepos extends Component {
   moreRepos = () => {
     if (!this.props.userData || !this.props.userData.repositories) {
       return '';
-    } else if (this.props.userData.repositories.totalCount <= 30) {
+    } if (this.props.userData.repositories.totalCount <= 30) {
       return '';
     }
     const url = `${this.props.userData.url}?tab=repositories`;
     return (
       <div className="Repos-repo" key="30">
-        <IconContext.Provider value={{}}>
+        <IconContext.Provider value={ {} }>
           <div className="Repos-repo-icon">
             <GoRepo />
           </div>
         </IconContext.Provider>
-        <a className="Repos-repo-name" href={url} target="_blank" rel="noopener noreferrer">View all repositiories...</a>
+        <a className="Repos-repo-name" href={ url } target="_blank" rel="noopener noreferrer">View all repositiories...</a>
       </div>
     );
   }
@@ -91,13 +92,13 @@ class HomeRepos extends Component {
     if (!languages || languages.length === 0) {
       return (
         ''
-      )
+      );
     }
     return (
       <div className="Repos-repo-languages">
         {
           languages.map(({ node }, index) => (
-            <div className="Repos-repo-languages-lang" style={{borderColor: node.color}} key={index}>
+            <div className="Repos-repo-languages-lang" style={ { borderColor: node.color } } key={ index }>
               {node.name}
             </div>
           ))

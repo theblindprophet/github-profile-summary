@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2';
 import './Home-Commits.css';
 
 class HomeCommits extends Component {
-
   constructor(props) {
     super(props);
 
@@ -20,7 +19,7 @@ class HomeCommits extends Component {
       };
     }
 
-    const commits = this.props.userData.commits;
+    const { commits } = this.props.userData;
     return {
       datasets: [{
         borderColor: 'rgba(52, 54, 66, 0.6)',
@@ -77,11 +76,10 @@ class HomeCommits extends Component {
           label: (tooltipItem, data) => {
             const date = new Date(data.datasets[0].data[tooltipItem.index].x);
             const commits = data.datasets[0].data[tooltipItem.index].y;
-            const formattedDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
-            console.log('label', `${commits} - ${formattedDate}`);
+            const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
             return `${commits} - ${formattedDate}`;
           },
-          title: () => { return '' }
+          title: () => ''
         }
       }
     };
@@ -93,12 +91,16 @@ class HomeCommits extends Component {
       return (
         <div className="Commits col">
           <p className="Commits-title">Recent Commits</p>
-          <Line data={this.getData()} options={this.getOptions()} width={280} height={240}></Line>
+          <Line
+            data={ this.getData() }
+            options={ this.getOptions() }
+            width={ 280 }
+            height={ 240 }
+          />
         </div>
       );
-    } else {
-      return '';
     }
+    return '';
   }
 }
 

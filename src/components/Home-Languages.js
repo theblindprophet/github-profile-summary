@@ -5,7 +5,6 @@ import './Home-Languages.css';
 const colors = ['#555662', '#3c93a3', '#5fbacc', '#3b3c4b', '#9a9a9a', '#323238', '#063740', '#d2d2d2'];
 
 class HomeLanguages extends Component {
-
   constructor(props) {
     super(props);
 
@@ -14,7 +13,7 @@ class HomeLanguages extends Component {
   }
 
   getData = () => {
-    const userLanguagePercents = this.props.userData.userLanguagePercents;
+    const { userLanguagePercents } = this.props.userData;
     const data = {
       labels: userLanguagePercents.map(lang => `${lang.name} ${lang.percent}%`),
       datasets: [
@@ -40,9 +39,7 @@ class HomeLanguages extends Component {
       },
       tooltips: {
         callbacks: {
-          label: (tooltipItem, data) => {
-            return `${data.labels[tooltipItem.index]}`;
-          }
+          label: (tooltipItem, data) => `${data.labels[tooltipItem.index]}`
         }
       }
     };
@@ -54,7 +51,7 @@ class HomeLanguages extends Component {
       return (
         <div className="Languages col">
           <p className="Languages-title">Language Spread</p>
-          <Pie width={285} height={285} data={this.getData()} options={this.getOptions()}></Pie>
+          <Pie width={ 285 } height={ 285 } data={ this.getData() } options={ this.getOptions() } />
         </div>
       );
     }
