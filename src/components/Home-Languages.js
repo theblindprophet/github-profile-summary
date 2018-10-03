@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
-import ColorHash from 'color-hash';
+import { COLORS } from '../constants';
 import './Home-Languages.css';
 
 class HomeLanguages extends Component {
@@ -9,7 +9,6 @@ class HomeLanguages extends Component {
 
     this.getData = this.getData.bind(this);
     this.getOptions = this.getOptions.bind(this);
-    this.colorHash = new ColorHash();
   }
 
   getData = () => {
@@ -19,7 +18,7 @@ class HomeLanguages extends Component {
       labels: userLanguagePercents.map(lang => `${lang.name} ${lang.percent}%`),
       datasets: [
         {
-          backgroundColor: userLanguagePercents.map((lang, index) => this.colorHash.hex(lang.name)),
+          backgroundColor: userLanguagePercents.map((lang, index) => COLORS[simpleHash(lang.name) % COLORS.length]),
           data: userLanguagePercents.map(lang => lang.percent)
         }
       ]
@@ -58,6 +57,18 @@ class HomeLanguages extends Component {
     }
     return '';
   }
+}
+
+// Java String hashcode implementation
+function simpleHash(s) {
+  let hash = 0;
+  if (s.length === 0) return hash;
+  for (let i = 0; i < s.length; i++) {
+    let char = s.charCodeAt(i);
+    hash = ((hash<<5)-hash)+char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash);
 }
 
 export default HomeLanguages;
