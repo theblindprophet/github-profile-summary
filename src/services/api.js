@@ -7,4 +7,11 @@ const getUserData = (username) => {
   return fetch(`${API_URL}/github/userData/${username}`);
 }
 
-export { getUserData };
+const postEmail = (data) => {
+  return fetch(`${API_URL}/email/user`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  });
+}
+
+export { getUserData, postEmail };

@@ -3,18 +3,37 @@ import './Home-User-Meta.css';
 import { IconContext } from "react-icons";
 import { FaMapMarkerAlt, FaUserTie } from 'react-icons/fa';
 import userPlaceholderImg from '../assets/user-placeholder.png';
+import { postEmail } from '../services/api';
+
+
+const isValidEmail = value => {
+  const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+  return reg.test(value);
+};
+
+const isValidSubject = value => {
+  const formattedValue = value.replace(/\r?\n|\r|\s/g, '');
+  return formattedValue.length > 0 && formattedValue.length <= 500;
+}
+
+const isValidMessage = value => {
+  const formattedValue = value.replace(/\r?\n|\r|\s/g, '');
+  return formattedValue.length > 0 && formattedValue.length <= 500;
+}
+
+const initialState = {
+  from: '',
+  subject: '',
+  message: '',
+  showEmailPopup: false,
+};
 
 class HomeUserMeta extends Component {
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      showEmailPopup: false,
-      from: '',
-      subject: '',
-      message: ''
-    };
+    this.state = initialState;
 
     this.userIsHirable = this.userIsHirable.bind(this);
     this.userImg = this.userImg.bind(this);
@@ -30,6 +49,7 @@ class HomeUserMeta extends Component {
     this.closeEmailPopup = this.closeEmailPopup.bind(this);
     this.showEmailPopup = this.showEmailPopup.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.emailPopupSubmit = this.emailPopupSubmit.bind(this);
   }
 
   handleInputChange(event) {
@@ -51,7 +71,7 @@ class HomeUserMeta extends Component {
 
   closeEmailPopup() {
     this.setState({
-      showEmailPopup: false
+      ...this.state, ...initialState
     });
   }
 
@@ -60,6 +80,35 @@ class HomeUserMeta extends Component {
       showEmailPopup: true
     });
   }
+
+  emailPopupSubmit() {
+    const { from, subject, message } = this.state;
+    postEmail({
+      from,
+      subject,
+      message
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+    this.setState({
+      ...this.state, ...initialState
+    });
+  }
+
+  isSubmitEnabled() {
+    const {
+      from,
+      subject,
+      message
+    } = this.state;
+    return isValidEmail(from) && isValidSubject(subject) && isValidMessage(message);
+  }
+
 
   userIsHirable = () => {
     if (this.props.userData && this.props.userData.isHirable) {
@@ -201,17 +250,35 @@ class HomeUserMeta extends Component {
               </div>
               <div className="User-Meta-email-popup-body">
                 <div>
-                  <input type="text" placeholder="From" name="from" value={this.state.from} onChange={this.handleInputChange} />
+                  <input className="form-field"
+                    type="text"
+                    placeholder="From*"
+                    name="from"
+                    value={this.state.from}
+                    onChange={this.handleInputChange} />
                 </div>
                 <div>
-                  <input type="text" placeholder="Subject" name="subject" value={this.state.subject} onChange={this.handleInputChange}/>
+                  <input className="form-field"
+                    type="text"
+                    placeholder="Subject*"
+                    name="subject"
+                    value={this.state.subject}
+                    onChange={this.handleInputChange}/>
                 </div>
                 <div>
-                  <textarea type="text" placeholder="Message" name="message" value={this.state.message} onChange={this.handleInputChange} />
+                  <textarea className="form-field"
+                    type="text"
+                    rows="5"
+                    placeholder="Message*"
+                    name="message"
+                    value={this.state.message}
+                    onChange={this.handleInputChange} />
                 </div>
               </div>
               <div className="User-Meta-email-popup-footer">
-                <button className="User-Meta-email-popup-footer-button-submit">Submit</button>
+                <button className="User-Meta-email-popup-footer-button-submit"
+                  onClick={this.emailPopupSubmit}
+                  disabled={!this.isSubmitEnabled()}>Submit</button>
                 <button className="User-Meta-email-popup-footer-button-cancel" onClick={this.closeEmailPopup}>Cancel</button>
               </div>
             </div>

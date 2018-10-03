@@ -162,6 +162,18 @@
 
     &-body {
       padding: 1rem;
+
+      .form-field {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #EFEFEF;
+        color: #343642;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        margin-top: 1rem;
+      }
     }
 
     &-footer {
@@ -181,11 +193,20 @@
       &-button-submit {
         color: $white;
         background-color: $primary;
+        border: 1px solid $primary;
+
+        &:disabled {
+          border: 1px solid #999999;
+          background-color: #cccccc;
+          color: #666666;
+          cursor: not-allowed;
+        }
       }
 
       &-button-cancel {
         color: $black;
         background-color: $light-gray;
+        border: 1px solid $light-gray;
       }
     }
   }
