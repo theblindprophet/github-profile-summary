@@ -64,6 +64,15 @@ class HomeUserMeta extends Component {
     return 'https://github.com';
   }
 
+  userImgUrl = () => {
+    if (this.props.userData && this.props.userData.url) {
+      return (
+        <a href={ this.userUrl() } target="_blank"><img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" /></a>
+      );
+    }
+    return (<img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />);
+  }
+  
   userEmail = () => {
     if (this.props.userData) {
       return this.props.userData.email || (<i>Hidden</i>);
@@ -124,7 +133,7 @@ class HomeUserMeta extends Component {
           { this.userIsHirable() }
         </div>
         <div className="User-Meta-profile">
-          <img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />
+          { this.userImgUrl() }
           <p className="User-Meta-profile-name">{ this.userName() }</p>
           <p className="User-Meta-profile-username">
             <a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a>
