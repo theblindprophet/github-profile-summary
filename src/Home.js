@@ -10,6 +10,9 @@ import HomeCommits from './components/Home-Commits';
 import HomeEvents from './components/Home-Events';
 import HomeRepos from './components/Home-Repos';
 import { getUserData } from './services/api';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 const colors = [
   '#555662',
@@ -32,16 +35,22 @@ class AppHome extends Component {
       loadingUser: false,
       userError: null,
       showRepoPopup: false,
-      repoPopup: null
+      repoPopup: null,
+      snackbar: {
+        open: false,
+        message: '',
+        isError: false
+      }
     };
 
     this.getUserData = this.getUserData.bind(this);
-    this.getUserError = this.getUserError.bind(this);
     this.createRepoPopup = this.createRepoPopup.bind(this);
     this.popupClicked = this.popupClicked.bind(this);
     this.getRepoPopupData = this.getRepoPopupData.bind(this);
     this.getRepoPopupOptions = this.getRepoPopupOptions.bind(this);
     this.getRepoPopupName = this.getRepoPopupName.bind(this);
+    this.getRepoPopupName = this.getRepoPopupName.bind(this);
+    this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }
 
   componentDidMount() {
@@ -67,11 +76,11 @@ class AppHome extends Component {
       if (!result.ok) {
         const error = await result.json();
         if (error.message && error.message.includes('with the login')) {
-          throw new Error(
-            `User '${username}' not found. Please check the username and try again.`
-          );
+          const message = `User '${username}' not found. Please check the username and try again.`;
+          this.setState({ snackbar: { open: true, message, isError: true } });
         }
-        throw new Error('Error loading user, please try again.');
+        const message = 'Error loading user, please try again.';
+        this.setState({ snackbar: { open: true, message, isError: true } });
       }
       const userData = await result.json();
       this.setState({
@@ -84,13 +93,6 @@ class AppHome extends Component {
         userError: e.message
       });
     }
-  };
-
-  getUserError = () => {
-    if (this.state.userError) {
-      return <div className="Home-error">{this.state.userError}</div>;
-    }
-    return '';
   };
 
   createRepoPopup = (repoPopup) => {
@@ -161,11 +163,14 @@ class AppHome extends Component {
     return 'Unknown';
   };
 
+  handleCloseSnackbar = () => {
+    this.setState({ snackbar: { open: false, message: '', isError: false } });
+  };
+
   render() {
     return (
       <div className="Home">
         <div className="Home-container">
-          {this.getUserError()}
           <HomeSearchBar
             query={ this.state.userSearchQuery }
             onSubmit={ this.getUserData }
@@ -199,6 +204,26 @@ class AppHome extends Component {
             />
           </div>
         </div>
+        <Snackbar
+          anchorOrigin={ {
+            vertical: 'bottom',
+            horizontal: 'left',
+          } }
+          open={ this.state.snackbar.open }
+          onClose={ this.handleCloseSnackbar }
+          autoHideDuration={ 6000 }
+          message={ <span style={{ color: this.state.snackbar.isError ? '#ff4160': '#EFEFEF' }}>{ this.state.snackbar.message }</span> }
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              onClick={this.handleCloseSnackbar}
+            >
+              <CloseIcon />
+            </IconButton>
+          ]}
+        />
       </div>
     );
   }
