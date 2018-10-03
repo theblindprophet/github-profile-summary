@@ -195,6 +195,15 @@
         color: $white;
         background-color: $primary;
         border: 1px solid $primary;
+        
+        > div {
+          margin-left: 0.5rem;
+          display: inline-block;
+
+          > svg {
+            animation: Loading-spin infinite 2s linear;
+          }
+        }
 
         &:disabled {
           border: 1px solid #999999;

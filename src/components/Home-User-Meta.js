@@ -27,6 +27,7 @@ const initialState = {
   subject: '',
   message: '',
   showEmailPopup: false,
+  loading: false
 };
 
 class HomeUserMeta extends Component {
@@ -63,8 +64,14 @@ class HomeUserMeta extends Component {
       });
     })
     .catch(err => {
-      console.log(err);
+      this.setState({
+        loading: false
+      })
     })
+
+    this.setState({
+      loading: true
+    });
   }
 
   isSubmitEnabled() {

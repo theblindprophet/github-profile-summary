@@ -144,6 +144,11 @@
         color: #fff;
         background-color: #348899;
         border: 1px solid #348899; }
+        .User-Meta-email-popup-footer-button-submit > div {
+          margin-left: 0.5rem;
+          display: inline-block; }
+          .User-Meta-email-popup-footer-button-submit > div > svg {
+            animation: Loading-spin infinite 2s linear; }
         .User-Meta-email-popup-footer-button-submit:disabled {
           border: 1px solid #999999;
           background-color: #cccccc;
