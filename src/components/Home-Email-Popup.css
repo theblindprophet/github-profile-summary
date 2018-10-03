@@ -1,0 +1,71 @@
+/* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
+.User-Email-Popup {
+  font-family: 'Open Sans', sans-serif; }
+  .User-Email-Popup-email-popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(52, 54, 66, 0.7);
+    z-index: 1; }
+    .User-Email-Popup-email-popup > div {
+      width: 480px;
+      max-width: 82%;
+      background-color: #fff;
+      border-radius: 4px; }
+    .User-Email-Popup-email-popup-header {
+      padding: 1rem;
+      border-bottom: 1px solid #EFEFEF; }
+      .User-Email-Popup-email-popup-header-title {
+        margin: 0; }
+    .User-Email-Popup-email-popup-body {
+      padding: 1rem; }
+      .User-Email-Popup-email-popup-body .form-field {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #EFEFEF;
+        color: #343642;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        margin-top: 1rem; }
+    .User-Email-Popup-email-popup-footer {
+      padding: 1rem;
+      text-align: right;
+      border-top: 1px solid #EFEFEF; }
+      .User-Email-Popup-email-popup-footer-button-submit, .User-Email-Popup-email-popup-footer-button-cancel {
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-left: 10px; }
+      .User-Email-Popup-email-popup-footer-button-submit {
+        color: #fff;
+        background-color: #348899;
+        border: 1px solid #348899; }
+        .User-Email-Popup-email-popup-footer-button-submit > div {
+          margin-left: 0.5rem;
+          display: inline-block; }
+          .User-Email-Popup-email-popup-footer-button-submit > div > svg {
+            animation: Loading-spin infinite 2s linear; }
+        .User-Email-Popup-email-popup-footer-button-submit:disabled {
+          border: 1px solid #999999;
+          background-color: #cccccc;
+          color: #666666;
+          cursor: not-allowed; }
+      .User-Email-Popup-email-popup-footer-button-cancel {
+        color: #000;
+        background-color: #EFEFEF;
+        border: 1px solid #EFEFEF; }

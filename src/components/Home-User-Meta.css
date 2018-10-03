@@ -48,6 +48,17 @@
           text-decoration: none; }
         .User-Meta-profile-username > a:hover {
           text-decoration: underline; }
+    .User-Meta-profile-action-email {
+      display: flex;
+      justify-content: center; }
+      .User-Meta-profile-action-email button {
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        color: #fff;
+        background-color: #348899;
+        font-size: 1rem;
+        cursor: pointer; }
   .User-Meta-info {
     overflow: auto; }
     .User-Meta-info > p {
@@ -86,6 +97,67 @@
         font-weight: 600; }
         .User-Meta-info-website > a:link, .User-Meta-info-website > a:visited, .User-Meta-info-website > a:hover, .User-Meta-info-website > a:active {
           color: #54b2c5; }
+  .User-Meta-email-popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(52, 54, 66, 0.7);
+    z-index: 1; }
+    .User-Meta-email-popup > div {
+      width: 480px;
+      max-width: 82%;
+      background-color: #fff;
+      border-radius: 4px; }
+    .User-Meta-email-popup-header {
+      padding: 1rem;
+      border-bottom: 1px solid #EFEFEF; }
+      .User-Meta-email-popup-header-title {
+        margin: 0; }
+    .User-Meta-email-popup-body {
+      padding: 1rem; }
+      .User-Meta-email-popup-body .form-field {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #EFEFEF;
+        color: #343642;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        margin-top: 1rem; }
+    .User-Meta-email-popup-footer {
+      padding: 1rem;
+      text-align: right;
+      border-top: 1px solid #EFEFEF; }
+      .User-Meta-email-popup-footer-button-submit, .User-Meta-email-popup-footer-button-cancel {
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-left: 10px; }
+      .User-Meta-email-popup-footer-button-submit {
+        color: #fff;
+        background-color: #348899;
+        border: 1px solid #348899; }
+        .User-Meta-email-popup-footer-button-submit > div {
+          margin-left: 0.5rem;
+          display: inline-block; }
+          .User-Meta-email-popup-footer-button-submit > div > svg {
+            animation: Loading-spin infinite 2s linear; }
+        .User-Meta-email-popup-footer-button-submit:disabled {
+          border: 1px solid #999999;
+          background-color: #cccccc;
+          color: #666666;
+          cursor: not-allowed; }
+      .User-Meta-email-popup-footer-button-cancel {
+        color: #000;
+        background-color: #EFEFEF;
+        border: 1px solid #EFEFEF; }
 
 @media screen and (max-width: 940px) {
   .User-Meta {

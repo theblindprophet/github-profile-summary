@@ -1,0 +1,91 @@
+@import '../shared.scss';
+
+.User-Email-Popup {
+  font-family: 'Open Sans', sans-serif;
+  
+  &-email-popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($dark-gray, 0.7);
+    z-index: 1;
+
+    > div {
+      width: 480px;
+      max-width: 82%;
+      background-color: $white;
+      border-radius: 4px;
+    }
+    &-header {
+      padding: 1rem;
+      border-bottom: 1px solid $light-gray;
+
+      &-title {
+        margin: 0;
+      }
+    }
+
+    &-body {
+      padding: 1rem;
+
+      .form-field {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #EFEFEF;
+        color: #343642;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        margin-top: 1rem;
+      }
+    }
+
+    &-footer {
+      padding: 1rem;
+      text-align: right;
+      border-top: 1px solid $light-gray;
+
+      &-button-submit, &-button-cancel {
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+
+      &-button-submit {
+        color: $white;
+        background-color: $primary;
+        border: 1px solid $primary;
+        
+        > div {
+          margin-left: 0.5rem;
+          display: inline-block;
+
+          > svg {
+            animation: Loading-spin infinite 2s linear;
+          }
+        }
+
+        &:disabled {
+          border: 1px solid #999999;
+          background-color: #cccccc;
+          color: #666666;
+          cursor: not-allowed;
+        }
+      }
+
+      &-button-cancel {
+        color: $black;
+        background-color: $light-gray;
+        border: 1px solid $light-gray;
+      }
+    }
+  }
+}

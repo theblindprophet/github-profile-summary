@@ -1,12 +1,40 @@
 import React, { Component } from 'react';
 import './Home-User-Meta.css';
+import HomeEmailPopup from './Home-Email-Popup';
 import { IconContext } from 'react-icons';
 import { FaMapMarkerAlt, FaUserTie } from 'react-icons/fa';
 import userPlaceholderImg from '../assets/user-placeholder.png';
+import { postEmail } from '../services/api';
+
+
+const isValidEmail = value => {
+  const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+  return reg.test(value);
+};
+
+const isValidSubject = value => {
+  const formattedValue = value.replace(/\r?\n|\r|\s/g, '');
+  return formattedValue.length > 0 && formattedValue.length <= 500;
+}
+
+const isValidMessage = value => {
+  const formattedValue = value.replace(/\r?\n|\r|\s/g, '');
+  return formattedValue.length > 0 && formattedValue.length <= 500;
+}
+
+const initialState = {
+  from: '',
+  subject: '',
+  message: '',
+  showEmailPopup: false,
+  loading: false
+};
 
 class HomeUserMeta extends Component {
   constructor(props) {
     super(props);
+
+    this.state = initialState;
 
     this.userIsHirable = this.userIsHirable.bind(this);
     this.userImg = this.userImg.bind(this);
@@ -18,7 +46,43 @@ class HomeUserMeta extends Component {
     this.userBio = this.userBio.bind(this);
     this.userLocation = this.userLocation.bind(this);
     this.userWebsite = this.userWebsite.bind(this);
+    this.showEmailPopup = this.showEmailPopup.bind(this);
+    this.closeEmailPopup = this.closeEmailPopup.bind(this);
+    this.actionEmail = this.actionEmail.bind(this);
   }
+
+  emailPopupSubmit() {
+    const { from, subject, message } = this.state;
+    postEmail({
+      from,
+      subject,
+      message
+    })
+    .then(res => {
+      this.setState({
+        ...this.state, ...initialState
+      });
+    })
+    .catch(err => {
+      this.setState({
+        loading: false
+      })
+    })
+
+    this.setState({
+      loading: true
+    });
+  }
+
+  isSubmitEnabled() {
+    const {
+      from,
+      subject,
+      message
+    } = this.state;
+    return isValidEmail(from) && isValidSubject(subject) && isValidMessage(message);
+  }
+
 
   userIsHirable = () => {
     if (this.props.userData && this.props.userData.isHirable) {
@@ -126,6 +190,29 @@ class HomeUserMeta extends Component {
     return 'Website...';
   }
 
+  actionEmail = () => {
+    if (this.props.userData && this.props.userData.email) {
+      return (
+        <p className="User-Meta-profile-action-email">
+          <button onClick={ this.showEmailPopup }>Email</button>
+        </p>
+      )
+    }
+    return null;
+  }
+
+  showEmailPopup() {
+    this.setState({
+      showEmailPopup: true
+    });
+  }
+
+  closeEmailPopup() {
+    this.setState({
+      showEmailPopup: false
+    });
+  }
+
   render() {
     return (
       <div className="User-Meta col">
@@ -138,6 +225,7 @@ class HomeUserMeta extends Component {
           <p className="User-Meta-profile-username">
             <a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a>
           </p>
+          { this.actionEmail() }
         </div>
         <div className="User-Meta-info">
           <p className="User-Meta-info-email">
@@ -159,6 +247,12 @@ class HomeUserMeta extends Component {
             { this.userWebsite() }
           </p>
         </div>
+        <HomeEmailPopup
+          userData={ this.props.userData }
+          show={ this.state.showEmailPopup }
+          close={ this.closeEmailPopup }
+          showSnackbar={ this.props.showSnackbar }
+        />
       </div>
     );
   }
