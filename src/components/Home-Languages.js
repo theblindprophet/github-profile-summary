@@ -9,6 +9,7 @@ class HomeLanguages extends Component {
 
     this.getData = this.getData.bind(this);
     this.getOptions = this.getOptions.bind(this);
+    this.simpleHash = this.simpleHash.bind(this);
   }
 
   getData = () => {
@@ -18,12 +19,24 @@ class HomeLanguages extends Component {
       labels: userLanguagePercents.map(lang => `${lang.name} ${lang.percent}%`),
       datasets: [
         {
-          backgroundColor: userLanguagePercents.map((lang, index) => COLORS[simpleHash(lang.name) % COLORS.length]),
+          backgroundColor: userLanguagePercents.map((lang, index) => COLORS[this.simpleHash(lang.name) % COLORS.length]),
           data: userLanguagePercents.map(lang => lang.percent)
         }
       ]
     };
     return data;
+  }
+
+  // Java String hashcode implementation
+  simpleHash = (s) => {
+    let hash = 0;
+    if (s.length === 0) return hash;
+    for (let i = 0; i < s.length; i++) {
+      let char = s.charCodeAt(i);
+      hash = ((hash<<5)-hash)+char;
+      hash = hash & hash;
+    }
+    return Math.abs(hash);
   }
 
   getOptions = () => {
@@ -57,18 +70,6 @@ class HomeLanguages extends Component {
     }
     return '';
   }
-}
-
-// Java String hashcode implementation
-function simpleHash(s) {
-  let hash = 0;
-  if (s.length === 0) return hash;
-  for (let i = 0; i < s.length; i++) {
-    let char = s.charCodeAt(i);
-    hash = ((hash<<5)-hash)+char;
-    hash = hash & hash;
-  }
-  return Math.abs(hash);
 }
 
 export default HomeLanguages;
