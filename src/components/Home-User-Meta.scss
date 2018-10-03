@@ -144,6 +144,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgba($dark-gray, 0.7);
+    z-index: 1;
 
     > div {
       width: 480px;

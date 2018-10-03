@@ -89,15 +89,13 @@ class HomeUserMeta extends Component {
       message
     })
     .then(res => {
-      console.log(res);
+      this.setState({
+        ...this.state, ...initialState
+      });
     })
     .catch(err => {
       console.log(err);
     })
-
-    this.setState({
-      ...this.state, ...initialState
-    });
   }
 
   isSubmitEnabled() {

@@ -105,7 +105,8 @@
     right: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgba(52, 54, 66, 0.7); }
+    background-color: rgba(52, 54, 66, 0.7);
+    z-index: 1; }
     .User-Meta-email-popup > div {
       width: 480px;
       max-width: 82%;
