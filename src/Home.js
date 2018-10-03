@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import './Home.css';
 import ReactGA from 'react-ga';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import HomeSearchBar from './components/Home-Search-Bar';
 import HomeUserMeta from './components/Home-User-Meta';
 import HomeStats from './components/Home-Stats';
@@ -10,9 +13,6 @@ import HomeCommits from './components/Home-Commits';
 import HomeEvents from './components/Home-Events';
 import HomeRepos from './components/Home-Repos';
 import { getUserData } from './services/api';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 
 const colors = [
   '#555662',
@@ -33,7 +33,6 @@ class AppHome extends Component {
       userSearchQuery: '',
       userData: null,
       loadingUser: false,
-      userError: null,
       showRepoPopup: false,
       repoPopup: null,
       snackbar: {
@@ -68,8 +67,7 @@ class AppHome extends Component {
       action: 'Searched user'
     });
     this.setState({
-      loadingUser: true,
-      userError: null
+      loadingUser: true
     });
     try {
       const result = await getUserData(username);
@@ -77,10 +75,10 @@ class AppHome extends Component {
         const error = await result.json();
         if (error.message && error.message.includes('with the login')) {
           const message = `User '${username}' not found. Please check the username and try again.`;
-          this.setState({ snackbar: { open: true, message, isError: true } });
+          throw new Error(message);
         }
         const message = 'Error loading user, please try again.';
-        this.setState({ snackbar: { open: true, message, isError: true } });
+        throw new Error(message);
       }
       const userData = await result.json();
       this.setState({
@@ -89,9 +87,9 @@ class AppHome extends Component {
       });
     } catch (e) {
       this.setState({
-        loadingUser: false,
-        userError: e.message
+        loadingUser: false
       });
+      this.setState({ snackbar: { open: true, message: e.message, isError: true } });
     }
   };
 
@@ -212,17 +210,17 @@ class AppHome extends Component {
           open={ this.state.snackbar.open }
           onClose={ this.handleCloseSnackbar }
           autoHideDuration={ 6000 }
-          message={ <span style={{ color: this.state.snackbar.isError ? '#ff4160': '#EFEFEF' }}>{ this.state.snackbar.message }</span> }
-          action={[
+          message={ <span style={ { color: this.state.snackbar.isError ? '#ff4160' : '#EFEFEF' } }>{ this.state.snackbar.message }</span> }
+          action={ [
             <IconButton
               key="close"
               aria-label="Close"
               color="inherit"
-              onClick={this.handleCloseSnackbar}
+              onClick={ this.handleCloseSnackbar }
             >
               <CloseIcon />
             </IconButton>
-          ]}
+          ] }
         />
       </div>
     );
