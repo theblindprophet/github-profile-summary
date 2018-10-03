@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Home-User-Meta.css';
+import HomeEmailPopup from './Home-Email-Popup';
 import { IconContext } from 'react-icons';
 import { FaMapMarkerAlt, FaUserTie } from 'react-icons/fa';
 import userPlaceholderImg from '../assets/user-placeholder.png';
@@ -25,39 +26,9 @@ class HomeUserMeta extends Component {
     this.userBio = this.userBio.bind(this);
     this.userLocation = this.userLocation.bind(this);
     this.userWebsite = this.userWebsite.bind(this);
-    this.popupClicked = this.popupClicked.bind(this);
-    this.closeEmailPopup = this.closeEmailPopup.bind(this);
     this.showEmailPopup = this.showEmailPopup.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
-  handleInputChange(event) {
-    const {
-      name,
-      value
-    } = event.target;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
-  popupClicked(event) {
-    if(event.target.id === 'User-Meta-email-popup') {
-      this.closeEmailPopup();
-    }
-  }
-
-  closeEmailPopup() {
-    this.setState({
-      showEmailPopup: false
-    });
-  }
-
-  showEmailPopup() {
-    this.setState({
-      showEmailPopup: true
-    });
+    this.closeEmailPopup = this.closeEmailPopup.bind(this);
+    this.actionEmail = this.actionEmail.bind(this);
   }
 
   userIsHirable = () => {
@@ -120,17 +91,6 @@ class HomeUserMeta extends Component {
     return 'Email...';
   }
 
-  actionEmail = () => {
-    if (this.props.userData && this.props.userData.email) {
-      return (
-        <p className="User-Meta-profile-action-email">
-          <button onClick={this.showEmailPopup}>Email</button>
-        </p>
-      )
-    }
-    return null;
-  }
-
   userCompany = () => {
     if (this.props.userData && this.props.userData.company) {
       return (
@@ -177,6 +137,29 @@ class HomeUserMeta extends Component {
     return 'Website...';
   }
 
+  actionEmail = () => {
+    if (this.props.userData && this.props.userData.email) {
+      return (
+        <p className="User-Meta-profile-action-email">
+          <button onClick={ this.showEmailPopup }>Email</button>
+        </p>
+      )
+    }
+    return null;
+  }
+
+  showEmailPopup() {
+    this.setState({
+      showEmailPopup: true
+    });
+  }
+
+  closeEmailPopup() {
+    this.setState({
+      showEmailPopup: false
+    });
+  }
+
   render() {
     return (
       <div className="User-Meta col">
@@ -189,6 +172,7 @@ class HomeUserMeta extends Component {
           <p className="User-Meta-profile-username">
             <a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a>
           </p>
+          { this.actionEmail() }
         </div>
         <div className="User-Meta-info">
           <p className="User-Meta-info-email">
@@ -210,30 +194,11 @@ class HomeUserMeta extends Component {
             { this.userWebsite() }
           </p>
         </div>
-        {this.actionEmail() && (
-          <div id="User-Meta-email-popup" className="User-Meta-email-popup" style={{ display: this.state.showEmailPopup ? 'flex': 'none' }} onClick={this.popupClicked}>
-            <div>
-              <div className="User-Meta-email-popup-header">
-                <h2 className="User-Meta-email-popup-header-title">Send Email</h2>
-              </div>
-              <div className="User-Meta-email-popup-body">
-                <div>
-                  <input type="text" placeholder="From" name="from" value={this.state.from} onChange={this.handleInputChange} />
-                </div>
-                <div>
-                  <input type="text" placeholder="Subject" name="subject" value={this.state.subject} onChange={this.handleInputChange}/>
-                </div>
-                <div>
-                  <textarea type="text" placeholder="Message" name="message" value={this.state.message} onChange={this.handleInputChange} />
-                </div>
-              </div>
-              <div className="User-Meta-email-popup-footer">
-                <button className="User-Meta-email-popup-footer-button-submit">Submit</button>
-                <button className="User-Meta-email-popup-footer-button-cancel" onClick={this.closeEmailPopup}>Cancel</button>
-              </div>
-            </div>
-          </div>
-        )}
+        <HomeEmailPopup
+          userData={ this.props.userData }
+          show={ this.state.showEmailPopup }
+          close={ this.closeEmailPopup }
+        />
       </div>
     );
   }
