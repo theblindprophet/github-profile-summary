@@ -1,10 +1,6 @@
 @import './shared.scss';
 
 .Home {
-  &-error {
-    text-align: center;
-    color: $accent;
-  }
   &-repopopup {
     position: fixed;
     top: 0;

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import './Home.css';
 import ReactGA from 'react-ga';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import HomeSearchBar from './components/Home-Search-Bar';
 import HomeUserMeta from './components/Home-User-Meta';
 import HomeStats from './components/Home-Stats';
@@ -30,18 +33,23 @@ class AppHome extends Component {
       userSearchQuery: '',
       userData: null,
       loadingUser: false,
-      userError: null,
       showRepoPopup: false,
-      repoPopup: null
+      repoPopup: null,
+      snackbar: {
+        open: false,
+        message: '',
+        isError: false
+      }
     };
 
     this.getUserData = this.getUserData.bind(this);
-    this.getUserError = this.getUserError.bind(this);
     this.createRepoPopup = this.createRepoPopup.bind(this);
     this.popupClicked = this.popupClicked.bind(this);
     this.getRepoPopupData = this.getRepoPopupData.bind(this);
     this.getRepoPopupOptions = this.getRepoPopupOptions.bind(this);
     this.getRepoPopupName = this.getRepoPopupName.bind(this);
+    this.getRepoPopupName = this.getRepoPopupName.bind(this);
+    this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }
 
   componentDidMount() {
@@ -59,19 +67,18 @@ class AppHome extends Component {
       action: 'Searched user'
     });
     this.setState({
-      loadingUser: true,
-      userError: null
+      loadingUser: true
     });
     try {
       const result = await getUserData(username);
       if (!result.ok) {
         const error = await result.json();
         if (error.message && error.message.includes('with the login')) {
-          throw new Error(
-            `User '${username}' not found. Please check the username and try again.`
-          );
+          const message = `User '${username}' not found. Please check the username and try again.`;
+          throw new Error(message);
         }
-        throw new Error('Error loading user, please try again.');
+        const message = 'Error loading user, please try again.';
+        throw new Error(message);
       }
       const userData = await result.json();
       this.setState({
@@ -80,17 +87,10 @@ class AppHome extends Component {
       });
     } catch (e) {
       this.setState({
-        loadingUser: false,
-        userError: e.message
+        loadingUser: false
       });
+      this.setState({ snackbar: { open: true, message: e.message, isError: true } });
     }
-  };
-
-  getUserError = () => {
-    if (this.state.userError) {
-      return <div className="Home-error">{this.state.userError}</div>;
-    }
-    return '';
   };
 
   createRepoPopup = (repoPopup) => {
@@ -161,11 +161,14 @@ class AppHome extends Component {
     return 'Unknown';
   };
 
+  handleCloseSnackbar = () => {
+    this.setState({ snackbar: { open: false, message: '', isError: false } });
+  };
+
   render() {
     return (
       <div className="Home">
         <div className="Home-container">
-          {this.getUserError()}
           <HomeSearchBar
             query={ this.state.userSearchQuery }
             onSubmit={ this.getUserData }
@@ -199,6 +202,26 @@ class AppHome extends Component {
             />
           </div>
         </div>
+        <Snackbar
+          anchorOrigin={ {
+            vertical: 'bottom',
+            horizontal: 'left',
+          } }
+          open={ this.state.snackbar.open }
+          onClose={ this.handleCloseSnackbar }
+          autoHideDuration={ 6000 }
+          message={ <span style={ { color: this.state.snackbar.isError ? '#ff4160' : '#EFEFEF' } }>{ this.state.snackbar.message }</span> }
+          action={ [
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              onClick={ this.handleCloseSnackbar }
+            >
+              <CloseIcon />
+            </IconButton>
+          ] }
+        />
       </div>
     );
   }
