@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { IconContext } from "react-icons";
+import { IconContext } from 'react-icons';
 import { FaSpinner  } from 'react-icons/fa';
 import './Home-Search-Bar.css';
 
