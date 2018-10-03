@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
+import ColorHash from 'color-hash';
 import './Home-Languages.css';
-
-const colors = ['#555662', '#3c93a3', '#5fbacc', '#3b3c4b', '#9a9a9a', '#323238', '#063740', '#d2d2d2'];
 
 class HomeLanguages extends Component {
   constructor(props) {
@@ -10,15 +9,17 @@ class HomeLanguages extends Component {
 
     this.getData = this.getData.bind(this);
     this.getOptions = this.getOptions.bind(this);
+    this.colorHash = new ColorHash();
   }
 
   getData = () => {
     const { userLanguagePercents } = this.props.userData;
+    userLanguagePercents.sort((lang1, lang2) => lang2.percent - lang1.percent);
     const data = {
       labels: userLanguagePercents.map(lang => `${lang.name} ${lang.percent}%`),
       datasets: [
         {
-          backgroundColor: userLanguagePercents.map((lang, index) => colors[index % colors.length]),
+          backgroundColor: userLanguagePercents.map((lang, index) => this.colorHash.hex(lang.name)),
           data: userLanguagePercents.map(lang => lang.percent)
         }
       ]
