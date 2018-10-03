@@ -18,7 +18,8 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "ui-only": "export REACT_APP_API_URL=https://githubprofilesummary.appspot.com/api/v1; concurrently \"react-scripts start\" \"npm run watch-css\"",
+    "start": "export REACT_APP_API_URL=http://localhost:3003/api/v1; concurrently \"react-scripts start\" \"npm run watch-css\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

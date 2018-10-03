@@ -15,15 +15,22 @@ NodeJs, ExpressJs backend for this project is located here: https://github.com/t
 
 ## Run
 
-`npm run start`
+If you are only working on this project and **not** the backend project:
+```
+npm run ui-only
+```
 
-`npm run watch-css` (separate window)
+Otherwise if you're also running the backend:
+```
+npm run start
+```
 
 ## Styling
 
 Sass is used for styling. All `.scss` files are compliled into `.css` in the same directory.
 
 ## Environment
+**Note**: Environment variables are taken care of if using either of the `npm run` commands above
 
 | Name | Description | Example |
 |------|-------------|--------|
