@@ -10,7 +10,11 @@
     },
     "globals": {
         "process": false,
-        "fetch": false
+        "fetch": false,
+        "window": false,
+        "navigator": false,
+        "document": false,
+        "register": false
     },
     "rules": {
         "camelcase": [0],
@@ -26,6 +30,7 @@
             "error",
             "unix"
         ],
+        "no-use-before-define": [0],
         "object-curly-newline": [0],
         "prefer-default-export": false,
         "quotes": [

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Home from './Home.js';
-import TermsAndService from './TermsAndPrivacy.js';
+import ReactGA from 'react-ga';
+import Home from './Home';
+import TermsAndService from './TermsAndPrivacy';
 import logo from './assets/logo.png';
 import githubLogo from './assets/github-logo.png';
-import ReactGA from 'react-ga';
 
 class App extends Component {
   componentWillMount() {
@@ -26,20 +26,20 @@ class App extends Component {
             </a>
           </div>
           <div>
-            <img className="App-header-logo" src={logo} alt="logo" />
+            <img className="App-header-logo" src={ logo } alt="logo" />
           </div>
         </header>
         <div className="App-container">
           <Router>
             <div>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={ Home } />
               <Route
                 path="/user/:username"
-                render={props => (
-                  <Home username={props.match.params.username} />
-                )}
+                render={ props => (
+                  <Home username={ props.match.params.username } />
+                ) }
               />
-              <Route path="/terms-and-privacy" component={TermsAndService} />
+              <Route path="/terms-and-privacy" component={ TermsAndService } />
             </div>
           </Router>
         </div>
@@ -70,10 +70,10 @@ class App extends Component {
           </ul>
           <div className="App-footer-github">
             <span>Integrated with </span>
-            <img src={githubLogo} alt="github" />
+            <img src={ githubLogo } alt="github" />
           </div>
           <div className="App-footer-logo">
-            <img src={logo} alt="logo" />
+            <img src={ logo } alt="logo" />
           </div>
         </footer>
       </div>
