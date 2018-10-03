@@ -51,29 +51,6 @@ class HomeUserMeta extends Component {
     this.actionEmail = this.actionEmail.bind(this);
   }
 
-  emailPopupSubmit() {
-    const { from, subject, message } = this.state;
-    postEmail({
-      from,
-      subject,
-      message
-    })
-    .then(res => {
-      this.setState({
-        ...this.state, ...initialState
-      });
-    })
-    .catch(err => {
-      this.setState({
-        loading: false
-      })
-    })
-
-    this.setState({
-      loading: true
-    });
-  }
-
   isSubmitEnabled() {
     const {
       from,
@@ -82,7 +59,6 @@ class HomeUserMeta extends Component {
     } = this.state;
     return isValidEmail(from) && isValidSubject(subject) && isValidMessage(message);
   }
-
 
   userIsHirable = () => {
     if (this.props.userData && this.props.userData.isHirable) {
