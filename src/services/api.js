@@ -3,9 +3,7 @@
  */
 const API_URL = process.env.REACT_APP_API_URL;
 
-const getUserData = (username) => {
-  return fetch(`${API_URL}/github/userData/${username}`);
-}
+const getUserData = username => fetch(`${API_URL}/github/userData/${username}`);
 
 const postEmail = (data) => {
   return fetch(`${API_URL}/email/user`, {

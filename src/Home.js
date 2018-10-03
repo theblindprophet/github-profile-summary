@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import './Home.css';
-import HomeSearchBar from './components/Home-Search-Bar.js';
-import HomeUserMeta from './components/Home-User-Meta.js';
-import HomeStats from './components/Home-Stats.js';
-import HomeLanguages from './components/Home-Languages.js';
-import HomeCommits from './components/Home-Commits.js';
-import HomeEvents from './components/Home-Events.js';
-import HomeRepos from './components/Home-Repos.js';
-import { getUserData } from './services/api';
 import ReactGA from 'react-ga';
-import QueryString from 'query-string';
+import HomeSearchBar from './components/Home-Search-Bar';
+import HomeUserMeta from './components/Home-User-Meta';
+import HomeStats from './components/Home-Stats';
+import HomeLanguages from './components/Home-Languages';
+import HomeCommits from './components/Home-Commits';
+import HomeEvents from './components/Home-Events';
+import HomeRepos from './components/Home-Repos';
+import { getUserData } from './services/api';
 
-const colors = ['#555662', '#3c93a3', '#5fbacc', '#3b3c4b', '#9a9a9a', '#323238', '#063740', '#d2d2d2'];
+const colors = [
+  '#555662',
+  '#3c93a3',
+  '#5fbacc',
+  '#3b3c4b',
+  '#9a9a9a',
+  '#323238',
+  '#063740',
+  '#d2d2d2'
+];
 
 class AppHome extends Component {
-
   constructor(props) {
     super(props);
 
@@ -38,12 +45,11 @@ class AppHome extends Component {
   }
 
   componentDidMount() {
-    if (this.props.location && this.props.location.search) {
-      const queuries = QueryString.parse(this.props.location.search);
+    if (this.props.username) {
       this.setState({
-        userSearchQuery: queuries.search
+        userSearchQuery: this.props.username
       });
-      this.getUserData(queuries.search);
+      this.getUserData(this.props.username);
     }
   }
 
@@ -61,7 +67,9 @@ class AppHome extends Component {
       if (!result.ok) {
         const error = await result.json();
         if (error.message && error.message.includes('with the login')) {
-          throw new Error(`User '${username}' not found. Please check the username and try again.`);
+          throw new Error(
+            `User '${username}' not found. Please check the username and try again.`
+          );
         }
         throw new Error('Error loading user, please try again.');
       }
@@ -76,28 +84,27 @@ class AppHome extends Component {
         userError: e.message
       });
     }
-  }
+  };
 
   getUserError = () => {
     if (this.state.userError) {
-      return (
-        <div className="Home-error">
-          { this.state.userError }
-        </div>
-      );
+      return <div className="Home-error">{this.state.userError}</div>;
     }
     return '';
-  }
+  };
 
   createRepoPopup = (repoPopup) => {
     if (this.state.userData && this.state.userData.repoLanguagePercents) {
-      const langsForRepo = this.state.userData.repoLanguagePercents.find(({ repo }) => repoPopup.name === repo);
+      // eslint-disable-next-line react/no-access-state-in-setstate
+      const langsForRepo = this.state.userData.repoLanguagePercents.find(
+        ({ repo }) => repoPopup.name === repo
+      );
       this.setState({
         showRepoPopup: true,
         repoPopup: langsForRepo
       });
     }
-  }
+  };
 
   popupClicked = (event) => {
     if (event.target && event.target.id === 'Home-repopopup') {
@@ -106,24 +113,26 @@ class AppHome extends Component {
         repoPopup: null
       });
     }
-  }
+  };
 
   getRepoPopupData = () => {
     let languages = [];
     if (this.state.repoPopup && this.state.repoPopup.languages) {
-      languages = this.state.repoPopup.languages;
+      ({ languages } = this.state.repoPopup);
     }
     const data = {
       labels: languages.map(lang => `${lang.name} ${lang.percent}%`),
       datasets: [
         {
-          backgroundColor: languages.map((lang, index) => colors[index % colors.length]),
+          backgroundColor: languages.map(
+            (lang, index) => colors[index % colors.length]
+          ),
           data: languages.map(lang => lang.percent)
         }
       ]
     };
     return data;
-  }
+  };
 
   getRepoPopupOptions = () => {
     const options = {
@@ -138,41 +147,56 @@ class AppHome extends Component {
       },
       tooltips: {
         callbacks: {
-          label: (tooltipItem, data) => {
-            return `${data.labels[tooltipItem.index]}`;
-          }
+          label: (tooltipItem, data) => `${data.labels[tooltipItem.index]}`
         }
       }
     };
     return options;
-  }
+  };
 
   getRepoPopupName = () => {
     if (this.state.repoPopup) {
       return this.state.repoPopup.repo || 'Unknown';
     }
     return 'Unknown';
-  }
+  };
 
   render() {
     return (
       <div className="Home">
         <div className="Home-container">
           {this.getUserError()}
-          <HomeSearchBar query={this.state.userSearchQuery} onSubmit={this.getUserData} loadingUser={this.state.loadingUser}></HomeSearchBar>
+          <HomeSearchBar
+            query={ this.state.userSearchQuery }
+            onSubmit={ this.getUserData }
+            loadingUser={ this.state.loadingUser }
+          />
           <div className="Home-Row-1 row">
-            <HomeUserMeta userData={this.state.userData}></HomeUserMeta>
-            <HomeStats userData={this.state.userData}></HomeStats>
-            <HomeLanguages userData={this.state.userData}></HomeLanguages>
-            <HomeCommits userData={this.state.userData}></HomeCommits>
-            <HomeEvents userData={this.state.userData}></HomeEvents>
-            <HomeRepos userData={this.state.userData} onRepoClick={this.createRepoPopup}></HomeRepos>
+            <HomeUserMeta userData={ this.state.userData } />
+            <HomeStats userData={ this.state.userData } />
+            <HomeLanguages userData={ this.state.userData } />
+            <HomeCommits userData={ this.state.userData } />
+            <HomeEvents userData={ this.state.userData } />
+            <HomeRepos
+              userData={ this.state.userData }
+              onRepoClick={ this.createRepoPopup }
+            />
           </div>
         </div>
-        <div id="Home-repopopup" className="Home-repopopup" style={{ display: this.state.showRepoPopup ? 'flex' : 'none' }} onClick={this.popupClicked}>
+        <div
+          id="Home-repopopup"
+          className="Home-repopopup"
+          style={ { display: this.state.showRepoPopup ? 'flex' : 'none' } }
+          onClick={ this.popupClicked }
+        >
           <div>
             <p className="Home-repopopup-name">{this.getRepoPopupName()}</p>
-            <Pie width={285} height={285} data={this.getRepoPopupData()} options={this.getRepoPopupOptions()}></Pie>
+            <Pie
+              width={ 285 }
+              height={ 285 }
+              data={ this.getRepoPopupData() }
+              options={ this.getRepoPopupOptions() }
+            />
           </div>
         </div>
       </div>

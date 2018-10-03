@@ -17,17 +17,25 @@ NodeJs, ExpressJs backend for this project is located here: https://github.com/t
 
 `npm run start`
 
-`npm run watch-css` (separate window)
-
 ## Styling
 
 Sass is used for styling. All `.scss` files are compliled into `.css` in the same directory.
+
+## Testing
+
+`npm run test`
+
+**Most** linting errors can be fixed with `./node_modules/.bin/eslint src/<file-path>.js --fix`.
 
 ## Environment
 
 | Name | Description | Example |
 |------|-------------|--------|
 | REACT_APP_API_URL | API url | http://localhost:3003/api/v1 |
+
+*REACT_APP_API_URL* can be substituted with *https://githubprofilesummary.appspot.com/api/v1* if you are only working on this project and **not** the backend project. However, this app must be served on port **3000** to pass the whitelisting.
+
+The backend is live at that url.
 
 The environment variables are in *.env*.
 
@@ -43,6 +51,6 @@ We are always willing to accept contributions to this project.
 
 ## Contributors
 
-[Will Garcia](https://github.com/thewillg/) ([LinkedIn](https://www.linkedin.com/in/thewillg/))
-
 [Jamie Gross](https://github.com/theblindprophet/) ([LinkedIn](https://www.linkedin.com/in/james-l-gross/))
+
+[Will Garcia](https://github.com/thewillg/) ([LinkedIn](https://www.linkedin.com/in/thewillg/))
