@@ -75,6 +75,9 @@ class HomeEmailPopup extends Component {
     const { senderEmail, message, subject } = this.state;
     const recipientEmail = this.props.userData.email;
     try {
+      this.setState({
+        loading: true
+      });
       const res = await postEmail({
         senderEmail,
         recipientEmail,
