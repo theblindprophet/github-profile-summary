@@ -1,8 +1,10 @@
+/* eslint max-len: 0 */
+/* eslint react/no-unescaped-entities: 0 */
 import React, { Component } from 'react';
 import './TermsAndPrivacy.css';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class AppTermsAndPrivacy extends Component {
-
   render() {
     return (
       <div>
@@ -67,12 +69,24 @@ class AppTermsAndPrivacy extends Component {
         <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
         <p>Examples of Cookies we use:</p>
         <ul>
-          <li><strong>Session Cookies.</strong> We use Session Cookies to operate our Service.</li>
-          <li><strong>Preference Cookies.</strong> We use Preference Cookies to remember your preferences and various settings.</li>
-          <li><strong>Security Cookies.</strong> We use Security Cookies for security purposes.</li>
+          <li>
+            <strong>Session Cookies.</strong>
+            {' '}
+We use Session Cookies to operate our Service.
+          </li>
+          <li>
+            <strong>Preference Cookies.</strong>
+            {' '}
+We use Preference Cookies to remember your preferences and various settings.
+          </li>
+          <li>
+            <strong>Security Cookies.</strong>
+            {' '}
+We use Security Cookies for security purposes.
+          </li>
         </ul>
         <h2>Use of Data</h2>
-        <p>Dyllo uses the collected data for various purposes:</p>    
+        <p>Dyllo uses the collected data for various purposes:</p>
         <ul>
           <li>To provide and maintain the Service</li>
           <li>To notify you about changes to our Service</li>
@@ -103,11 +117,14 @@ class AppTermsAndPrivacy extends Component {
         <p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
         <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
         <h3>Analytics</h3>
-        <p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>    
+        <p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>
         <ul>
           <li>
             <p><strong>Google Analytics</strong></p>
-            <p>Google Analytics is a web analytics service. You can visit their Privacy Policy page here: <a href="https://policies.google.com/privacy?hl=en">https://policies.google.com/privacy?hl=en</a></p>
+            <p>
+Google Analytics is a web analytics service. You can visit their Privacy Policy page here:
+              <a href="https://policies.google.com/privacy?hl=en">https://policies.google.com/privacy?hl=en</a>
+            </p>
           </li>
         </ul>
         <h2>Links to Other Sites</h2>
@@ -122,7 +139,7 @@ class AppTermsAndPrivacy extends Component {
         <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
         <h2>Contact Us</h2>
         <p>If you have any questions about this Privacy Policy, please contact us:</p>
-          <ul>
+        <ul>
           <li>By email: jamie.gross@graspmobiledevelopment.com</li>
         </ul>
       </div>
