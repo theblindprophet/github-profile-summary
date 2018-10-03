@@ -20,7 +20,8 @@
       padding: 0.5rem 1rem;
       background-color: #343642;
       color: #fff;
-      border-radius: 4px; }
+      border-radius: 4px;
+      cursor: pointer; }
       .Stats > div > span > b {
         margin-left: 0.5rem; }
       .Stats > div > span:hover > b {

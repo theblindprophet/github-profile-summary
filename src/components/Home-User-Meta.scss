@@ -42,12 +42,12 @@
     }
     &-username {
       text-align: center;
-  
+
       > a {
         font-weight: 700;
         margin-top: 0;
         margin-bottom: 1rem;
-  
+
         &:link, &:visited, &:hover, &:active {
           color: $dark-gray;
           text-decoration: none;
@@ -60,7 +60,7 @@
   }
   &-info {
     overflow: auto;
-    
+
     > p {
       text-align: left;
     }
@@ -108,13 +108,14 @@
     }
     &-website {
       color: lighten($primary, 15);
-      white-space: nowrap; 
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      cursor: pointer;
 
       > a {
         font-weight: 600;
-        
+
         &:link, &:visited, &:hover, &:active {
           color: lighten($primary, 15);
         }
