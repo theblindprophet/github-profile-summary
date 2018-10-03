@@ -67,8 +67,11 @@ class HomeUserMeta extends Component {
 
   userImgUrl = () => {
     if (this.props.userData && this.props.userData.url) {
-      return this.props.userData.url;
+      return (
+        <a href={ this.userUrl() } target="_blank"><img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" /></a>
+      );
     }
+    return (<img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />);
   }
   
   userEmail = () => {
@@ -127,7 +130,7 @@ class HomeUserMeta extends Component {
           { this.userIsHirable() }
         </div>
         <div className="User-Meta-profile">
-          <a href={ this.userImgUrl() } target="_blank"><img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" /></a>
+          { this.userImgUrl() }
           <p className="User-Meta-profile-name">{ this.userName() }</p>
           <p className="User-Meta-profile-username"><a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">{ this.userUsername() }</a></p>
         </div>
