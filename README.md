@@ -17,8 +17,6 @@ NodeJs, ExpressJs backend for this project is located here: https://github.com/t
 
 `npm run start`
 
-`npm run watch-css` (separate window)
-
 ## Styling
 
 Sass is used for styling. All `.scss` files are compliled into `.css` in the same directory.
