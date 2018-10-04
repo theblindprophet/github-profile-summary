@@ -29,6 +29,10 @@
       color: #54b2c5; }
       .Repos-repo-name:link, .Repos-repo-name:visited, .Repos-repo-name:hover, .Repos-repo-name:active {
         color: #54b2c5; }
+    .Repos-repo-stars {
+      padding-top: 0.25rem;
+      margin-left: 0.5rem;
+      color: #fff; }
     .Repos-repo-updated {
       margin-left: auto;
       margin-right: 0.5rem;
