@@ -91,12 +91,14 @@ class HomeCommits extends Component {
       return (
         <div className="Commits col">
           <p className="Commits-title">Recent Commits</p>
-          <Line
-            data={ this.getData() }
-            options={ this.getOptions() }
-            width={ 280 }
-            height={ 240 }
-          />
+          <div className="Line-container">
+            <Line
+              data={ this.getData() }
+              options={ this.getOptions() }
+              width={ 280 }
+              height={ 240 }
+            />
+          </div>
         </div>
       );
     }

@@ -18,3 +18,7 @@
 @media screen and (max-width: 575px) {
   .Commits canvas {
     max-width: 280px; } }
+
+.Line-container {
+  height: 100%;
+  width: 575px; }

@@ -19,7 +19,6 @@
   .Languages canvas {
     max-width: 100% !important; } }
 
-.pie-container {
-  height: 575px;
-  width: 575px;
-}
+.Pie-container {
+  height: 100%;
+  width: 575px; }
