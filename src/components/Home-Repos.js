@@ -125,7 +125,7 @@ Last Updated:
 
   repoStarCount = (node) => {
     if (node.stargazers && node.stargazers.totalCount) {
-      return node.stargazers.totalCount !== null ? node.stargazers.totalCount : '?';
+      return node.stargazers.totalCount;
     }
     return '?';
   }
