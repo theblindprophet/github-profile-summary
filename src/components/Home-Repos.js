@@ -56,7 +56,7 @@ class HomeRepos extends Component {
     return (
       <div className="Repos-repo" key={ index } onClick={ () => this.repoClicked(index) }>
         <IconContext.Provider value={ {} }>
-          <div className="Repos-repo-icon">
+          <div className="Repos-repo-icon stay">
             <GoRepo />
           </div>
         </IconContext.Provider>
@@ -73,7 +73,8 @@ class HomeRepos extends Component {
         </IconContext.Provider>
 
         <div className="Repos-repo-updated">
-          Last Updated:&nbsp;
+          Last Updated:
+          {' '}
           <b>{dateFormatted}</b>
         </div>
         {this.createLanguages(node.languages.edges)}
