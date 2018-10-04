@@ -31,6 +31,10 @@
         color: lighten($primary, 15);
       }
     }
+    &-stars {
+      padding-top: 0.25rem;
+      color: $white;
+    }
     &-updated {
       margin-left: auto;
       margin-right: 0.5rem;

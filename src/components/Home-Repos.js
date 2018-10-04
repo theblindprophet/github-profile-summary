@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Home-Repos.css';
 import { IconContext } from 'react-icons';
 import { GoRepo } from 'react-icons/go';
+import { FaStar } from 'react-icons/fa';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -60,6 +61,17 @@ class HomeRepos extends Component {
           </div>
         </IconContext.Provider>
         <a className="Repos-repo-name" href={ node.url } target="_blank" rel="noopener noreferrer">{node.name}</a>
+
+        <IconContext.Provider value={ { color: '#fff' } }>
+          <div className="Repos-repo-icon">
+            <FaStar />
+          </div>
+        </IconContext.Provider>
+
+        <div className="Repos-repo-stars">
+          {node.stargazers.totalCount}
+        </div>
+
         <div className="Repos-repo-updated">
 Last Updated:
           <b>{dateFormatted}</b>
@@ -78,7 +90,7 @@ Last Updated:
     const url = `${this.props.userData.url}?tab=repositories`;
     return (
       <div className="Repos-repo" key="30">
-        <IconContext.Provider value={ {} }>
+        <IconContext.Provider value={ { color: '#fff' } }>
           <div className="Repos-repo-icon">
             <GoRepo />
           </div>
