@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import './Home.css';
 import ReactGA from 'react-ga';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import HomeSearchBar from './components/Home-Search-Bar';
 import HomeUserMeta from './components/Home-User-Meta';
 import HomeStats from './components/Home-Stats';
@@ -34,12 +31,7 @@ class AppHome extends Component {
       userData: null,
       loadingUser: false,
       showRepoPopup: false,
-      repoPopup: null,
-      snackbar: {
-        open: false,
-        message: '',
-        isError: false
-      }
+      repoPopup: null
     };
 
     this.getUserData = this.getUserData.bind(this);
@@ -48,8 +40,6 @@ class AppHome extends Component {
     this.getRepoPopupData = this.getRepoPopupData.bind(this);
     this.getRepoPopupOptions = this.getRepoPopupOptions.bind(this);
     this.getRepoPopupName = this.getRepoPopupName.bind(this);
-    this.getRepoPopupName = this.getRepoPopupName.bind(this);
-    this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }
 
   componentDidMount() {
@@ -89,7 +79,7 @@ class AppHome extends Component {
       this.setState({
         loadingUser: false
       });
-      this.showSnackbar(true, e.message);
+      this.props.showSnackbar(true, e.message);
     }
   };
 
@@ -161,14 +151,6 @@ class AppHome extends Component {
     return 'Unknown';
   };
 
-  handleCloseSnackbar = () => {
-    this.setState({ snackbar: { open: false, message: '', isError: false } });
-  };
-
-  showSnackbar = (isError, message) => {
-    this.setState({ snackbar: { open: true, message, isError } });
-  };
-
   render() {
     return (
       <div className="Home">
@@ -179,7 +161,10 @@ class AppHome extends Component {
             loadingUser={ this.state.loadingUser }
           />
           <div className="Home-Row-1 row">
-            <HomeUserMeta userData={ this.state.userData } showSnackbar={ this.showSnackbar } />
+            <HomeUserMeta
+              userData={ this.state.userData }
+              showSnackbar={ this.props.showSnackbar }
+            />
             <HomeStats userData={ this.state.userData } />
             <HomeLanguages userData={ this.state.userData } />
             <HomeCommits userData={ this.state.userData } />
@@ -206,26 +191,6 @@ class AppHome extends Component {
             />
           </div>
         </div>
-        <Snackbar
-          anchorOrigin={ {
-            vertical: 'bottom',
-            horizontal: 'left',
-          } }
-          open={ this.state.snackbar.open }
-          onClose={ this.handleCloseSnackbar }
-          autoHideDuration={ 6000 }
-          message={ <span style={ { color: this.state.snackbar.isError ? '#ff4160' : '#EFEFEF' } }>{ this.state.snackbar.message }</span> }
-          action={ [
-            <IconButton
-              key="close"
-              aria-label="Close"
-              color="inherit"
-              onClick={ this.handleCloseSnackbar }
-            >
-              <CloseIcon />
-            </IconButton>
-          ] }
-        />
       </div>
     );
   }

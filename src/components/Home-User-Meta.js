@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
 import './Home-User-Meta.css';
-import HomeEmailPopup from './Home-Email-Popup';
 import { IconContext } from 'react-icons';
 import { FaMapMarkerAlt, FaUserTie, FaCopy } from 'react-icons/fa';
+import HomeEmailPopup from './Home-Email-Popup';
 import userPlaceholderImg from '../assets/user-placeholder.png';
-import { postEmail } from '../services/api';
 
-
-const isValidEmail = value => {
+const isValidEmail = (value) => {
   const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
   return reg.test(value);
 };
 
-const isValidSubject = value => {
+const isValidSubject = (value) => {
   const formattedValue = value.replace(/\r?\n|\r|\s/g, '');
   return formattedValue.length > 0 && formattedValue.length <= 500;
 }
 
-const isValidMessage = value => {
+const isValidMessage = (value) => {
   const formattedValue = value.replace(/\r?\n|\r|\s/g, '');
   return formattedValue.length > 0 && formattedValue.length <= 500;
 }
@@ -51,15 +49,6 @@ class HomeUserMeta extends Component {
     this.closeEmailPopup = this.closeEmailPopup.bind(this);
     this.actionEmail = this.actionEmail.bind(this);
     this.userProfileUrlTextAreaRef = React.createRef();
-  }
-
-  isSubmitEnabled() {
-    const {
-      from,
-      subject,
-      message
-    } = this.state;
-    return isValidEmail(from) && isValidSubject(subject) && isValidMessage(message);
   }
 
   handleCopyProfileUrl = () => {
@@ -124,7 +113,9 @@ class HomeUserMeta extends Component {
   userImgUrl = () => {
     if (this.props.userData && this.props.userData.url) {
       return (
-        <a href={ this.userUrl() } target="_blank"><img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" /></a>
+        <a href={ this.userUrl() } target="_blank" rel="noopener noreferrer">
+          <img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />
+        </a>
       );
     }
     return (<img className="User-Meta-profile-picture" src={ this.userImg() } alt="user" />);
@@ -134,27 +125,28 @@ class HomeUserMeta extends Component {
     if (this.props.userData && this.props.userData.login) {
       return (
         <button
+          type="button"
           className="User-Meta-profile-url-copy-btn"
-          onClick={this.handleCopyProfileUrl}
+          onClick={ this.handleCopyProfileUrl }
           aria-label="Copy Dyllo user profile url"
         >
           <FaCopy />
           {
             this.state.copiedSuccessMsg
-            && <span className="User-Meta-profile-url-copy-success">{this.state.copiedSuccessMsg}</span>
+            && <span className="User-Meta-profile-url-copy-success">{ this.state.copiedSuccessMsg }</span>
           }
           <textarea
-            ref={this.userProfileUrlTextAreaRef}
+            ref={ this.userProfileUrlTextAreaRef }
             className="User-Meta-profile-url-textarea"
-            value={`https://githubprofilesummary.com/user/${this.userUsername()}`}
+            value={ `https://githubprofilesummary.com/user/${this.userUsername()}` }
             readOnly
           />
         </button>
-      )
+      );
     }
     return null;
   }
-  
+
   userEmail = () => {
     if (this.props.userData) {
       return this.props.userData.email || (<i>Hidden</i>);
@@ -212,11 +204,20 @@ class HomeUserMeta extends Component {
     if (this.props.userData && this.props.userData.email) {
       return (
         <p className="User-Meta-profile-action-email">
-          <button onClick={ this.showEmailPopup }>Email</button>
+          <button type="button" onClick={ this.showEmailPopup }>Email</button>
         </p>
-      )
+      );
     }
     return null;
+  }
+
+  isSubmitEnabled() {
+    const {
+      from,
+      subject,
+      message
+    } = this.state;
+    return isValidEmail(from) && isValidSubject(subject) && isValidMessage(message);
   }
 
   showEmailPopup() {
