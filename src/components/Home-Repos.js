@@ -62,7 +62,7 @@ class HomeRepos extends Component {
         </IconContext.Provider>
         <a className="Repos-repo-name" href={ node.url } target="_blank" rel="noopener noreferrer">{node.name}</a>
 
-        <IconContext.Provider value={ { color: '#fff' } }>
+        <IconContext.Provider value={ {} }>
           <div className="Repos-repo-icon">
             <FaStar />
           </div>
@@ -90,7 +90,7 @@ Last Updated:
     const url = `${this.props.userData.url}?tab=repositories`;
     return (
       <div className="Repos-repo" key="30">
-        <IconContext.Provider value={ { color: '#fff' } }>
+        <IconContext.Provider value={ {} }>
           <div className="Repos-repo-icon">
             <GoRepo />
           </div>
