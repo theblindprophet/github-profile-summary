@@ -20,10 +20,12 @@ class App extends Component {
         message: '',
         isError: false
       },
-      isAuth: false
+      isAuth: false,
+      authUser: null
     };
 
     this.getAuthMarkup = this.getAuthMarkup.bind(this);
+    this.getAuthUserImage = this.getAuthUserImage.bind(this);
     this.authenticateUser = this.authenticateUser.bind(this);
     this.showSnackbar = this.showSnackbar.bind(this);
     this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
@@ -34,9 +36,9 @@ class App extends Component {
     ReactGA.pageview(window.location.pathname + window.location.search);
     listenAuth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ isAuth: true });
+        this.setState({ isAuth: true, authUser: user });
       } else {
-        this.setState({ isAuth: false });
+        this.setState({ isAuth: false, authUser: user });
       }
     });
   }
@@ -44,7 +46,7 @@ class App extends Component {
   getAuthMarkup = () => {
     if (this.state.isAuth) {
       return (
-        <img className="App-header-auth-solo" src={ githubLogo } alt="github" />
+        <img className="App-header-auth-solo" src={ this.getAuthUserImage() } alt="github" />
       );
     }
     return (
@@ -54,6 +56,13 @@ class App extends Component {
       </button>
     );
   };
+
+  getAuthUserImage = () => {
+    if (this.state.authUser && this.state.authUser.photoURL) {
+      return this.state.authUser.photoURL;
+    }
+    return githubLogo;
+  }
 
   authenticateUser = async () => {
     try {

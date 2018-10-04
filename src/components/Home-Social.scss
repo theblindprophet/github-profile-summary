@@ -1,0 +1,39 @@
+@import '../shared.scss';
+
+.Social-Bar {
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+
+  &-actions {
+    display: flex;
+    align-items: center;
+
+    &-recommend {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 44px;
+      width: 160px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      color: $white;
+      background-color: $primary;
+      font-size: 1rem;
+      cursor: pointer;
+
+      > div {
+        margin-left: 0.5rem;
+
+        svg.spinner {
+          animation: Loading-spin infinite 2s linear;
+        }
+      }
+    }
+  }
+}
+
+@keyframes Loading-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

@@ -32,8 +32,8 @@ const authenticate = () => {
   return promise;
 };
 
+const getUser = () => authUser;
+
 const isAuthenticated = () => authUser !== null;
 
-const getToken = () => firebase.credential.accessToken;
-
-export { authenticate, listenAuth, isAuthenticated, getToken };
+export { authenticate, listenAuth, isAuthenticated, getUser };

@@ -5,6 +5,7 @@ import ReactGA from 'react-ga';
 import HomeSearchBar from './components/Home-Search-Bar';
 import HomeUserMeta from './components/Home-User-Meta';
 import HomeStats from './components/Home-Stats';
+import HomeSocial from './components/Home-Social';
 import HomeLanguages from './components/Home-Languages';
 import HomeCommits from './components/Home-Commits';
 import HomeEvents from './components/Home-Events';
@@ -166,6 +167,7 @@ class AppHome extends Component {
               showSnackbar={ this.props.showSnackbar }
             />
             <HomeStats userData={ this.state.userData } />
+            <HomeSocial userData={ this.state.userData } showSnackbar={ this.props.showSnackbar } />
             <HomeLanguages userData={ this.state.userData } />
             <HomeCommits userData={ this.state.userData } />
             <HomeEvents userData={ this.state.userData } />
