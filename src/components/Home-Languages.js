@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
+import { COLORS } from '../constants';
 import './Home-Languages.css';
-
-const colors = ['#555662', '#3c93a3', '#5fbacc', '#3b3c4b', '#9a9a9a', '#323238', '#063740', '#d2d2d2'];
 
 class HomeLanguages extends Component {
   constructor(props) {
@@ -10,20 +9,34 @@ class HomeLanguages extends Component {
 
     this.getData = this.getData.bind(this);
     this.getOptions = this.getOptions.bind(this);
+    this.simpleHash = this.simpleHash.bind(this);
   }
 
   getData = () => {
     const { userLanguagePercents } = this.props.userData;
+    userLanguagePercents.sort((lang1, lang2) => lang2.percent - lang1.percent);
     const data = {
       labels: userLanguagePercents.map(lang => `${lang.name} ${lang.percent}%`),
       datasets: [
         {
-          backgroundColor: userLanguagePercents.map((lang, index) => colors[index % colors.length]),
+          backgroundColor: userLanguagePercents.map((lang) => COLORS[this.simpleHash(lang.name) % COLORS.length]),
           data: userLanguagePercents.map(lang => lang.percent)
         }
       ]
     };
     return data;
+  }
+
+  // Java String hashcode implementation
+  simpleHash = s => {
+    let hash = 0;
+    if (s.length === 0) return hash;
+    for (let i = 0; i < s.length; i++) {
+      const char = s.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash;
+    }
+    return Math.abs(hash);
   }
 
   getOptions = () => {
@@ -34,7 +47,7 @@ class HomeLanguages extends Component {
       },
       elements: {
         arc: {
-          borderColor: 'rgba(52, 54, 66, 0.9)'
+          borderColor: 'rgba(52, 54, 66, 0.6)'
         }
       },
       tooltips: {
@@ -47,11 +60,12 @@ class HomeLanguages extends Component {
   }
 
   render() {
-    if (this.props.userData && this.props.userData.userLanguagePercents) {
+    if (this.props.userData && this.props.userData.userLanguagePercents
+      && this.props.userData.userLanguagePercents.length) {
       return (
         <div className="Languages col">
           <p className="Languages-title">Language Spread</p>
-          <div className="Pie-container">
+          <div>
             <Pie width={ 285 } height={ 285 } data={ this.getData() } options={ this.getOptions() } />
           </div>
         </div>
