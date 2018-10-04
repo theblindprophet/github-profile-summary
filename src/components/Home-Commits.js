@@ -95,7 +95,7 @@ class HomeCommits extends Component {
             data={ this.getData() }
             options={ this.getOptions() }
             width={ 280 }
-            height={ 240 }
+            height={ 140 }
           />
         </div>
       );
