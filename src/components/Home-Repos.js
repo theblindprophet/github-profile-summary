@@ -90,7 +90,7 @@ Last Updated:
     const url = `${this.props.userData.url}?tab=repositories`;
     return (
       <div className="Repos-repo" key="30">
-        <IconContext.Provider value={ { color: '#fff' } }>
+        <IconContext.Provider value={ {} }>
           <div className="Repos-repo-icon">
             <GoRepo />
           </div>
