@@ -69,7 +69,7 @@ class HomeRepos extends Component {
         </IconContext.Provider>
 
         <div className="Repos-repo-stars">
-          {node.stargazers.totalCount}
+          {this.repoStarCount(node.stargazers.totalCount)}
         </div>
 
         <div className="Repos-repo-updated">
@@ -121,6 +121,13 @@ Last Updated:
 
   repoClicked = (index) => {
     this.props.onRepoClick(this.props.userData.repositories.edges[index].node);
+  }
+
+  repoStarCount = (starCount) => {
+    if (starCount) {
+      return starCount !== null ? starCount : '?';
+    }
+    return '?';
   }
 
   render() {
