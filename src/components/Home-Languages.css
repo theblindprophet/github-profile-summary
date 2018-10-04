@@ -18,7 +18,3 @@
 @media screen and (max-width: 575px) {
   .Languages canvas {
     max-width: 100% !important; } }
-
-.Pie-container {
-  height: 100%;
-  width: 575px; }

@@ -41,7 +41,7 @@ class HomeLanguages extends Component {
 
   getOptions = () => {
     const options = {
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       animation: {
         animateScale: true
       },
@@ -66,7 +66,7 @@ class HomeLanguages extends Component {
         <div className="Languages col">
           <p className="Languages-title">Language Spread</p>
           <div>
-            <Pie width={ 285 } height={ 285 } data={ this.getData() } options={ this.getOptions() } />
+            <Pie width={ 365 } height={ 365 } data={ this.getData() } options={ this.getOptions() } />
           </div>
         </div>
       );

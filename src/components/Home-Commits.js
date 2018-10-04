@@ -30,7 +30,7 @@ class HomeCommits extends Component {
 
   getOptions = () => {
     const options = {
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       legend: {
         display: false
       },
@@ -91,14 +91,12 @@ class HomeCommits extends Component {
       return (
         <div className="Commits col">
           <p className="Commits-title">Recent Commits</p>
-          <div className="Line-container">
-            <Line
-              data={ this.getData() }
-              options={ this.getOptions() }
-              width={ 280 }
-              height={ 240 }
-            />
-          </div>
+          <Line
+            data={ this.getData() }
+            options={ this.getOptions() }
+            width={ 280 }
+            height={ 240 }
+          />
         </div>
       );
     }
