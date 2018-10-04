@@ -19,7 +19,7 @@ class HomeLanguages extends Component {
       labels: userLanguagePercents.map(lang => `${lang.name} ${lang.percent}%`),
       datasets: [
         {
-          backgroundColor: userLanguagePercents.map((lang, index) => COLORS[this.simpleHash(lang.name) % COLORS.length]),
+          backgroundColor: userLanguagePercents.map((lang) => COLORS[this.simpleHash(lang.name) % COLORS.length]),
           data: userLanguagePercents.map(lang => lang.percent)
         }
       ]
@@ -28,12 +28,12 @@ class HomeLanguages extends Component {
   }
 
   // Java String hashcode implementation
-  simpleHash = (s) => {
+  simpleHash = s => {
     let hash = 0;
     if (s.length === 0) return hash;
     for (let i = 0; i < s.length; i++) {
-      let char = s.charCodeAt(i);
-      hash = ((hash<<5)-hash)+char;
+      const char = s.charCodeAt(i);
+      hash = ((hash<<5) - hash) + char;
       hash = hash & hash;
     }
     return Math.abs(hash);
@@ -47,7 +47,7 @@ class HomeLanguages extends Component {
       },
       elements: {
         arc: {
-          borderColor: 'rgba(52, 54, 66, 0.9)'
+          borderColor: 'rgba(52, 54, 66, 0.6)'
         }
       },
       tooltips: {
@@ -60,7 +60,8 @@ class HomeLanguages extends Component {
   }
 
   render() {
-    if (this.props.userData && this.props.userData.userLanguagePercents) {
+    if (this.props.userData && this.props.userData.userLanguagePercents
+      && this.props.userData.userLanguagePercents.length) {
       return (
         <div className="Languages col">
           <p className="Languages-title">Language Spread</p>
