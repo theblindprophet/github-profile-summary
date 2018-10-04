@@ -65,7 +65,9 @@ class HomeLanguages extends Component {
       return (
         <div className="Languages col">
           <p className="Languages-title">Language Spread</p>
+          <div className="pie-container">
           <Pie width={ 285 } height={ 285 } data={ this.getData() } options={ this.getOptions() } />
+          </div>
         </div>
       );
     }
