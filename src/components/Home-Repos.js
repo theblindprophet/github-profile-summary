@@ -73,7 +73,7 @@ class HomeRepos extends Component {
         </IconContext.Provider>
 
         <div className="Repos-repo-updated">
-Last Updated:
+          Last Updated:&nbsp;
           <b>{dateFormatted}</b>
         </div>
         {this.createLanguages(node.languages.edges)}
