@@ -27,6 +27,7 @@
   }
   &-profile {
     margin-right: 2rem;
+    position: relative;
 
     &-picture {
       height: 160px;
@@ -70,6 +71,31 @@
             font-size: 1rem;
             cursor: pointer;
         }
+    }
+    &-url-copy-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: none;
+      border: 0;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding: .4em;
+      margin: .25em;
+      cursor: pointer;
+      font-size: 1em;
+      text-align: center;
+      background-color: $dark-gray;
+      color: $white;
+    }
+    &-url-textarea {
+      position: absolute;
+      left: -9999em;
+    }
+    &-url-copy-success {
+      padding-left: .5em;
+      line-height: 1em;
     }
   }
   &-info {
