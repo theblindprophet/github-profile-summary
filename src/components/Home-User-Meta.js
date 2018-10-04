@@ -146,9 +146,9 @@ class HomeUserMeta extends Component {
           <textarea
             ref={this.userProfileUrlTextAreaRef}
             className="User-Meta-profile-url-textarea"
-          >
-            {`https://githubprofilesummary.com/user/${this.userUsername()}`}
-          </textarea>
+            value={`https://githubprofilesummary.com/user/${this.userUsername()}`}
+            readOnly
+          />
         </button>
       )
     }
