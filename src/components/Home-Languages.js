@@ -33,7 +33,7 @@ class HomeLanguages extends Component {
     if (s.length === 0) return hash;
     for (let i = 0; i < s.length; i++) {
       const char = s.charCodeAt(i);
-      hash = ((hash<<5) - hash) + char;
+      hash = ((hash << 5) - hash) + char;
       hash = hash & hash;
     }
     return Math.abs(hash);
@@ -41,7 +41,7 @@ class HomeLanguages extends Component {
 
   getOptions = () => {
     const options = {
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       animation: {
         animateScale: true
       },
@@ -65,7 +65,9 @@ class HomeLanguages extends Component {
       return (
         <div className="Languages col">
           <p className="Languages-title">Language Spread</p>
-          <Pie width={ 285 } height={ 285 } data={ this.getData() } options={ this.getOptions() } />
+          <div>
+            <Pie width={ 365 } height={ 365 } data={ this.getData() } options={ this.getOptions() } />
+          </div>
         </div>
       );
     }
