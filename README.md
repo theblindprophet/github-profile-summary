@@ -1,4 +1,6 @@
 # GitHub Profile Summary Web App
+[![join chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/dylloprofilesummary/Lobby)
+
 Powered by [https://reactjs.org/](React).
 
 Hosted at [https://githubprofilesummary.com](https://www.githubprofilesummary.com/) on [Netlify](https://www.netlify.com/).
