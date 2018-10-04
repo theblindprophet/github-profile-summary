@@ -23,6 +23,7 @@ const isValidMessage = value => {
 }
 
 const initialState = {
+  copiedSuccessMsg: '',
   from: '',
   subject: '',
   message: '',
@@ -50,10 +51,6 @@ class HomeUserMeta extends Component {
     this.closeEmailPopup = this.closeEmailPopup.bind(this);
     this.actionEmail = this.actionEmail.bind(this);
     this.userProfileUrlTextAreaRef = React.createRef();
-  }
-
-  state = {
-    copiedSuccessMsg: ''
   }
 
   isSubmitEnabled() {
