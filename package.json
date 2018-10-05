@@ -26,13 +26,17 @@
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"npm run watch-css\"",
     "build": "react-scripts build",
-    "test": "npm run lint",
+    "lint": "npm run lint",
+    "test": "npm run lint && CI=true react-scripts test --env=jsdom",
     "lint": "eslint src/**.js",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
-    "eslint": "^5.6.1"
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "eslint": "^5.6.1",
+    "react-test-renderer": "^16.5.2"
   }
 }
