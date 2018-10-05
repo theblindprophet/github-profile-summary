@@ -35,3 +35,9 @@ jobs:
         
       # run tests!
       - run: npm run test
+
+      # slack
+      - run:
+          name: Slack Build Notification
+          command: |
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $SLACK_WEBHOOK_URL
