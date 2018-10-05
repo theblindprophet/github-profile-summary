@@ -53,6 +53,8 @@ Netlify is triggered by changes to the `master` branch.
 
 We are always willing to accept contributions to this project.
 
+When contributing please fork, submit a PR from your forked repo, and make sure that all the build checks pass.
+
 ## Contributors
 
 [Jamie Gross](https://github.com/theblindprophet/) ([LinkedIn](https://www.linkedin.com/in/james-l-gross/))
