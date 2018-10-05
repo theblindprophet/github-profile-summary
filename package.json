@@ -26,8 +26,8 @@
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"npm run watch-css\"",
     "build": "react-scripts build",
-    "test:lint": "npm run lint",
-    "test": "react-scripts test --env=jsdom",
+    "lint": "npm run lint",
+    "test": "npm run lint && react-scripts test --env=jsdom",
     "lint": "eslint src/**.js",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
