@@ -17,16 +17,28 @@ const postEmail = (data) => {
   return response;
 };
 
-const thumbsUp = (username, accessToken) => {
+const addUser = (firebaseUid, accessToken) => {
+  const response = fetch(`${API_URL}/github/firebaseCredentials`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ firebaseUid, accessToken })
+  });
+  return response;
+};
+
+const thumbsUp = (username, firebaseUid) => {
   const response = fetch(`${API_URL}/github/thumbsup/${username}`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ accessToken })
+    body: JSON.stringify({ firebaseUid })
   });
   return response;
 };
 
-export { getUserData, postEmail, thumbsUp };
+export { getUserData, postEmail, addUser, thumbsUp };

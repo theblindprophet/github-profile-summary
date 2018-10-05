@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Home from './Home';
 import TermsAndService from './TermsAndPrivacy';
+import { addUser } from './services/api';
 import { authenticate, listenAuth } from './services/firebase';
 import logo from './assets/logo.png';
 import githubLogo from './assets/github-logo.png';
@@ -38,7 +39,7 @@ class App extends Component {
       if (user) {
         this.setState({ isAuth: true, authUser: user });
       } else {
-        this.setState({ isAuth: false, authUser: user });
+        this.setState({ isAuth: false, authUser: null });
       }
     });
   }
@@ -67,7 +68,11 @@ class App extends Component {
   authenticateUser = async () => {
     try {
       const token = await authenticate();
-      console.log('token', token);
+      await addUser(this.state.authUser.uid, token);
+      ReactGA.event({
+        category: 'Auth',
+        action: 'Authenticated user'
+      });
     } catch (e) {
       this.showSnackbar(true, 'Error authentication, please try again.');
     }
