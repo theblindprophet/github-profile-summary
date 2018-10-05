@@ -43,13 +43,17 @@ The environment variables are in *.env*.
 
 ## CI/CD
 
-We use Netlify for continuous deployment. There are no integration or unit tests for this app.
+We use Netlify for continuous deployment.
+
+We use CircleCI for continuous integration.
 
 Netlify is triggered by changes to the `master` branch.
 
 ## Contributing
 
 We are always willing to accept contributions to this project.
+
+When contributing please fork, submit a PR from your forked repo, and make sure that all the build checks pass.
 
 ## Contributors
 

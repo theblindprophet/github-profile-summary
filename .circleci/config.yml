@@ -26,7 +26,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm run install
+      - run: npm install
 
       - save_cache:
           paths:
@@ -34,4 +34,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: npm run test
+      - run: 
+          name: Run tests
+          command: |
+            npm run test
+            if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
+            export TITLE="Build $CIRCLE_BUILD_NUM"
+            export PR="User: CIRCLE_USERNAME, PR: $CIRCLE_PR_NUMBER"
+            curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TITLE"'", "mrkdwn": true, "attachments": [{"title": "Build Logs","title_link": "'"$CIRCLE_BUILD_URL"'","fields": [{"title": "Status","value": "'"$STATUS"'"},{"title": "User/PR","value": "'"$CIRCLE_PR"'"},{"title": "Branch","value": "'"$CIRCLE_BRANCH"'"},{"title": "Commit","value": "'"$CIRCLE_SHA1"'"}]}]}' $SLACK_WEBHOOK_URL
