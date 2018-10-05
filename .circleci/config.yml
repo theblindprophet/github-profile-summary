@@ -39,6 +39,5 @@ jobs:
           command: |
             npm run test
             if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
-            export TEXT="Build $CIRCLE_BUILD_NUM: $STATUS"
-            export TITLE="PR: $CIRCLE_PR_NUMBER, Commit: $CIRCLE_SHA1"
-            curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TEXT"'", "mrkdwn": true, "attachments": [{"title": "'"$TITLE"'","title_link": "'"$CIRCLE_BUILD_URL"'","fields": [{"title": "Status","value": "'"$TEXT"'"}]}]}' $SLACK_WEBHOOK_URL
+            export TITLE="Build $CIRCLE_BUILD_NUM: $STATUS"
+            curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TITLE"'", "mrkdwn": true, "attachments": [{"title": "Build Logs","title_link": "'"$CIRCLE_BUILD_URL"'","fields": [{"title": "Status","value": "'"$STATUS"'"},{"title": "PR","value": "'"$CIRCLE_PR_NUMBER"'"},{"title": "Commit","value": "'"$CIRCLE_SHA1"'"}]}]}' $SLACK_WEBHOOK_URL
