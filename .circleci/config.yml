@@ -34,10 +34,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: npm run test
+      - run: npm run test && if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
 
       # slack
       - run:
           name: Slack Build Notification
           command: |
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $SLACK_WEBHOOK_URL
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"${STATUS}"}' $SLACK_WEBHOOK_URL
