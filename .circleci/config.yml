@@ -41,4 +41,5 @@ jobs:
             if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
             export TITLE="Build $CIRCLE_BUILD_NUM"
             export PR="User: CIRCLE_USERNAME, PR: $CIRCLE_PR_NUMBER"
+            echo $SLACK_WEBHOOK_URL
             curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TITLE"'", "mrkdwn": true, "attachments": [{"title": "Build Logs","title_link": "'"$CIRCLE_BUILD_URL"'","fields": [{"title": "Status","value": "'"$STATUS"'"},{"title": "User/PR","value": "'"$CIRCLE_PR"'"},{"title": "Branch","value": "'"$CIRCLE_BRANCH"'"},{"title": "Commit","value": "'"$CIRCLE_SHA1"'"}]}]}' $SLACK_WEBHOOK_URL
