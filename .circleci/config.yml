@@ -39,4 +39,4 @@ jobs:
           command: |
             npm run test
             if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Build \#'"$CIRCLE_BUILD_NUM"': '"$STATUS"'"}' $SLACK_WEBHOOK_URL
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Build \#"'"$CIRCLE_BUILD_NUM": "$STATUS"'", "mrkdwn": true, "attachments": []}' $SLACK_WEBHOOK_URL
