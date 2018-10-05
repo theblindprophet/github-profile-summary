@@ -46,4 +46,4 @@ jobs:
           shell: /bin/sh
           command: |
             echo $STATUS
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"'"$STATUS"'"}' $SLACK_WEBHOOK_URL
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"'"$STATUS"'wefef"}' $SLACK_WEBHOOK_URL
