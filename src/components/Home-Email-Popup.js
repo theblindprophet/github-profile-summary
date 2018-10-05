@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Home-Email-Popup.css';
+import ReactGA from 'react-ga';
 import { IconContext } from "react-icons";
 import { FaSpinner} from 'react-icons/fa';
 import { postEmail } from '../services/api';
@@ -92,6 +93,10 @@ class HomeEmailPopup extends Component {
         ...this.state, ...initialState
       });
       this.props.showSnackbar(false, 'Sent email!');
+      ReactGA.event({
+        category: 'Email',
+        action: 'Emailed user'
+      });
       this.closeEmailPopup();
     } catch(e) {
       this.props.showSnackbar(true, e.message);
