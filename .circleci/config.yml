@@ -33,11 +33,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run:
-          name: testing
-          command: |
-            echo "$SLACK_WEBHOOK_URL"
-        
       # run tests!
       - run: 
           name: Run tests
@@ -46,5 +41,4 @@ jobs:
             if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
             export TITLE="Build $CIRCLE_BUILD_NUM"
             export PR="User: CIRCLE_USERNAME, PR: $CIRCLE_PR_NUMBER"
-            echo $SLACK_WEBHOOK_URL
-            curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TITLE"'", "mrkdwn": true, "attachments": [{"title": "Build Logs","title_link": "'"$CIRCLE_BUILD_URL"'","fields": [{"title": "Status","value": "'"$STATUS"'"},{"title": "User/PR","value": "'"$CIRCLE_PR"'"},{"title": "Branch","value": "'"$CIRCLE_BRANCH"'"},{"title": "Commit","value": "'"$CIRCLE_SHA1"'"}]}]}' https://hooks.slack.com/services/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
+            curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TITLE"'", "mrkdwn": true, "attachments": [{"title": "Build Logs","title_link": "'"$CIRCLE_BUILD_URL"'","fields": [{"title": "Status","value": "'"$STATUS"'"},{"title": "User/PR","value": "'"$CIRCLE_PR"'"},{"title": "Branch","value": "'"$CIRCLE_BRANCH"'"},{"title": "Commit","value": "'"$CIRCLE_SHA1"'"}]}]}' $SLACK_WEBHOOK_URL
