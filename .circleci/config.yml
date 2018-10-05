@@ -39,11 +39,4 @@ jobs:
           command: |
             npm run test
             if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
-
-      # slack
-      - run:
-          name: Slack Build Notification
-          shell: /bin/sh
-          command: |
-            echo $STATUS
             curl -X POST -H 'Content-type: application/json' --data '{"text":"'"$STATUS"'wefef"}' $SLACK_WEBHOOK_URL
