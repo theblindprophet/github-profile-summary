@@ -1,0 +1,44 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.12.0
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+        
+      # run tests!
+      - run: 
+          name: Run tests
+          command: |
+            npm run test
+            if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
+            export TITLE="Build $CIRCLE_BUILD_NUM"
+            export PR="User: CIRCLE_USERNAME, PR: $CIRCLE_PR_NUMBER"
+            curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TITLE"'", "mrkdwn": true, "attachments": [{"title": "Build Logs","title_link": "'"$CIRCLE_BUILD_URL"'","fields": [{"title": "Status","value": "'"$STATUS"'"},{"title": "User/PR","value": "'"$CIRCLE_PR"'"},{"title": "Branch","value": "'"$CIRCLE_BRANCH"'"},{"title": "Commit","value": "'"$CIRCLE_SHA1"'"}]}]}' $SLACK_WEBHOOK_URL
