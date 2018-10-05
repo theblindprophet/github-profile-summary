@@ -32,6 +32,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: testing
+          command: |
+            echo $SLACK_WEBHOOK_URL
         
       # run tests!
       - run: 
