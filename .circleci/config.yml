@@ -40,4 +40,5 @@ jobs:
       - run:
           name: Slack Build Notification
           command: |
+            echo $STATUS
             curl -X POST -H 'Content-type: application/json' --data '{"text":"'"$STATUS"'"}' $SLACK_WEBHOOK_URL
