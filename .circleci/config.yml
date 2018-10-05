@@ -40,4 +40,5 @@ jobs:
             npm run test
             if [ $? -eq 0 ]; then export STATUS=SUCCESS; else export STATUS=FAILED; fi;
             export TEXT="Build $CIRCLE_BUILD_NUM: $STATUS"
-            curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TEXT"'", "mrkdwn": true, "attachments": []}' $SLACK_WEBHOOK_URL
+            export TITLE="PR: $CIRCLE_PR_NUMBER, Commit: $CIRCLE_SHA1"
+            curl -X POST -H 'Content-type: application/json' --data '{"text": "'"$TEXT"'", "mrkdwn": true, "attachments": [{"title": "'"$TITLE"'","title_link": "'"$CIRCLE_BUILD_URL"'","fields": [{"title": "Status","value": "'"$TEXT"'"}]}]}' $SLACK_WEBHOOK_URL
