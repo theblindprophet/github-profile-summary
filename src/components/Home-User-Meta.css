@@ -9,6 +9,7 @@
 .User-Meta {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   width: calc(60% - 3rem);
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem; }
@@ -83,6 +84,7 @@
       padding-left: .5em;
       line-height: 1em; }
   .User-Meta-info {
+    flex: 1;
     overflow: auto; }
     .User-Meta-info > p {
       text-align: left; }
@@ -120,6 +122,13 @@
         font-weight: 600; }
         .User-Meta-info-website > a:link, .User-Meta-info-website > a:visited, .User-Meta-info-website > a:hover, .User-Meta-info-website > a:active {
           color: #54b2c5; }
+  .User-Meta-recommendations {
+    width: 100%;
+    text-align: center; }
+    .User-Meta-recommendations span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #348899; }
   .User-Meta-email-popup {
     position: fixed;
     top: 0;

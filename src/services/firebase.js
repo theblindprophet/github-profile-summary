@@ -32,8 +32,10 @@ const authenticate = () => {
   return promise;
 };
 
+const unauthenticate = () => firebase.auth().signOut();
+
 const getUser = () => authUser;
 
 const isAuthenticated = () => authUser !== null;
 
-export { authenticate, listenAuth, isAuthenticated, getUser };
+export { authenticate, unauthenticate, listenAuth, isAuthenticated, getUser };

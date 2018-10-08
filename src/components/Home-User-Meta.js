@@ -45,6 +45,7 @@ class HomeUserMeta extends Component {
     this.userBio = this.userBio.bind(this);
     this.userLocation = this.userLocation.bind(this);
     this.userWebsite = this.userWebsite.bind(this);
+    this.userRecommendations = this.userRecommendations.bind(this);
     this.showEmailPopup = this.showEmailPopup.bind(this);
     this.closeEmailPopup = this.closeEmailPopup.bind(this);
     this.actionEmail = this.actionEmail.bind(this);
@@ -200,6 +201,28 @@ class HomeUserMeta extends Component {
     return 'Website...';
   }
 
+  userRecommendations = () => {
+    if (!this.props.userData) {
+      return (
+        <p><i>Number of user recommendations here.</i></p>
+      );
+    }
+    if (this.props.recommendationsTotal === -1) {
+      return (
+        <p><i>This user has not been recommmeded yet.</i></p>
+      );
+    }
+    return (
+      <p>
+        <span>{ this.props.recommendationsTotal }</span>
+        {' '}
+        recommendation
+        { this.props.recommendationsTotal > 1 ? 's' : '' }
+        .
+      </p>
+    );
+  }
+
   actionEmail = () => {
     if (this.props.userData && this.props.userData.email) {
       return (
@@ -266,6 +289,9 @@ class HomeUserMeta extends Component {
           <p className="User-Meta-info-website">
             { this.userWebsite() }
           </p>
+        </div>
+        <div className="User-Meta-recommendations">
+          { this.userRecommendations() }
         </div>
         <HomeEmailPopup
           userData={ this.props.userData }

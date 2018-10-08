@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { IconContext } from 'react-icons';
 import { FaHandPointUp, FaSpinner } from 'react-icons/fa';
-import { thumbsUp } from '../services/api';
-import { getUser, isAuthenticated } from '../services/firebase';
+import { postRecommendation } from '../services/api';
+import { getUser, unauthenticate, isAuthenticated } from '../services/firebase';
 import './Home-Social.css';
 
 class HomeSocial extends Component {
@@ -41,16 +41,29 @@ class HomeSocial extends Component {
     }
     if (!isAuthenticated()) {
       this.props.showSnackbar(false, 'You must login (top right) before recommending a user.');
+      return;
     }
 
     this.setState({
       savingThumb: true
     });
     try {
-      const user = await getUser();
-      // await thumbsUp(this.props.userData.username, token);
+      const user = getUser();
+      const response = await postRecommendation(this.props.userData.login, user.uid);
+      if (!response.ok) {
+        throw await response.json();
+      }
+      this.props.showSnackbar(false, 'Recommended user!');
+      this.props.refreshRecommendations(this.props.userData.login);
     } catch (e) {
-      this.props.showSnackbar(true, 'Error recommending user, please try again.');
+      if (e.error === 'FirebaseUid does not exist' || e.error === 'Failed to validate accessToken with this firebaseUid') {
+        this.props.showSnackbar(true, 'Error authenticating, please login again.');
+        unauthenticate();
+      } else if (e.error === 'You have already recommended up this user!') {
+        this.props.showSnackbar(true, 'You have already recommended this user.');
+      } else {
+        this.props.showSnackbar(true, 'Error recommending user, please try again.');
+      }
     } finally {
       this.setState({
         savingThumb: false

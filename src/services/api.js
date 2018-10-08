@@ -29,8 +29,19 @@ const addUser = (firebaseUid, accessToken) => {
   return response;
 };
 
-const thumbsUp = (username, firebaseUid) => {
-  const response = fetch(`${API_URL}/github/thumbsup/${username}`, {
+const getRecommendations = async (username) => {
+  const response = await fetch(`${API_URL}/github/recommendations/${username}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+  return response;
+};
+
+const postRecommendation = async (username, firebaseUid) => {
+  const response = await fetch(`${API_URL}/github/recommendations/${username}`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -41,4 +52,4 @@ const thumbsUp = (username, firebaseUid) => {
   return response;
 };
 
-export { getUserData, postEmail, addUser, thumbsUp };
+export { getUserData, postEmail, addUser, getRecommendations, postRecommendation };

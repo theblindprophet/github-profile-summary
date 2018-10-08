@@ -8,7 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Home from './Home';
 import TermsAndService from './TermsAndPrivacy';
 import { addUser } from './services/api';
-import { authenticate, listenAuth } from './services/firebase';
+import { authenticate, unauthenticate, listenAuth } from './services/firebase';
 import logo from './assets/logo.png';
 import githubLogo from './assets/github-logo.png';
 
@@ -68,13 +68,17 @@ class App extends Component {
   authenticateUser = async () => {
     try {
       const token = await authenticate();
-      await addUser(this.state.authUser.uid, token);
+      const response = await addUser(this.state.authUser.uid, token);
+      if (!response.ok) {
+        throw await response.json();
+      }
       ReactGA.event({
         category: 'Auth',
         action: 'Authenticated user'
       });
     } catch (e) {
-      this.showSnackbar(true, 'Error authentication, please try again.');
+      unauthenticate();
+      this.showSnackbar(true, 'Error authenticating, please try again.');
     }
   };
 
