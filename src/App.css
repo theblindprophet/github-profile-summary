@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6, button {
   border-radius: 4px; }
 
 .App-header {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -49,22 +50,53 @@ h1, h2, h3, h4, h5, h6, button {
   .App-header-title {
     display: inline-block;
     margin: 0.5rem 0; }
-  .App-header > div {
+  .App-header-right {
     display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column; }
-    .App-header > div:first-child {
+    .App-header-right:first-child {
       margin-right: 1.5rem; }
-    .App-header > div > img {
+    .App-header-right-logo {
       height: 75px;
-      width: auto; }
+      width: auto;
+      margin-top: -2rem; }
   .App-header h1, .App-header h3 {
     margin: 0.25rem; }
   .App-header h1 {
     font-size: 1.6rem; }
   .App-header h3 {
     font-size: 1.3rem; }
+  .App-header-auth {
+    position: absolute;
+    top: 1rem;
+    right: 0.5rem; }
+    .App-header-auth img {
+      height: 30px;
+      width: auto;
+      width: auto;
+      border-radius: 20px;
+      border: 2px solid #348899;
+      cursor: pointer;
+      transition: 200ms ease-in; }
+      .App-header-auth img:not(.App-header-auth-submit-icon):hover {
+        height: 36px; }
+    .App-header-auth-submit {
+      display: flex;
+      align-items: center;
+      height: 36px;
+      width: 96px;
+      padding: 0 1rem;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      color: #fff;
+      background-color: #348899;
+      font-size: 1rem;
+      cursor: pointer; }
+      .App-header-auth-submit > img {
+        height: 20px;
+        margin-left: auto; }
 
 .App-container {
   min-height: calc(100vh - 90px);

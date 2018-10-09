@@ -33,6 +33,7 @@ h1, h2, h3, h4, h5, h6, button {
 
 .App {
   &-header {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -55,7 +56,7 @@ h1, h2, h3, h4, h5, h6, button {
       display: inline-block;
       margin: 0.5rem 0;
     }
-    > div {
+    &-right {
       display: flex;
       justify-content: center;
       align-content: center;
@@ -64,9 +65,10 @@ h1, h2, h3, h4, h5, h6, button {
       &:first-child {
         margin-right: 1.5rem;
       }
-      > img {
+      &-logo {
         height: 75px;
         width: auto;
+        margin-top: -2rem;
       }
     }
     h1, h3 {
@@ -77,6 +79,44 @@ h1, h2, h3, h4, h5, h6, button {
     }
     h3 {
       font-size: 1.3rem;
+    }
+    &-auth {
+      position: absolute;
+      top: 1rem;
+      right: 0.5rem;
+
+      img {
+        height: 30px;
+        width: auto;
+        width: auto;
+        border-radius: 20px;
+        border: 2px solid $primary;
+        cursor: pointer;
+        transition: 200ms ease-in;
+
+        &:not(.App-header-auth-submit-icon):hover {
+          height: 36px;
+        }
+      }
+      &-submit {
+        display: flex;
+        align-items: center;
+        height: 36px;
+        width: 96px;
+        padding: 0 1rem;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        color: $white;
+        background-color: $primary;
+        font-size: 1rem;
+        cursor: pointer;
+
+        > img {
+          height: 20px;
+          margin-left: auto;
+        }
+      }
     }
   }
   &-container {

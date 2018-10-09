@@ -1,0 +1,37 @@
+/* VARIABLES */
+/* ANIMATONS */
+@keyframes line-move {
+  0% {
+    left: -25%; }
+  100% {
+    left: 100%; } }
+
+.Social-Bar {
+  width: 100%;
+  font-family: 'Open Sans', sans-serif; }
+  .Social-Bar-actions {
+    display: flex;
+    align-items: center; }
+    .Social-Bar-actions-recommend {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 44px;
+      width: 160px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      color: #fff;
+      background-color: #348899;
+      font-size: 1rem;
+      cursor: pointer; }
+      .Social-Bar-actions-recommend > div {
+        margin-left: 0.5rem; }
+        .Social-Bar-actions-recommend > div svg.spinner {
+          animation: Loading-spin infinite 2s linear; }
+
+@keyframes Loading-spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

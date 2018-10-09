@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import { Pie } from 'react-chartjs-2';
 import './Home.css';
 import ReactGA from 'react-ga';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import HomeSearchBar from './components/Home-Search-Bar';
 import HomeUserMeta from './components/Home-User-Meta';
 import HomeStats from './components/Home-Stats';
+import HomeSocial from './components/Home-Social';
 import HomeLanguages from './components/Home-Languages';
 import HomeCommits from './components/Home-Commits';
 import HomeEvents from './components/Home-Events';
 import HomeRepos from './components/Home-Repos';
-import { getUserData } from './services/api';
+import { getUserData, getRecommendations } from './services/api';
 
 const colors = [
   '#555662',
@@ -32,24 +30,20 @@ class AppHome extends Component {
     this.state = {
       userSearchQuery: '',
       userData: null,
+      recommendationsTotal: -1,
       loadingUser: false,
       showRepoPopup: false,
-      repoPopup: null,
-      snackbar: {
-        open: false,
-        message: '',
-        isError: false
-      }
+      repoPopup: null
     };
 
+    this.getUser = this.getUser.bind(this);
     this.getUserData = this.getUserData.bind(this);
+    this.getUserRecommendations = this.getUserRecommendations.bind(this);
     this.createRepoPopup = this.createRepoPopup.bind(this);
     this.popupClicked = this.popupClicked.bind(this);
     this.getRepoPopupData = this.getRepoPopupData.bind(this);
     this.getRepoPopupOptions = this.getRepoPopupOptions.bind(this);
     this.getRepoPopupName = this.getRepoPopupName.bind(this);
-    this.getRepoPopupName = this.getRepoPopupName.bind(this);
-    this.handleCloseSnackbar = this.handleCloseSnackbar.bind(this);
   }
 
   componentDidMount() {
@@ -58,7 +52,13 @@ class AppHome extends Component {
         userSearchQuery: this.props.username
       });
       this.getUserData(this.props.username);
+      this.getUserRecommendations();
     }
+  }
+
+  getUser = (username) => {
+    this.getUserData(username);
+    this.getUserRecommendations(username);
   }
 
   getUserData = async (username) => {
@@ -89,7 +89,21 @@ class AppHome extends Component {
       this.setState({
         loadingUser: false
       });
-      this.showSnackbar(true, e.message);
+      this.props.showSnackbar(true, e.message);
+    }
+  };
+
+  getUserRecommendations = async (username) => {
+    console.log('username', username);
+    try {
+      const response = await getRecommendations(username);
+      const { total } = await response.json();
+      if (!response.ok) {
+        throw await response.json();
+      }
+      this.setState({ recommendationsTotal: total });
+    } catch (e) {
+      this.setState({ recommendationsTotal: -1 });
     }
   };
 
@@ -161,26 +175,27 @@ class AppHome extends Component {
     return 'Unknown';
   };
 
-  handleCloseSnackbar = () => {
-    this.setState({ snackbar: { open: false, message: '', isError: false } });
-  };
-
-  showSnackbar = (isError, message) => {
-    this.setState({ snackbar: { open: true, message, isError } });
-  };
-
   render() {
     return (
       <div className="Home">
         <div className="Home-container">
           <HomeSearchBar
             query={ this.state.userSearchQuery }
-            onSubmit={ this.getUserData }
+            onSubmit={ this.getUser }
             loadingUser={ this.state.loadingUser }
           />
           <div className="Home-Row-1 row">
-            <HomeUserMeta userData={ this.state.userData } showSnackbar={ this.showSnackbar } />
+            <HomeUserMeta
+              userData={ this.state.userData }
+              recommendationsTotal={ this.state.recommendationsTotal }
+              showSnackbar={ this.props.showSnackbar }
+            />
             <HomeStats userData={ this.state.userData } />
+            <HomeSocial
+              userData={ this.state.userData }
+              refreshRecommendations={ this.getUserRecommendations }
+              showSnackbar={ this.props.showSnackbar }
+            />
             <HomeLanguages userData={ this.state.userData } />
             <HomeCommits userData={ this.state.userData } />
             <HomeEvents userData={ this.state.userData } />
@@ -206,26 +221,6 @@ class AppHome extends Component {
             />
           </div>
         </div>
-        <Snackbar
-          anchorOrigin={ {
-            vertical: 'bottom',
-            horizontal: 'left',
-          } }
-          open={ this.state.snackbar.open }
-          onClose={ this.handleCloseSnackbar }
-          autoHideDuration={ 6000 }
-          message={ <span style={ { color: this.state.snackbar.isError ? '#ff4160' : '#EFEFEF' } }>{ this.state.snackbar.message }</span> }
-          action={ [
-            <IconButton
-              key="close"
-              aria-label="Close"
-              color="inherit"
-              onClick={ this.handleCloseSnackbar }
-            >
-              <CloseIcon />
-            </IconButton>
-          ] }
-        />
       </div>
     );
   }
