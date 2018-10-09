@@ -217,7 +217,7 @@ class HomeUserMeta extends Component {
         <span>{ this.props.recommendationsTotal }</span>
         {' '}
         recommendation
-        { this.props.recommendationsTotal > 1 ? 's' : '' }
+        { this.props.recommendationsTotal !== 1 ? 's' : '' }
         .
       </p>
     );
