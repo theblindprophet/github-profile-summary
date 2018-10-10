@@ -65,7 +65,7 @@ class HomeEvents extends Component {
                 </div>
                 <div className="Events-contr-summary">
                   {this.getEventDesc(type, action, ref_type, merged)}
-,
+                  ,{' '}
                   <b><a href={ this.getEventRepoUrl(repo.url) + this.getLinkPath(type) } target="_blank" rel="noopener noreferrer">{repoName}</a></b>
                 </div>
                 <span className="Events-contr-line" />
