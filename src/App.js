@@ -141,11 +141,11 @@ class App extends Component {
               <p>
                 Contact Us
                 <br />
-                <a href="mailto:jamie.gross@graspmobiledevelopment.com">
-                  jamie.gross@graspmobiledevelopment.com
+                <a href="mailto:theblndprophet@gmail.com">
+                  Jamie Gross (theblndprophet@gmail.com)
                 </a>
                 <br />
-                <a href="mailto:contact@thewillg.com">contact@thewillg.com</a>
+                <a href="mailto:contact@thewillg.com">Will Garcia (contact@thewillg.com)</a>
               </p>
             </li>
           </ul>
